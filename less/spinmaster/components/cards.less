@@ -1,0 +1,190 @@
+/*doc
+---
+title: Cards
+name: cards
+category: Components
+---
+
+### Default card
+
+```html_example_table
+<div class="cc-card cc-rectangle">
+  <h3 class="cc-card-title">Title</h3>
+  <h4 class="cc-card-subtitle">Subtitle</h4>
+</div>
+
+<div class="cc-card cc-rectangle cc-light">
+  <h3 class="cc-card-title">Title</h3>
+  <h4 class="cc-card-subtitle">Subtitle</h4>
+</div>
+```
+
+### Rectangular card
+
+```html_example_table
+<div class="cc-card cc-rectangle">
+  <h3 class="cc-card-title">Title Lorem</h3>
+  <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
+</div>
+
+<div class="cc-card cc-rectangle cc-large">
+  <h3 class="cc-card-title">Title Lorem</h3>
+  <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
+</div>
+```
+
+### Card with arrow
+
+```html_example_table
+<div class="cc-card cc-rectangle cc-arrow">
+  <h3 class="cc-card-title">Title Lorem</h3>
+  <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
+</div>
+
+<div class="cc-card cc-rectangle cc-arrow cc-arrow-left">
+  <h3 class="cc-card-title">Title Lorem</h3>
+  <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
+</div>
+
+<div class="cc-card cc-rectangle cc-arrow cc-arrow-top">
+  <h3 class="cc-card-title">Title Lorem</h3>
+  <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
+</div>
+
+<div class="cc-card cc-rectangle cc-arrow cc-arrow-bottom">
+  <h3 class="cc-card-title">Title Lorem</h3>
+  <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
+</div>
+
+<div class="cc-card cc-rectangle cc-arrow cc-large">
+  <h3 class="cc-card-title">Title Lorem</h3>
+  <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
+</div>
+```
+*/
+
+/**
+ * Base card mixin
+ */
+.cc-card-base() {
+  display: inline-block;
+  background-color: @DefaultCardColor;
+  padding: @DefaultCardVerticalPadding @DefaultCardHorizontalPadding;
+
+  .cc-card-title,
+  .cc-card-subtitle {
+    color: @DefaultCardTextColor;
+    margin: 0;
+    line-height: @DefaultCardLineHeight;
+    text-align: center;
+  }
+  
+  .cc-card-title {
+    font-weight: @FontWeightBold;
+    text-transform: uppercase;
+  }
+  
+  .cc-card-subtitle {
+    font-weight: @FontWeightLight;
+  }
+  
+  &.cc-arrow {
+    .cc-arrow-base;
+  }
+
+  &.cc-light {
+    .cc-light-skin;
+  }
+}
+
+/**
+ * Base of the card with arrow
+ */
+.cc-arrow-base() {
+  position: relative;
+  
+  &:after {
+    .cc-arrow-right-mix;
+  }
+
+  &.cc-arrow-left:after {
+    .cc-arrow-left-mix;
+  }
+
+  &.cc-arrow-top:after {
+    .cc-arrow-top-mix;
+  }
+
+  &.cc-arrow-bottom:after {
+    .cc-arrow-bottom-mix;
+  }
+}
+
+.cc-arrow-right-mix() {
+  content: '';
+  position: absolute;
+  right: -@DefaultCardArrowSize;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  
+  .triangle(right, @DefaultCardArrowSize, @DefaultCardColor);
+}
+
+.cc-arrow-left-mix() {
+  right: auto;
+  left: -@DefaultCardArrowSize;
+  transform: rotate(180deg);
+}
+
+.cc-arrow-top-mix() {
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: -(@DefaultCardArrowSize + 7);
+  bottom: auto;
+  transform: rotate(-90deg);
+}
+
+.cc-arrow-bottom-mix() {
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: auto;
+  bottom: -(@DefaultCardArrowSize + 7);
+  transform: rotate(90deg);
+}
+
+/**
+ * Light Skin Mixin
+ */
+.cc-light-skin() {
+  background-color: @CardSkinLightColor;
+
+  .cc-card-title {
+    color: @CardSkinLightTitleColor;
+  }
+  
+  .cc-card-subtitle {
+    color: @CardSkinLightSubtitleColor;
+  }
+}
+
+/**
+ * Defining cc-card class
+ */
+.cc-card {
+  .cc-card-base;
+}
+
+/**
+ * Rectangle shape of card
+ */
+.cc-rectangle:extend(.cc-card all) {
+  padding: @CardRectangleVerticalPadding @CardRectangleHorizontalPadding;
+
+  &.cc-large {
+    min-width: 295px;
+  }
+}
+

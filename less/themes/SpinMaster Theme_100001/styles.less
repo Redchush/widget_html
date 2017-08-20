@@ -1,0 +1,4425 @@
+/******************************************************************************
+    GENERAL STYLES
+******************************************************************************/
+html {
+  font-size:            @FontSizeBase;
+}
+
+html, body {
+  overflow-x: hidden;
+
+  /**
+   * height 100% breaks the scroll event
+   * when using with overflow-x: hidden;
+   */
+  height: auto;
+}
+
+body {
+  background: @SiteBackgroundColor @SiteBackgroundImageURL @SiteBackgroundImagePosition @SiteBackgroundImageRepeat;
+
+  .SiteBackground() when (@SiteBackgroundUseGradient) {
+    .background-styles (@SiteBackgroundColor, @SiteBackgroundImageURL, @SiteBackgroundImageRepeat, @SiteBackgroundImagePosition,
+                        @SiteBackgroundColorTop, @SiteBackgroundColorBottom, @SiteBackgroundImageAttachment);
+  }
+  .SiteBackground;
+
+  background-attachment: @SiteBackgroundImageAttachment;
+
+  color:                @TextColor;
+  font-family:          @SiteFontFamily;
+  font-size:            @FontSizeNormal;
+  font-style:           @SiteFontStyle;
+  font-weight:          @SiteFontWeight;
+  line-height:          @SiteLineHeight;
+  text-align:           @SiteTextAlign;
+  text-decoration:      @SiteTextDecoration;
+
+  #page {
+    background-color:     @SitePageBackgroundColor;
+
+    &.preview {
+      padding-top: 0;
+    }
+  }
+
+  //We don't have footer, so let's force some spacing at bottom
+  margin-bottom: 100px;
+}
+
+.cart {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+/*doc
+---
+title: CSS Icons
+name: css-icons
+category: Icons
+---
+None
+*/
+
+*[class^="glyphicon-"] {
+  font-family: 'Glyphicons Halflings';
+  font-size: @FontSizeExtraLarge;
+
+  &:before {
+    display: table-cell;
+  }
+}
+
+.glyphicon.glyphicon:before {
+  .custom-icon-base();
+}
+/*doc
+---
+title: Buttons
+name: button
+category: Components
+---
+Button styles can be applied to any element. Typically you'll want to
+use either a `<button>` or an `<a>` element:
+
+```html_example
+<a class="cc-button-primary" href="#">
+  Lorem Ipsum
+</a>
+<button class="cc-button-primary">
+  Lorem Ipsum
+</button>
+```
+
+### Sizes
+
+```html_example_table 
+<a class="cc-button-large cc-button-primary" href="#">Lorem Ipsum</a>
+
+<a class="cc-button-full cc-button-primary" href="#">Lorem Ipsum</a>
+```
+
+```html_example_table 
+<a class="cc-button-primary" href="#">Lorem Ipsum</a>
+<a class="cc-button-primary hovered-button" href="#">Lorem Ipsum</a>
+<a class="cc-button-primary disabled" href="#">Lorem Ipsum</a>
+<a class="cc-button-primary cc-button-transparent" href="#">Lorem Ipsum</a>
+<a class="cc-button-secondary" href="#">Lorem Ipsum</a>
+<a class="cc-button-secondary hovered-button" href="#">Lorem Ipsum</a>
+<a class="cc-button-secondary disabled" href="#">Lorem Ipsum</a>
+<a class="cc-button-secondary cc-button-transparent" href="#">Lorem Ipsum</a>
+
+<a class="cc-button-text" href="#">Lorem Ipsum </a>
+
+<a class="cc-button-text hovered-button" href="#">Lorem Ipsum </a>
+
+<a class="cc-button-text" href="#">Lorem Ipsum <i class="glyphicon glyphicon-chevron-right"></i></a>
+
+```
+-----------
+> The button `transparent` is class which you can add to any other buttons types. It's a special type and will invert the default button style and set a transparent background.
+
+### Buttons with Icons
+
+If you want to use a large button with an icon, you will have to add a container to your text with a classe `cc-icon-text`. See some examples right below.
+
+```html_example_table
+<a class="cc-button-primary" href="#">Lorem Ipsum <i class="glyphicon glyphicon-chevron-right"></i></a>
+ ```
+
+*/
+
+.button {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 0; // For input.btn
+  font-size: @FontSizeMedium;
+  font-weight: @ButtonFontWeight;
+  text-align: center;
+  line-height: 100%;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  white-space: nowrap;
+  .user-select(none);
+  border-radius: @ButtonBorderRadius;
+  text-decoration: none;
+  text-transform: @ButtonTextTransform;
+  padding: @ButtonVerticalPadding @ButtonHorizontalPadding;
+
+  &:focus,
+  &:visited,
+  &:link,
+  &:active,
+  &:link:hover,
+  &:hover {
+    text-decoration: none;
+    box-shadow: none;
+    outline: none;
+    font-weight: @ButtonFontWeight;
+  }
+
+  &.disabled,
+  &[disabled] {
+    opacity: 1;
+    &:after {
+     content: '';
+     position: absolute;
+     left: -@ButtonBorderSize;
+     right: -@ButtonBorderSize;
+     top: -@ButtonBorderSize;
+     bottom: -@ButtonBorderSize;
+   }
+  }
+
+  &.cc-button-uppercase {
+    text-transform: uppercase;
+  }
+}
+
+.cc-button-primary:extend(.button all) {
+  color: @ButtonPrimaryTextColor;
+  background-color: @ButtonPrimaryBackgroundColor;
+  border: @ButtonPrimaryBorder;
+  font-size: @ButtonPrimaryFontSize;
+  padding: @ButtonPrimaryVerticalPadding @ButtonPrimaryHorizontalPadding;
+
+  &:focus,
+  &:visited,
+  &:link,
+  &:active {
+    background-color: @ButtonPrimaryBackgroundColor;
+    color: @ButtonPrimaryTextColor;
+  }
+
+  &:link:hover,
+  &:link.hovered-button,
+  &:hover {
+    background-color: @ButtonPrimaryBackgroundColorHover;
+    color: @ButtonPrimaryTextColorHover;
+    border-color: @ButtonPrimaryBorderColorHover;
+  }
+
+  &.cc-button-transparent {
+    color: @ButtonPrimaryBackgroundColor;
+    background-color: transparent;
+
+    &:focus,
+    &:visited,
+    &:link,
+    &:active {
+      color: @ButtonPrimaryBackgroundColor;
+      background-color: transparent;
+    }
+
+    &:hover {
+      background-color: @ButtonPrimaryTextColorHover;
+      color: @ButtonPrimaryBackgroundColorHover;
+      border-color: @ButtonPrimaryBorderColorHover;
+    }
+  }
+  &.disabled,
+  &[disabled] {
+    background-color: @ButtonDisabledBackgroundColor;
+    color: @ColorShadeBold;
+    border-color: @ButtonDisabledBackgroundColor;
+  }
+
+  &.hovered-button {
+    background-color: @ButtonPrimaryBackgroundColorHover;
+    color: @ButtonPrimaryTextColorHover;
+    border-color: @ButtonPrimaryBorderColorHover;
+  }
+}
+
+.cc-button-secondary:extend(.button all) {
+  color: @ButtonSecondaryTextColor;  
+  background-color: @ButtonSecondaryBackgroundColor;
+  border: @ButtonSecondaryBorder;
+  font-size: @ButtonSecondaryFontSize;
+  padding: @ButtonSecondaryVerticalPadding @ButtonSecondaryHorizontalPadding;
+
+  &:focus,
+  &:visited,
+  &:link,
+  &:active {
+    color: @ButtonSecondaryTextColor;  
+    background-color: @ButtonSecondaryBackgroundColor;
+  }
+
+  &:link:hover,
+  &:link.hovered-button,
+  &:hover {
+    background-color: @ButtonSecondaryBackgroundColorHover;
+    color: @ButtonSecondaryTextColorHover;
+    border-color: @ButtonSecondaryBorderColorHover;
+  }
+
+  &.cc-button-transparent {
+    color: @ColorSpinBlueRegular;
+    background-color: transparent;
+
+    &:focus,
+    &:visited,
+    &:link,
+    &:active {
+      color: @ColorSpinBlueRegular;
+      background-color: transparent;
+    }
+
+    &:hover {
+      background-color: @ButtonSecondaryTextColorHover;
+      color: @ButtonSecondaryBackgroundColorHover;
+      border-color: @ButtonSecondaryBorderColorHover;
+    }
+  }
+  &.disabled,
+  &[disabled] {
+    background-color: @ButtonDisabledBackgroundColor;
+    color: @ColorShadeBold;
+    border-color: @ButtonDisabledBackgroundColor;
+  }
+  &.hovered-button {
+    background-color: @ButtonSecondaryBackgroundColorHover;
+    color: @ButtonSecondaryTextColorHover;
+    border-color: @ButtonSecondaryBorderColorHover;
+  }
+}
+
+.cc-button-text {
+  font-size: @FontSizeMedium;
+  text-align: center;
+  color: @ButtonTextTextColor;
+  &a:link,
+  &:visited,
+  &:link:visited,
+  &:link.visited-link  {
+    color: @ButtonTextTextColor;
+    text-decoration: none;
+  }
+  &:hover {
+    text-decoration: @ButtonTextTextDecoration;
+  }
+  &.hovered-button {
+    text-decoration: @ButtonTextTextDecoration;
+  }
+}
+
+.cc-button-large {
+  white-space: normal;
+  vertical-align: middle;
+  padding-top: @ButtonHorizontalPadding + 14;
+  padding-bottom: @ButtonHorizontalPadding + 14;
+
+  .glyphicon {
+    font-size: @ButtonIconFontSize;
+    vertical-align: super;
+  }
+
+  .cc-icon-text {
+    width: 50%;
+    display: inline-block;
+    font-size: @ButtonIconTextFontSize;
+    text-transform: uppercase;
+    text-align: left;
+    vertical-align: super;
+    line-height: 100%;
+  }
+}
+
+.cc-button-full {
+  width: 100%;
+}
+/*doc
+---
+title: Cards
+name: cards
+category: Components
+---
+
+### Default card
+
+```html_example_table
+<div class="cc-card cc-rectangle">
+  <h3 class="cc-card-title">Title</h3>
+  <h4 class="cc-card-subtitle">Subtitle</h4>
+</div>
+
+<div class="cc-card cc-rectangle cc-light">
+  <h3 class="cc-card-title">Title</h3>
+  <h4 class="cc-card-subtitle">Subtitle</h4>
+</div>
+```
+
+### Rectangular card
+
+```html_example_table
+<div class="cc-card cc-rectangle">
+  <h3 class="cc-card-title">Title Lorem</h3>
+  <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
+</div>
+
+<div class="cc-card cc-rectangle cc-large">
+  <h3 class="cc-card-title">Title Lorem</h3>
+  <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
+</div>
+```
+
+### Card with arrow
+
+```html_example_table
+<div class="cc-card cc-rectangle cc-arrow">
+  <h3 class="cc-card-title">Title Lorem</h3>
+  <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
+</div>
+
+<div class="cc-card cc-rectangle cc-arrow cc-arrow-left">
+  <h3 class="cc-card-title">Title Lorem</h3>
+  <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
+</div>
+
+<div class="cc-card cc-rectangle cc-arrow cc-arrow-top">
+  <h3 class="cc-card-title">Title Lorem</h3>
+  <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
+</div>
+
+<div class="cc-card cc-rectangle cc-arrow cc-arrow-bottom">
+  <h3 class="cc-card-title">Title Lorem</h3>
+  <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
+</div>
+
+<div class="cc-card cc-rectangle cc-arrow cc-large">
+  <h3 class="cc-card-title">Title Lorem</h3>
+  <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
+</div>
+```
+*/
+
+/**
+ * Base card mixin
+ */
+.cc-card-base() {
+  display: inline-block;
+  background-color: @DefaultCardColor;
+  padding: @DefaultCardVerticalPadding @DefaultCardHorizontalPadding;
+
+  .cc-card-title,
+  .cc-card-subtitle {
+    color: @DefaultCardTextColor;
+    margin: 0;
+    line-height: @DefaultCardLineHeight;
+    text-align: center;
+  }
+  
+  .cc-card-title {
+    font-weight: @FontWeightBold;
+    text-transform: uppercase;
+  }
+  
+  .cc-card-subtitle {
+    font-weight: @FontWeightLight;
+  }
+  
+  &.cc-arrow {
+    .cc-arrow-base;
+  }
+
+  &.cc-light {
+    .cc-light-skin;
+  }
+}
+
+/**
+ * Base of the card with arrow
+ */
+.cc-arrow-base() {
+  position: relative;
+  
+  &:after {
+    .cc-arrow-right-mix;
+  }
+
+  &.cc-arrow-left:after {
+    .cc-arrow-left-mix;
+  }
+
+  &.cc-arrow-top:after {
+    .cc-arrow-top-mix;
+  }
+
+  &.cc-arrow-bottom:after {
+    .cc-arrow-bottom-mix;
+  }
+}
+
+.cc-arrow-right-mix() {
+  content: '';
+  position: absolute;
+  right: -@DefaultCardArrowSize;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  
+  .triangle(right, @DefaultCardArrowSize, @DefaultCardColor);
+}
+
+.cc-arrow-left-mix() {
+  right: auto;
+  left: -@DefaultCardArrowSize;
+  transform: rotate(180deg);
+}
+
+.cc-arrow-top-mix() {
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: -(@DefaultCardArrowSize + 7);
+  bottom: auto;
+  transform: rotate(-90deg);
+}
+
+.cc-arrow-bottom-mix() {
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: auto;
+  bottom: -(@DefaultCardArrowSize + 7);
+  transform: rotate(90deg);
+}
+
+/**
+ * Light Skin Mixin
+ */
+.cc-light-skin() {
+  background-color: @CardSkinLightColor;
+
+  .cc-card-title {
+    color: @CardSkinLightTitleColor;
+  }
+  
+  .cc-card-subtitle {
+    color: @CardSkinLightSubtitleColor;
+  }
+}
+
+/**
+ * Defining cc-card class
+ */
+.cc-card {
+  .cc-card-base;
+}
+
+/**
+ * Rectangle shape of card
+ */
+.cc-rectangle:extend(.cc-card all) {
+  padding: @CardRectangleVerticalPadding @CardRectangleHorizontalPadding;
+
+  &.cc-large {
+    min-width: 295px;
+  }
+}
+
+/*doc
+---
+title: Carousel
+name: carousel
+category: Components
+---
+
+###Default carousel
+
+####Attention: Don't use the class __doc-solid-background darken__ on your element, it's only for the styleguide
+
+```html_example
+<div class="doc-solid-background darken"><!-- DON'T USE this element on you application, this is only for the styleguide -->
+  <div class="carousel slide">
+    <div class="carousel-inner">
+      <div class="item active">
+        <a href="#">
+            <img alt="Hero Image 1" class="img-responsive center-block" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=500&h=300">
+        </a>
+      </div>
+    
+      <div class="item ">
+        <a href="#">
+            <img alt="Hero Image 1" class="img-responsive center-block" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=500&h=300">
+        </a>
+      </div>
+    </div>
+    <div class="left carousel-control hidden-xs hidden-sm">
+      <a href="#">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <div class="sr-only">previous</div>
+      </a>
+    </div>
+    <div class="right carousel-control hidden-xs hidden-sm">
+      <a href="#">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <div class="sr-only">next</div>
+      </a>
+    </div>
+    <ol class="carousel-indicators">
+      <li class="active"></li>
+      <li></li>
+    </ol>
+  </div>
+</div>
+```
+
+###Second carousel style
+
+```html_example
+<div class="carousel slide cc-carousel-secondary">
+  <div class="carousel-inner">
+    <div class="item active">
+      <a href="#">
+          <img alt="Hero Image 1" class="img-responsive center-block" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=500&h=300">
+      </a>
+    </div>
+  
+    <div class="item ">
+      <a href="#">
+          <img alt="Hero Image 1" class="img-responsive center-block" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=500&h=300">
+      </a>
+    </div>
+  </div>
+  <div class="left carousel-control hidden-xs hidden-sm">
+    <a href="#">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <div class="sr-only">previous</div>
+    </a>
+  </div>
+  <div class="right carousel-control hidden-xs hidden-sm">
+    <a href="#">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <div class="sr-only">next</div>
+    </a>
+  </div>
+  <ol class="carousel-indicators">
+    <li class="active"></li>
+    <li></li>
+  </ol>
+</div>
+```
+
+*/
+
+.carousel.slide {
+  .carousel-inner {
+    padding: 0 30px 20px;
+  }
+
+  .carousel-control {
+    background: none;
+    text-shadow: none;
+    width: 4%;
+    
+    &.left,
+    &.right {
+      display: block;
+      height: @CarouselArrowsHeight;
+      width: @CarouselArrowsWidth;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+        
+      .glyphicon {
+        font-family: 'custom-icons';
+        font-size: 6rem;
+        width: @CarouselArrowsWidth;
+        height: auto;
+        margin: 0;    
+        top: auto;    
+        color: @CarouselArrowsColor;
+      }
+    }
+
+    &.left {
+      left: 0;
+
+      .glyphicon {
+        left: 0;
+
+        &:before {
+          content: @font-custom-icons-thin-arrow-left;
+          text-indent: -45%;
+        }
+      }
+    }
+
+    &.right {
+      right: 0;
+
+      .glyphicon {
+        right: 0;
+
+        &:before {
+          text-indent: 0;
+          content: @font-custom-icons-thin-arrow-right;
+        }
+      }
+    }
+  }
+
+  .carousel-indicators {
+    bottom: -5%;
+    
+    > li {
+      width: @CarouselIndicatorsSize;
+      height: @CarouselIndicatorsSize;
+      background: @CarouselIndicatorsColor;
+      opacity: 0.5;
+
+      &.active {
+        width: @CarouselIndicatorsActiveSize;
+        height: @CarouselIndicatorsActiveSize;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.carousel.slide.cc-carousel-secondary {
+  .carousel-control {
+    &.left,
+    &.right {
+      .glyphicon {
+        color: @CarouselSecondaryArrowsColor;
+      }
+    }
+  }
+
+  .carousel-indicators {
+    > li {
+      background: @CarouselSecondaryIndicatorsColor;
+      border-color: @CarouselSecondaryIndicatorsColor;
+    }
+  }
+}
+
+.datepicker {
+  &.dropdown-menu {
+    z-index: 9999 !important;
+  }
+
+  .icon-arrow-left,
+  .icon-arrow-right {
+    .glyphicon;
+    font-family: 'Glyphicons Halflings';
+  }
+
+  .icon-arrow-left:before {
+    content: "\e091";
+  }
+
+  .icon-arrow-right:before {
+    content: "\e092";
+  }
+
+	border-radius: @border-radius-base;
+	&-inline {
+		width: 220px;
+	}
+	direction: ltr;
+	&&-rtl {
+		direction: rtl;
+		&.dropdown-menu { left: auto; }
+		table tr td span {
+			float: right;
+		}
+	}
+	&-dropdown {
+		top: 0;
+		left: 0;
+		padding: 4px;
+	}
+	table {
+		margin: 0;
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		tr {
+			td, th {
+				text-align: center;
+				width: 30px;
+				height: 30px;
+				border-radius: 4px;
+				border: none;
+			}
+		}
+	}
+	// Inline display inside a table presents some problems with
+	// border and background colors.
+	.table-striped & table tr {
+		td, th {
+			background-color: transparent;
+		}
+	}
+	table tr td {
+		&.old,
+		&.new {
+			color: @btn-link-disabled-color;
+		}
+		&.day:hover,
+		&.focused {
+			background: @gray-lighter;
+			cursor: pointer;
+		}
+		&.disabled,
+		&.disabled:hover {
+			background: none;
+			color: @btn-link-disabled-color;
+			cursor: default;
+		}
+		&.highlighted {
+			@highlighted-bg: @state-info-bg;
+			.button-variant(#000, @highlighted-bg, darken(@highlighted-bg, 20%));
+			border-radius: 0;
+
+			&.focused {
+				background: darken(@highlighted-bg, 10%);
+			}
+
+			&.disabled,
+			&.disabled:active {
+				background: @highlighted-bg;
+				color: @btn-link-disabled-color;
+			}
+		}
+		&.today {
+			@today-bg: lighten(orange, 30%);
+			.button-variant(#000, @today-bg, darken(@today-bg, 20%));
+
+			&.focused {
+				background: darken(@today-bg, 10%);
+			}
+
+			&.disabled,
+			&.disabled:active {
+				background: @today-bg;
+				color: @btn-link-disabled-color;
+			}
+		}
+		&.range {
+			@range-bg: @gray-lighter;
+			.button-variant(#000, @range-bg, darken(@range-bg, 20%));
+			border-radius: 0;
+
+			&.focused {
+				background: darken(@range-bg, 10%);
+			}
+
+			&.disabled,
+			&.disabled:active {
+				background: @range-bg;
+				color: @btn-link-disabled-color;
+			}
+		}
+		&.range.highlighted {
+			@range-highlighted-bg: mix(@state-info-bg, @gray-lighter, 50%);
+			.button-variant(#000, @range-highlighted-bg, darken(@range-highlighted-bg, 20%));
+
+			&.focused {
+				background: darken(@range-highlighted-bg, 10%);
+			}
+
+			&.disabled,
+			&.disabled:active {
+				background: @range-highlighted-bg;
+				color: @btn-link-disabled-color;
+			}
+		}
+		&.range.today {
+			@range-today-bg: mix(orange, @gray-lighter, 50%);
+			.button-variant(#000, @range-today-bg, darken(@range-today-bg, 20%));
+
+			&.disabled,
+			&.disabled:active {
+				background: @range-today-bg;
+				color: @btn-link-disabled-color;
+			}
+		}
+		&.selected,
+		&.selected.highlighted {
+			.button-variant(#fff, @gray-light, @gray);
+			text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+		}
+		&.active,
+		&.active.highlighted {
+			.button-variant(@btn-primary-color, @btn-primary-bg, @btn-primary-border);
+			text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+		}
+		span {
+			display: block;
+			width: 23%;
+			height: 54px;
+			line-height: 54px;
+			float: left;
+			margin: 1%;
+			cursor: pointer;
+			border-radius: 4px;
+			&:hover,
+			&.focused {
+				background: @gray-lighter;
+			}
+			&.disabled,
+			&.disabled:hover {
+				background: none;
+				color: @btn-link-disabled-color;
+				cursor: default;
+			}
+			&.active,
+			&.active:hover,
+			&.active.disabled,
+			&.active.disabled:hover {
+				.button-variant(@btn-primary-color, @btn-primary-bg, @btn-primary-border);
+				text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+			}
+			&.old,
+			&.new {
+				color: @btn-link-disabled-color;
+			}
+		}
+	}
+
+	.datepicker-switch {
+		width: 145px;
+	}
+
+	.datepicker-switch,
+	.prev,
+	.next,
+	tfoot tr th {
+		cursor: pointer;
+		&:hover {
+			background: @gray-lighter;
+		}
+	}
+
+	.prev, .next {
+		&.disabled {
+			visibility: hidden;
+		}
+	}
+
+	// Basic styling for calendar-week cells
+	.cw {
+		font-size: 10px;
+		width: 12px;
+		padding: 0 2px 0 5px;
+		vertical-align: middle;
+	}
+}
+.input-group.date .input-group-addon {
+	cursor: pointer;
+}
+.input-daterange {
+	width: 100%;
+	input {
+		text-align: center;
+	}
+	input:first-child {
+		border-radius: 3px 0 0 3px;
+	}
+	input:last-child {
+		border-radius: 0 3px 3px 0;
+	}
+	.input-group-addon {
+		width: auto;
+		min-width: 16px;
+		padding: 4px 5px;
+		line-height: @line-height-base;
+		text-shadow: 0 1px 0 #fff;
+		border-width: 1px 0;
+		margin-left: -5px;
+		margin-right: -5px;
+	}
+}
+/*doc
+---
+title: Introduction
+name: 1-introduction
+category: Forms
+---
+
+That project uses Bootstrap as a basis style. So, all forms structures should follow
+the Boostrap's recommendations.
+
+Any doubt you can take a look at the [Bootstrap Forms](http://getbootstrap.com/css/#forms)
+documentation.
+
+##sr-only
+
+Important note: Remember to always use the label element in order to keep our application
+well indexable and accessible. You can do that using the `sr-only` class of bootstrap. e.g:
+
+```html_example
+<form>
+  <div class="form-group">
+    <label class="sr-only" for="my-sr-only-field">SR Field</label>
+    <input type="text" placeholder="SR Field" class="form-control" id="my-sr-only-field" />
+  </div>
+  <button type="submit" class="cc-button-primary">Submit</button>
+</form>
+```
+*/
+
+/*doc
+---
+title: Text Fields
+name: 2-text-fields
+category: Forms
+---
+
+###Simple text field
+
+```html_example
+<form>
+  <div class="form-group">
+    <label class="sr-only" for="simple-field-name">Name</label>
+    <input type="text" placeholder="Name" class="form-control" id="simple-field-name" />
+  </div>
+  <button type="submit" class="cc-button-primary">Submit</button>
+</form>
+```
+
+###Text field with a button and a glyphicon
+
+```html_example
+<form>
+  <div class="form-group">
+    <div class="input-group">
+      <input type="text" placeholder="Search" class="form-control" />
+        <div class="input-group-btn">
+          <span class="form-info glyphicon-D2C-ToolTip"></span>
+        </div>
+    </div>
+  </div>
+</form>
+```
+
+###Invalid text field
+
+```html_example
+<form>
+  <div class="form-group">
+    <label class="sr-only" for="invalid-text-field">Invalid Text Field</label>
+    <input type="text" placeholder="Search" class="form-control search-field invalid" id="invalid-text-field" />
+    <span class="invalid-field-text">Error</span>
+  </div>
+</form>
+```
+
+###Invalid text field with icon
+
+```html_example
+<form>
+  <div class="form-group">
+    <div class="input-group">
+      <input type="text" placeholder="Search" class="form-control invalid search-field" />
+        <div class="input-group-btn">
+          <button type="submit" class="btn btn-default form-control">
+            <span class="sr-only">Search</span>
+            <span class="glyphicon-d2c-search"></span>
+          </button>
+        </div>
+    </div>
+    <span class="invalid-field-text">Error</span>
+  </div>
+</form>
+```
+
+
+*/
+
+/**
+ * Placeholders
+ */
+
+::-webkit-input-placeholder {
+  color: @FormFieldPlaceholderColor !important;
+}
+
+:-moz-placeholder {
+  color: @FormFieldPlaceholderColor !important;
+}
+::-moz-placeholder {
+  color: @FormFieldPlaceholderColor !important;
+}
+:-ms-input-placeholder {  
+  color: @FormFieldPlaceholderColor !important;
+}
+
+.form-control,
+.input-group-btn button {
+  height: @FormFieldSize;
+  font-size: @FormFieldFontSize;
+  color: @FormFieldTextColor;
+  padding: @FormFieldVerticalPadding @FormFieldHorizontalPadding;
+  border: @FieldBorderWidth solid @FieldBorderColor;
+
+  &,
+  &#searchSubmit {
+    border-radius: 0;
+  }
+
+  &,
+  &:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  
+  &:focus {
+    border-color: @FormFieldFocusBorderColor
+  }
+}
+
+//Adding border
+.form-control:not(.search-field):not(.btn):not(textarea) {
+  border-bottom-width: @FieldBorderWidth;
+  border-radius: 5px;
+}
+
+//Search
+.form-control.search-field {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.form-control.search-field:focus + .input-group-btn .btn {
+  border: @FieldBorderWidth solid @FormFieldFocusBorderColor;
+  border-left: none;
+}
+
+.control-label,
+label {
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: @FormLabelFontSize;
+}
+
+legend {
+  border: none;
+  font-size: @FormLegendFontSize;
+  font-weight: normal;
+  color: @FormLegendTextColor;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  font-weight: @FormLegendFontWeight;
+}
+
+.form-hint {
+  height: @FormFieldSize;
+  position: relative;
+
+  .hint-content {
+    position: absolute;
+    bottom: 0;
+  }
+
+  .hint-content,
+  .hint-content a {
+    color: @FormHint;
+    text-transform: uppercase;
+  }
+}
+
+.form-info {
+  color: @ColorSpinBlueRegular;
+  font-size: @FontSizeExtraLarge;
+}
+
+.centered-fields {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.input-group-btn {
+  &:last-child {
+    & > .btn,
+    & > .btn-group {
+      margin-left: -@FieldBorderWidth;
+    }
+  }
+}
+
+.form-control.invalid {
+  border-color: @InvalidFieldBorderColor;
+  background-color: @InvalidFieldBackgroundColor;
+  border-radius: 5px;
+  ~ .input-group-btn button {
+    border-color: @InvalidFieldBorderColor;
+    background-color: @InvalidFieldBackgroundColor;
+  }
+}
+
+.invalid-field-text {
+  display: inline-block;
+  margin-top: 5px;
+  font-size: @InvalidFieldFontSize;
+  font-style: normal;
+  color: @InvalidFieldTextColor;
+  margin-left: 20px;
+}
+
+.invalid-field-text-icon {
+  color: @ColorRed;
+}
+
+/*doc
+---
+title: Text area fields
+name: 3-text-area-fields
+category: Forms
+---
+
+###Simple text area
+
+```html_example
+<form>
+  <div class="form-group">
+    <label for="simple-text-area" class="sr-only">Text Area</label>
+    <textarea class="form-control" rows="5" placeholder="text area" id="simple-text-area"></textarea>
+  </div>
+  <button type="submit" class="cc-button-primary">Submit</button>
+</form>
+```
+
+###Invalid text area
+
+```html_example
+<form>
+  <div class="form-group">
+    <label for="invalid-simple-text-area" class="sr-only">Text Area</label>
+    <textarea class="form-control invalid" rows="5" placeholder="text area" id="invalid-simple-text-area"></textarea>
+    <span class="invalid-field-text">Error</span>
+  </div>
+  <button type="submit" class="cc-button-primary">Submit</button>
+</form>
+```
+*/
+textarea.form-control {
+  height: auto;
+  border-width: @FieldBorderWidth;
+}
+
+/* REF: http://stackoverflow.com/questions/3062968/remove-textarea-inner-shadow-on-mobile-safari-iphone */
+input[type='text'],
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.input-group-btn button {
+  border-left: none;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/*doc
+---
+title: Select fields
+name: 4-select-fields
+category: Forms
+---
+
+All selects have a JS to customize them better, but only the classes and elements are being used
+in the project.
+
+So, it needs a container element called `control` and `picker`, it should be the select container and the
+select element itself.
+
+```html_example
+<form>
+  <div class="form-group">
+    <label class="sr-only" for="select-example">Select Example</label>
+    <div class="control picker">
+      <select class="form-control" id="select-example">
+        <option>First Option</option>
+        <option>Second Option</option>
+        <option>Third Option</option>
+      </select>
+    </div>
+  </div>
+</form>
+```
+
+###Invalid Select field
+```html_example
+<form>
+  <div class="form-group">
+    <label class="sr-only" for="invalid-select-example">Select Example</label>
+    <div class="control picker">
+      <select class="form-control invalid" id="invalid-select-example">
+        <option>First Option</option>
+        <option>Second Option</option>
+        <option>Third Option</option>
+      </select>
+    </div>
+    <span class="invalid-field-text">Error</span>
+  </div>
+</form>
+```
+*/
+.chosen-container {
+  display: none;
+}
+
+.picker {
+  position: relative;
+
+  select {
+    position: relative;
+    display: block !important;
+    padding-right: 30px;
+  }
+
+  &:after,
+  &:before {
+    font-family: 'custom-icons';
+    content: @font-custom-icons-arrow-down;
+    position: absolute;
+    top: 15px;
+    bottom: 0;
+    margin: auto;
+    right: 10px;
+    pointer-events: none;
+    color: @FormSelectTextColor;
+    font-size: @FormSelectIconFontSize;
+  }
+}
+
+/*doc
+---
+title: Checkbox
+name: 5-checkbox
+category: Forms
+---
+This is an example of a checkbox input
+
+```html_example
+<div class="checkbox">
+  <label>
+    <input type="checkbox" id="checkbox1">
+    <span for="checkbox1">Check This</span>
+  </label>
+</div>
+<div class="checkbox">
+  <label>
+    <input type="checkbox" checked id="checkbox2">
+    <span for="checkbox2">Checked</span>
+  </label>
+</div>
+<div class="checkbox">
+  <label>
+    <input type="checkbox" disabled id="checkbox2">
+    <span for="checkbox2">Checked</span>
+  </label>
+</div>
+<div class="checkbox">
+  <label>
+    <input type="checkbox" disabled checked id="checkbox2">
+    <span for="checkbox2">Checked disabled</span>
+  </label>
+</div>
+```
+This is an example of a checkbox-inline input
+
+```html_example
+<div class="checkbox-inline">
+  <label>
+    <input type="checkbox" id="checkbox1">
+    <span for="checkbox1">Check This</span>
+  </label>
+</div>
+<div class="checkbox-inline">
+  <label>
+    <input type="checkbox" checked id="checkbox2">
+    <span for="checkbox2">Checked</span>
+  </label>
+</div>
+<div class="checkbox-inline">
+  <label>
+    <input type="checkbox" disabled id="checkbox2">
+    <span for="checkbox2">Checked</span>
+  </label>
+</div>
+<div class="checkbox-inline">
+  <label>
+    <input type="checkbox" disabled checked id="checkbox2">
+    <span for="checkbox2">Checked disabled</span>
+  </label>
+</div>
+```
+
+###Invalid Checkbox field
+
+```html_example
+<div class="checkbox">
+  <label>
+    <input type="checkbox" class="invalid" id="checkbox1-invalid">
+    <span for="checkbox1">Check This</span>
+  </label>
+  <span class="invalid-field-text">Error</span>
+</div>
+<div class="checkbox">
+  <label>
+    <input type="checkbox" class="invalid" checked id="checkbox2-invalid">
+    <span for="checkbox2">Invalid</span>
+  </label>
+  <span class="invalid-field-text">Error</span>
+</div>
+```
+*/
+.checkbox {
+  padding-left: 0;
+
+  label {
+    display: inline-block;
+  }
+}
+
+.checkbox-inline {
+  padding: 0;
+  label {
+    font-weight: @CheckBoxInlineLabelFontWeight;
+  }
+}
+
+.checkbox, .checkbox-inline {
+  font-family: @CheckBoxFontFamily;
+  font-size: @CheckBoxInlineFontSize;
+  font-weight: @CheckBoxInlineFontWeight;
+  /* Base for label styling */
+  [type='checkbox']:not(:checked),
+  [type='checkbox']:checked {
+    display: none;
+  }
+  [type='checkbox']:not(:checked) + span,
+  [type='checkbox']:checked + span {
+    position: relative;
+    padding-left: @CheckBoxPaddingLeft;
+    cursor: pointer;
+  }
+
+  /* checkbox aspect */
+  [type='checkbox']:not(:checked) + span:before,
+  [type='checkbox']:checked + span:before {
+    content: '';
+    position: absolute;
+    left:0; 
+    top: 1px;
+    width: @CheckBoxSize; 
+    height: @CheckBoxSize;
+    border: @CheckBoxBorderWidth solid @CheckBoxBorderColor;
+    background: @CheckBoxBackGroundColor;
+    border-radius: @CheckBoxBorderRadius;
+  }
+  /* checked mark aspect */
+  [type='checkbox']:not(:checked) + span:after,
+  [type='checkbox']:checked + span:after {
+    font-family: 'custom-icons';
+    font-size: @CheckBoxIconFontSize;
+    content: @font-custom-icons-d2c-checksmall;
+    color: @CheckBoxBackGroundColorChecked;
+    background: none;
+    position: absolute;
+    top: 0;
+    left: @CheckBoxLeft;
+    width: @CheckBoxSizeBackGround; 
+    height: @CheckBoxSizeBackGround;
+  }
+  /* checked mark aspect changes */
+  [type='checkbox']:not(:checked) + span:after {
+    opacity: 0;
+  }
+  [type='checkbox']:checked + span:after {
+    opacity: 1;
+  }
+  /* disabled checkbox */
+  [type='checkbox']:disabled:not(:checked) + span:before,
+  [type='checkbox']:disabled:not(:checked) + span:after,
+  [type='checkbox']:disabled:checked + span:before,
+  [type='checkbox']:disabled:checked + span:after {
+    opacity: 0.4;
+  }
+
+  [type='checkbox']:disabled + span {
+    cursor: not-allowed;
+  }
+
+  /* accessibility */
+  [type='checkbox']:checked:focus + span:before,
+  [type='checkbox']:not(:checked):focus + span:before {
+    border: @CheckBoxBorderWidth solid @CheckBoxBorderColor;
+  }
+
+  /* invalid */
+  [type='checkbox'].invalid {
+    & + span:before {
+      border-color: @CheckboxInvalidFieldBorderColor;
+    }
+
+    & + span:after {
+      background: none;
+    }
+  }
+}
+
+/*doc
+---
+title: Radio button
+name: 6-radio-button
+category: Forms
+---
+This is an example of a radio button input
+
+```html_example
+<div class="radio">
+  <label>
+    <input type="radio" checked id="radio1" name="radio">
+    <span for="radio1">Option 1</span>
+  </label>
+</div>
+<div class="radio">
+  <label>
+    <input type="radio" id="radio1" name="radio">
+    <span for="radio1">Option 1</span>
+  </label>
+</div>
+<div class="radio">
+  <label>
+    <input type="radio" disabled id="radio" name="radio">
+    <span for="radio2">Option 2</span>
+  </label>
+</div>
+<div class="radio">
+  <label>
+    <input type="radio" disabled checked id="radio" name="radio">
+    <span for="radio2">Option 2</span>
+  </label>
+</div>
+```
+This is an example of a radio-inline button input
+
+```html_example
+<div class="radio-inline">
+  <label>
+    <input type="radio" checked id="radio1" name="radio">
+    <span for="radio1">Option 1</span>
+  </label>
+</div>
+<div class="radio-inline">
+  <label>
+    <input type="radio" id="radio1" name="radio">
+    <span for="radio1">Option 1</span>
+  </label>
+</div>
+<div class="radio-inline">
+  <label>
+    <input type="radio" disabled id="radio" name="radio">
+    <span for="radio2">Option 2</span>
+  </label>
+</div>
+<div class="radio-inline">
+  <label>
+    <input type="radio" disabled checked id="radio" name="radio">
+    <span for="radio2">Option 2</span>
+  </label>
+</div>
+```
+
+###Invalid radio field
+
+```html_example
+<div class="radio">
+  <label>
+    <input type="radio" class="invalid" id="radio1-invalid">
+    <span for="radio1-invalid">Check This</span>
+  </label>
+  <span class="invalid-field-text">Error</span>
+</div>
+<div class="radio">
+  <label>
+    <input type="radio" class="invalid" checked id="radio2-invalid">
+    <span for="radio2-invalid">Invalid</span>
+  </label>
+  <span class="invalid-field-text">Error</span>
+</div>
+```
+*/
+.radio {
+  padding-left: 0;
+
+  label {
+    display: inline-block;
+  }
+}
+
+.radio-inline {
+  padding: 0;
+  label {
+    font-weight: @RadioInlineLabelFontWeight;
+  }
+}
+
+.radio, .radio-inline {
+  font-family: @RadioFontFamily;
+  font-size: @RadioInlineFontSize;
+  font-weight: @RadioInlineFontWeight;
+  /* Base for label styling */
+  [type='radio']:not(:checked),
+  [type='radio']:checked {
+    display: none;
+  }
+  [type='radio']:not(:checked) + span,
+  [type='radio']:checked + span {
+    position: relative;
+    padding-left: @RadioPaddingLeft;
+    cursor: pointer;
+  }
+
+  /* checkbox aspect */
+  [type='radio']:not(:checked) + span:before,
+  [type='radio']:checked + span:before {
+    content: '';
+    position: absolute;
+    left:0; top: -3px;
+    width: @RadioSize; 
+    height: @RadioSize;
+    border: @RadioBorderWidth solid @RadioBorderColor;
+    background: @RadioBackGroundColor;
+    border-radius: @RadioBorderRadius;
+  }
+  /* checked mark aspect */
+  [type='radio']:not(:checked) + span:after,
+  [type='radio']:checked + span:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: @RadioSizeBackGround; 
+    height: @RadioSizeBackGround;
+    background: @RadioBackGroundColorChecked;
+    border-radius: @RadioBorderRadius;
+    background-size: @RadioBackGroundSize;
+    left: @RadioLeft;
+  }
+  /* checked mark aspect changes */
+  [type='radio']:not(:checked) + span:after {
+    opacity: 0;
+  }
+  [type='radio']:checked + span:after {
+    opacity: 1;
+  }
+  /* disabled checkbox */
+  [type='radio']:disabled:not(:checked) + span:before,
+  [type='radio']:disabled:not(:checked) + span:after,
+  [type='radio']:disabled:checked + span:before,
+  [type='radio']:disabled:checked + span:after {
+    opacity: 0.4;
+  }
+
+  [type='radio']:disabled + span {
+    cursor: not-allowed;
+  }
+
+  /* accessibility */
+  [type='radio']:checked:focus + span:before,
+  [type='radio']:not(:checked):focus + span:before {
+    border: @RadioBorderWidth solid @RadioBorderColor;
+  }
+
+  /* Invalid */
+  [type='radio'].invalid {
+    & + span:before {
+      border-color: @RadioInvalidFieldBorderColor;
+    }
+
+    & + span:after {
+      background-color: @RadioInvalidFieldBackgroundColor;
+    }
+  }
+}
+
+/*doc
+---
+title: Form Fieldset Box
+name: 7-form-fieldset-box
+category: Forms
+---
+
+```html_example
+<form class="cc-form-box">
+  <fieldset>
+    <div class="form-group">
+      <label class="sr-only" for="simple-field-name-box">Name</label>
+      <input type="text" placeholder="Name" class="form-control" id="simple-field-name-box" />
+    </div>
+    <div class="form-group">
+      <label class="sr-only" for="invalid-text-field">Invalid Text Field</label>
+      <input type="text" placeholder="Search" class="form-control search-field invalid" id="invalid-text-field" />
+      <span class="invalid-field-text">Error</span>
+    </div>
+    <div class="form-group">
+      <div class="input-group">
+        <input type="text" placeholder="Search" class="form-control search-field" />
+          <div class="input-group-btn">
+            <button type="submit" class="btn btn-default form-control">
+              <span class="sr-only">Search</span>
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </div>
+      </div>
+    </div>
+  </fieldset>
+  <fieldset>
+    <div class="form-group">
+      <label class="sr-only" for="simple-field-name-box">Name</label>
+      <input type="text" placeholder="Name" class="form-control" id="simple-field-name-box" />
+    </div>
+    <div class="form-group">
+      <label class="sr-only" for="invalid-text-field">Invalid Text Field</label>
+      <input type="text" placeholder="Search" class="form-control search-field invalid" id="invalid-text-field" />
+      <span class="invalid-field-text">Error</span>
+    </div>
+  </fieldset>
+</form>
+```
+*/
+
+.cc-form-box {
+  fieldset {
+    background: @FormBoxFieldsetBackgroundColor;
+    padding: 20px;
+    
+    .form-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .form-control {
+      padding-left: 15px;
+      padding-right: 15px;
+
+      &:not(.invalid):not(:focus) {
+        border-color: @FormBoxFormControlBorderColor;
+      }
+    }
+
+    ~ fieldset {
+      margin-top: @FormBoxFieldsetSpacingTop;
+    }
+  }
+}
+
+/*doc
+---
+title: Links
+name: links
+category: Components
+---
+
+### Default links
+
+State               | Class      | Element
+------------------- | ---------- | ----------------------------------------------------
+Link normal         | `cc-link`  | <a class="cc-link" href="#">Normal Link</a>
+Link on hover       | `cc-link`  | <a class="cc-link hovered-link" href="#">Link on hover</a>
+Link on visted      | `cc-link`  | <a class="cc-link visted-link" href="#">Link on visited</a>
+
+*/
+
+a,
+a:link,
+.cc-link {
+  color: @LinkColor;
+  text-decoration: underline;
+
+  &:hover,
+  &.hovered-link {
+    color: @LinkHoverColor;
+    text-decoration: underline;
+  }
+
+  &:visited,
+  &.visited-link {
+    color: @LinkVisitedColor;
+  }
+}
+
+/*doc
+---
+title: Modals
+name: modals
+category: Components
+---
+
+### Default modal
+
+```html_example
+<div class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close hidden-xs" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close visible-xs" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">FECHAR</span></button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <h5 class="modal-content-title">Content Title Example</h5>
+
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+        when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+        and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+
+        <h6 class="modal-content-subtitle">Content Subtitle Example</h6>
+
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+        when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="cc-button-primary">Save changes <i class="glyphicon glyphicon-chevron-right"></i></button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+```
+
+### Modal with form
+
+```html_example
+<div class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close hidden-xs" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close visible-xs" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">FECHAR</span></button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal">
+          <legend>
+            All fields are required
+          </legend>
+          <div class="centered-fields">
+            <div class="form-group">
+              <label for="modalInputFirstName" class="col-sm-3 control-label">First Name</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="modalInputFirstName">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="modalInputLastName" class="col-sm-3 control-label">Last Name</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="modalInputLastName">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="modalInputCPF" class="col-sm-3 control-label">CPF</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control" id="modalInputCPF">
+              </div>
+              <label for="modalInputTelephone" class="col-sm-2 control-label">Telephone</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control" id="modalInputTelephone">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="modalInputEmail" class="col-sm-3 control-label">Email</label>
+              <div class="col-sm-9">
+                <input type="email" class="form-control" id="modalInputEmail">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="modalInputPostalCode" class="col-sm-3 control-label">Postal Code</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control" id="modalInputPostalCode">
+              </div>
+              <div class="col-sm-6">
+                <div class="form-hint">
+                 <div class="hint-content">
+                  <a href="#postal-code-helper">I don't know my Postal Code</a>
+                 </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="modalInputLastName" class="col-sm-3 control-label">Last Name</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="modalInputLastName">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-12">
+                <button type="button" class="cc-button-primary pull-right">Send <i class="glyphicon glyphicon-chevron-right"></i></button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+```
+
+### Modal with centered content
+
+```html_example
+<div class="modal fade modal-centered-content" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close hidden-xs" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close visible-xs" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">FECHAR</span></button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <div class="centered-content">
+          <h5 class="modal-content-title">Content Title Example</h5>
+          <h6 class="modal-content-subtitle">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's...</h6>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="cc-button-primary">Save changes <i class="glyphicon glyphicon-chevron-right"></i></button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+```
+*/
+
+.modal {
+  @ModalPadding: 40px;
+
+  .modal-header {
+    border: none;
+  }
+
+  .close:extend(.cc-button-primary all) {
+    opacity: 1;
+    font-size: @ModalCloseButtonFontSize;
+    padding: 2px 6px;
+    line-height: 100%;
+  }
+
+  .modal-title {
+    font-size: @ModalTitleFontSize;
+    text-transform: uppercase;
+    color: @ModalTitleTextColor;
+    font-style: italic;
+    margin: 50px 0 0;
+    padding-left: @ModalPadding;
+    padding-right: @ModalPadding;
+    line-height: 100%;
+    text-align: center;
+  }
+
+  .modal-content {
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+  }
+
+  .modal-dialog {
+    width: 80%;
+  }
+
+  .modal-content-title {
+    color: @ModalContentTitleTextColor;
+    font-style: italic;
+    font-size: @ModalContentTitleFontSize;
+    text-transform: uppercase;
+  }
+
+  .modal-content-subtitle {
+    color: @ModalContentSubTitleTextColor;
+    font-style: italic;
+    font-size: @ModalContentSubTitleFontSize;
+    text-transform: uppercase;
+  }
+
+  .modal-body {
+    color: @ModalBodyTextColor;
+    padding: 20px @ModalPadding;
+    min-height: 400px;
+    overflow-y: auto;
+  }
+
+  .modal-footer {
+    border: none;
+    padding: 20px @ModalPadding;
+  }
+
+  &.modal-centered-content {
+    .modal-body,
+    .modal-footer {
+      text-align: center;
+    }
+
+    .modal-body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content-title {
+      color: @ModalCenteredContentTitleTextColor;
+      font-style: normal;
+      margin-bottom: 0;
+
+      & + .modal-content-subtitle {
+        margin-top: 0;
+      }
+    }
+
+    .modal-content-subtitle {
+      font-style: normal;
+      font-size: @ModalCenteredContentSubTitleFontSize;
+    }
+  }
+  @media screen and (max-width: @screen-xs-max) {
+    .modal-dialog {
+      width: 100%;
+      margin: 0;
+      height: 100%;
+      background-color: @ModalMobileDialogBackgroundColor;
+    }
+    .modal-title {
+      font-size: 4rem;
+      word-break: break-word;
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .close {
+      font-size: 1.2rem;
+      line-height: 150%;
+    }
+    .modal-body {
+      padding: 20px 15px;
+    }
+  }
+}
+/*doc
+---
+title: Paginations
+name: paginations
+category: Components
+---
+
+```html_example
+<div class="row cc-paginated-controls-bottom">
+  <button class="btn btn-info disabled">First</button>
+  <button class="btn btn-info cc-prev-button" >Prev</button>
+  <div class="page-items">
+    <label class="sr-only" for="select-example">Select Example</label>
+    <div class="control picker">
+      <select class="form-control" id="select-example">
+        <option>Page 1</option>
+        <option>Page 2</option>
+        <option>Page 3</option>
+      </select>
+    </div>
+  </div>  
+  <button class="btn btn-info cc-next-button" >Next</button>
+  <button class="btn btn-info" >Last</button>
+</div>
+```
+*/
+
+.cc-paginated-controls-bottom {
+  margin-bottom: 90px;
+
+  .page-items,
+  .control.picker {
+    display: inline-block;
+  }
+  
+  .page-items {
+    min-width: 34%;
+  }
+
+  .control.picker {
+    width: 100%;
+  }
+
+  .btn,
+  .btn-info {
+    border-radius: 0;
+    background: none;
+    border: none;
+    color: @PaginationButtonsTextColor;
+
+    &.active,
+    &:focus {
+      border-color: @PaginationActiveBorderColor;
+      background: @PaginationActiveBackgroundColor;
+      color: @PaginationActiveColor;
+    }
+
+    &:hover {
+      border-color: @PaginationHoverBorderColor;
+      background: @PaginationHoverBackgroundColor;
+      color: @PaginationHoverColor;
+    }
+
+    &:first-child,
+    &.cc-prev-button,
+    &:first-child,
+    &:nth-last-child(1),
+    &.cc-next-button {
+      font-size: 0;
+
+      &:after {
+        font-family: "custom-icons";
+        line-height: 182%;
+        font-size: @PaginationButtonsFontSize;
+      }
+    }
+    
+    &.cc-prev-button {
+      transform: rotate(180deg);
+      padding-right: 0;
+
+      &:after {
+        content: @font-custom-icons-arrow-right;
+      }
+    }
+
+    &:first-child {
+      transform: rotate(180deg);
+
+      &:after {
+        content: @font-custom-icons-arrow-next;
+      }
+    }
+    
+    &.cc-next-button {
+      padding-left: 10px;
+      padding-right: 0;
+      
+      &:after {
+        content: @font-custom-icons-arrow-right;
+      }
+    }
+
+    &:nth-last-child(1):after {
+      content: @font-custom-icons-arrow-next;
+    }
+  }
+}
+/*doc
+---
+title: Product Card List
+name: product-card-list
+category: Components
+---
+
+###Default Product Card List
+
+####Attention: Don't use the class __doc-solid-background darken__ on your element, it's only for the styleguide
+
+```html_example
+<div class="carousel slide cc-carousel-secondary cc-product-card-list">
+  <div class="carousel-inner">
+      <div class="row cc-products-cards">
+
+        <div class="cc-product-card col-xs-12 col-sm-6 col-lg-4 col-md-4">
+          <div class="cc-product-card-content-container">
+
+            <!-- Product Image -->
+            <figure class="cc-product-image-container">
+              <img class="cc-product-card-image img-responsive center-block" src="http://placehold.it/249x249">
+
+              <div class="cc-product-image-info-wrapper">
+                <figcaption class="cc-product-card-image-caption">Lorem Ipsum</figcaption>
+                <span class="cc-product-new-flag">New</span>
+              </div>
+            </figure>
+            <!-- /Product Image -->
+            
+            <!-- Product details container -->
+            <div class="cc-product-card-content">
+
+              <!-- Product Title -->
+              <h3 class="cc-product-card-title">
+                TRACER SX5 QUICK SHIP
+              </h3>
+              <!-- /Product Title -->
+
+              <div class="cc-product-card-details">
+                <div class="cc-product-details-content-wrap">
+                  <!-- Prices -->
+                  <div class="cc-product-prices">
+                    <span class="cc-product-before-price">
+                      $695
+                    </span>
+                    <span class="cc-product-price">
+                      $289
+                    </span>
+                  </div>
+                  <!-- /Prices -->
+
+                  <!-- Reviews -->
+                  <div class="cc-stars-component">
+                    <div class="cc-stars-container cc-card-section">
+                      <ul class="cc-stars">
+                        <li class="cc-star"><span class="sr-only">1 Star</span></li>
+                        <li class="cc-star"><span class="sr-only">2 Stars</span></li>
+                        <li class="cc-star"><span class="sr-only">3 Stars</span></li>
+                        <li class="cc-star"><span class="sr-only">4 Stars</span></li>
+                        <li class="cc-star"><span class="sr-only">5 Stars</span></li>
+                      </ul>
+                      <div class="cc-stars-active-container" style="width: 70%;">
+                        <div class="cc-stars-active">
+                          <span class="cc-star"></span>
+                          <span class="cc-star"></span>
+                          <span class="cc-star"></span>
+                          <span class="cc-star"></span>
+                          <span class="cc-star"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <strong class="cc-stars-label">(322 Reviews)</strong>
+                  </div>
+                  <!-- /Reviews -->
+
+                  <!-- Learn More -->
+                  <div class="cc-learn-more-section cc-card-section">
+                    <a href="#" class="cc-learn-more-link">Learn More</a>
+                  </div>
+                  <!-- /Learn More -->
+                </div>
+
+                <!-- Product Card Buttons -->
+                <div class="cc-product-card-buttons cc-card-section">
+                  <a href="#" class="cc-button-primary">Add to Cart</a>
+                </div>
+                <!-- /Product Card Buttons -->
+              </div>
+            </div>
+            <!-- /Product details container -->
+          </div>
+        </div>
+
+        <div class="cc-product-card col-xs-12 col-sm-6 col-lg-4 col-md-4">
+          <div class="cc-product-card-content-container">
+
+            <!-- Product Image -->
+            <figure class="cc-product-image-container">
+              <img class="cc-product-card-image img-responsive center-block" src="http://placehold.it/249x300">
+
+              <div class="cc-product-image-info-wrapper">
+                <figcaption class="cc-product-card-image-caption">Lorem Ipsum</figcaption>
+                <span class="cc-product-new-flag">New</span>
+              </div>
+            </figure>
+            <!-- /Product Image -->
+            
+            <!-- Product details container -->
+            <div class="cc-product-card-content">
+
+              <!-- Product Title -->
+              <h3 class="cc-product-card-title">
+                TRACER SX5 QUICK SHIP
+              </h3>
+              <!-- /Product Title -->
+
+              <div class="cc-product-card-details">
+                <div class="cc-product-details-content-wrap">
+                  <!-- Prices -->
+                  <div class="cc-product-prices">
+                    <span class="cc-product-before-price">
+                      $695
+                    </span>
+                    <span class="cc-product-price">
+                      $289
+                    </span>
+                  </div>
+                  <!-- /Prices -->
+
+                  <!-- Reviews -->
+                  <div class="cc-stars-component">
+                    <div class="cc-stars-container cc-card-section">
+                      <ul class="cc-stars">
+                        <li class="cc-star"><span class="sr-only">1 Star</span></li>
+                        <li class="cc-star"><span class="sr-only">2 Stars</span></li>
+                        <li class="cc-star"><span class="sr-only">3 Stars</span></li>
+                        <li class="cc-star"><span class="sr-only">4 Stars</span></li>
+                        <li class="cc-star"><span class="sr-only">5 Stars</span></li>
+                      </ul>
+                      <div class="cc-stars-active-container" style="width: 70%;">
+                        <div class="cc-stars-active">
+                          <span class="cc-star"></span>
+                          <span class="cc-star"></span>
+                          <span class="cc-star"></span>
+                          <span class="cc-star"></span>
+                          <span class="cc-star"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <strong class="cc-stars-label">(322 Reviews)</strong>
+                  </div>
+                  <!-- /Reviews -->
+
+                  <!-- Learn More -->
+                  <div class="cc-learn-more-section cc-card-section">
+                    <a href="#" class="cc-learn-more-link">Learn More</a>
+                  </div>
+                  <!-- /Learn More -->
+                </div>
+                <!-- Product Card Buttons -->
+                <div class="cc-product-card-buttons cc-card-section">
+                  <a href="#" class="cc-button-primary">Add to Cart</a>
+                </div>
+                <!-- /Product Card Buttons -->
+              </div>
+            </div>
+            <!-- /Product details container -->
+          </div>
+        </div>
+
+        <div class="cc-product-card col-xs-12 col-sm-6 col-lg-4 col-md-4">
+          <div class="cc-product-card-content-container">
+
+            <!-- Product Image -->
+            <figure class="cc-product-image-container">
+              <img class="cc-product-card-image img-responsive center-block" src="http://placehold.it/249x300">
+
+              <div class="cc-product-image-info-wrapper">
+                <figcaption class="cc-product-card-image-caption">Lorem Ipsum</figcaption>
+                <span class="cc-product-new-flag">New</span>
+              </div>
+            </figure>
+            <!-- /Product Image -->
+            
+            <!-- Product details container -->
+            <div class="cc-product-card-content">
+
+              <!-- Product Title -->
+              <h3 class="cc-product-card-title">
+                TRACER SX5 QUICK SHIP
+              </h3>
+              <!-- /Product Title -->
+
+              <div class="cc-product-card-details">
+                <div class="cc-product-details-content-wrap">
+                  <!-- Prices -->
+                  <div class="cc-product-prices">
+                    <span class="cc-product-before-price">
+                      $695
+                    </span>
+                    <span class="cc-product-price">
+                      $289
+                    </span>
+                  </div>
+                  <!-- /Prices -->
+
+                  <!-- Reviews -->
+                  <div class="cc-stars-component">
+                    <div class="cc-stars-container cc-card-section">
+                      <ul class="cc-stars">
+                        <li class="cc-star"><span class="sr-only">1 Star</span></li>
+                        <li class="cc-star"><span class="sr-only">2 Stars</span></li>
+                        <li class="cc-star"><span class="sr-only">3 Stars</span></li>
+                        <li class="cc-star"><span class="sr-only">4 Stars</span></li>
+                        <li class="cc-star"><span class="sr-only">5 Stars</span></li>
+                      </ul>
+                      <div class="cc-stars-active-container" style="width: 70%;">
+                        <div class="cc-stars-active">
+                          <span class="cc-star"></span>
+                          <span class="cc-star"></span>
+                          <span class="cc-star"></span>
+                          <span class="cc-star"></span>
+                          <span class="cc-star"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <strong class="cc-stars-label">(322 Reviews)</strong>
+                  </div>
+                  <!-- /Reviews -->
+
+                  <!-- Learn More -->
+                  <div class="cc-learn-more-section cc-card-section">
+                    <a href="#" class="cc-learn-more-link">Learn More</a>
+                  </div>
+                  <!-- /Learn More -->
+                </div>
+                <!-- Product Card Buttons -->
+                <div class="cc-product-card-buttons cc-card-section">
+                  <a href="#" class="cc-button-primary">Add to Cart</a>
+                </div>
+                <!-- /Product Card Buttons -->
+              </div>
+            </div>
+            <!-- /Product details container -->
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="left carousel-control hidden-xs hidden-sm">
+    <a href="#">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <div class="sr-only">previous</div>
+    </a>
+  </div>
+  <div class="right carousel-control hidden-xs hidden-sm">
+    <a href="#">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <div class="sr-only">next</div>
+    </a>
+  </div>
+  <ol class="carousel-indicators">
+    <li class="active"></li>
+    <li></li>
+  </ol>
+</div>
+```
+
+*/
+
+.cc-product-card-list {
+
+}
+
+/*doc
+---
+title: Product Card
+name: product-card
+category: Components
+---
+
+###Product Card Default 
+
+```html_example
+<div class="row cc-products-cards">
+
+  <div class="cc-product-card col-xs-12 col-sm-6 col-lg-4 col-md-4">
+    <div class="cc-product-card-content-container">
+
+      <!-- Product Image -->
+      <figure class="cc-product-image-container">
+        <img class="cc-product-card-image img-responsive center-block" src="http://placehold.it/249x249">
+
+        <div class="cc-product-image-info-wrapper">
+          <figcaption class="cc-product-card-image-caption">Lorem Ipsum</figcaption>
+          <span class="cc-product-new-flag">New</span>
+        </div>
+      </figure>
+      <!-- /Product Image -->
+      
+      <!-- Product details container -->
+      <div class="cc-product-card-content">
+
+        <!-- Product Title -->
+        <h3 class="cc-product-card-title">
+          TRACER SX5 QUICK SHIP
+        </h3>
+        <!-- /Product Title -->
+
+        <div class="cc-product-card-details">
+          <div class="cc-product-details-content-wrap">
+            <!-- Prices -->
+            <div class="cc-product-prices">
+              <span class="cc-product-before-price">
+                $695
+              </span>
+              <span class="cc-product-price">
+                $289
+              </span>
+            </div>
+            <!-- /Prices -->
+
+            <!-- Reviews -->
+            <div class="cc-stars-component">
+              <div class="cc-stars-container cc-card-section">
+                <ul class="cc-stars">
+                  <li class="cc-star"><span class="sr-only">1 Star</span></li>
+                  <li class="cc-star"><span class="sr-only">2 Stars</span></li>
+                  <li class="cc-star"><span class="sr-only">3 Stars</span></li>
+                  <li class="cc-star"><span class="sr-only">4 Stars</span></li>
+                  <li class="cc-star"><span class="sr-only">5 Stars</span></li>
+                </ul>
+                <div class="cc-stars-active-container" style="width: 70%;">
+                  <div class="cc-stars-active">
+                    <span class="cc-star"></span>
+                    <span class="cc-star"></span>
+                    <span class="cc-star"></span>
+                    <span class="cc-star"></span>
+                    <span class="cc-star"></span>
+                  </div>
+                </div>
+              </div>
+              <strong class="cc-stars-label">(322 Reviews)</strong>
+            </div>
+            <!-- /Reviews -->
+
+            <!-- Learn More -->
+            <div class="cc-learn-more-section cc-card-section">
+              <a href="#" class="cc-learn-more-link">Learn More</a>
+            </div>
+            <!-- /Learn More -->
+          </div>
+
+          <!-- Product Card Buttons -->
+          <div class="cc-product-card-buttons cc-card-section">
+            <a href="#" class="cc-button-primary">Add to Cart</a>
+          </div>
+          <!-- /Product Card Buttons -->
+        </div>
+      </div>
+      <!-- /Product details container -->
+    </div>
+  </div>
+
+  <div class="cc-product-card col-xs-12 col-sm-6 col-lg-4 col-md-4">
+    <div class="cc-product-card-content-container">
+
+      <!-- Product Image -->
+      <figure class="cc-product-image-container">
+        <img class="cc-product-card-image img-responsive center-block" src="http://placehold.it/249x300">
+
+        <div class="cc-product-image-info-wrapper">
+          <figcaption class="cc-product-card-image-caption">Lorem Ipsum</figcaption>
+          <span class="cc-product-new-flag">New</span>
+        </div>
+      </figure>
+      <!-- /Product Image -->
+      
+      <!-- Product details container -->
+      <div class="cc-product-card-content">
+
+        <!-- Product Title -->
+        <h3 class="cc-product-card-title">
+          TRACER SX5 QUICK SHIP
+        </h3>
+        <!-- /Product Title -->
+
+        <div class="cc-product-card-details">
+          <div class="cc-product-details-content-wrap">
+            <!-- Prices -->
+            <div class="cc-product-prices">
+              <span class="cc-product-before-price">
+                $695
+              </span>
+              <span class="cc-product-price">
+                $289
+              </span>
+            </div>
+            <!-- /Prices -->
+
+            <!-- Reviews -->
+            <div class="cc-stars-component">
+              <div class="cc-stars-container cc-card-section">
+                <ul class="cc-stars">
+                  <li class="cc-star"><span class="sr-only">1 Star</span></li>
+                  <li class="cc-star"><span class="sr-only">2 Stars</span></li>
+                  <li class="cc-star"><span class="sr-only">3 Stars</span></li>
+                  <li class="cc-star"><span class="sr-only">4 Stars</span></li>
+                  <li class="cc-star"><span class="sr-only">5 Stars</span></li>
+                </ul>
+                <div class="cc-stars-active-container" style="width: 70%;">
+                  <div class="cc-stars-active">
+                    <span class="cc-star"></span>
+                    <span class="cc-star"></span>
+                    <span class="cc-star"></span>
+                    <span class="cc-star"></span>
+                    <span class="cc-star"></span>
+                  </div>
+                </div>
+              </div>
+              <strong class="cc-stars-label">(322 Reviews)</strong>
+            </div>
+            <!-- /Reviews -->
+
+            <!-- Learn More -->
+            <div class="cc-learn-more-section cc-card-section">
+              <a href="#" class="cc-learn-more-link">Learn More</a>
+            </div>
+            <!-- /Learn More -->
+          </div>
+          <!-- Product Card Buttons -->
+          <div class="cc-product-card-buttons cc-card-section">
+            <a href="#" class="cc-button-primary">Add to Cart</a>
+          </div>
+          <!-- /Product Card Buttons -->
+        </div>
+      </div>
+      <!-- /Product details container -->
+    </div>
+  </div>
+</div>
+```
+*/
+
+/**
+ * Defines the wrap as flex
+ */
+.cc-products-cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/**
+ * Set the flexbox properties to each
+ * card
+ */
+.product-card-flex() {
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  float: none;
+}
+
+/**
+ * Set content card flexbox and height 100%
+ * in order to keep the content aligned
+ */
+.product-card-content-flex() {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 100%;
+}
+
+/**
+ * Set content card flexbox and height 100%
+ */
+.product-card-details-flex() {
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  float: none;
+  height: 100%;
+}
+
+/**
+ * Container
+ */
+.cc-product-card {
+  .product-card-flex;
+  float: none;
+  min-height: @ProductCardMinHeight;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  
+  /**
+   * We need a height 100% so that the button
+   * can ben placed at the bottom
+   */
+  .cc-product-card-content-container {
+    height: 100%;
+  }
+  
+  /**
+   * Each section of card details
+   */
+  .cc-card-section {
+    margin: @ProductCardSectionSpacing auto;
+    text-align: center;
+  }
+
+  /**
+   * The hidden content
+   */
+  .cc-product-card-content {
+    display: flex;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    .product-card-content-flex;
+  }
+  
+  /**
+   * The content of the hidden content
+   * which contains, prices, product title and so on..
+   */
+  .cc-product-card-details {
+    .product-card-details-flex;
+  }
+  
+  .cc-product-details-content-wrap {
+    margin: auto;
+  }
+
+  /**
+   * Product Buttons container
+   */
+  .cc-product-card-buttons {
+    margin-top: auto;
+  }
+  
+  /**
+   * Show cc-product-card-content on
+   * :hover(desktop), :focus(mobile) and
+   * by the class .active
+   */
+  &:hover,
+  &:focus,
+  &.active {
+    .cc-product-card-content {
+      visibility: visible;
+    }
+
+    .cc-product-image-container {
+      visibility: hidden;
+    }
+  }
+  
+  .cc-product-image-container {
+    position: relative;
+    .product-card-details-flex;
+  }
+  
+  .cc-product-image-info-wrapper {
+    margin-top: auto;
+  }
+
+  .cc-product-card-image-caption,
+  .cc-product-card-title {
+    font-size: @ProductCardProductTitleSize;
+    font-weight: @ProductCardProductTitleFontWeight;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  
+  .cc-product-new-flag {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: @ProductCardNewFlagColor;
+    font-size: @ProductCardNewFlagFontSize;
+    text-transform: uppercase;
+  }
+
+  .cc-product-card-image-caption {
+    color: @ProductCardImageCaptionTextColor;
+    margin-top: 10px;
+    border-bottom: 1px solid @ProductCardImageCaptionBorderBottomColor;
+    padding-bottom: 13px;
+  }
+  
+  .cc-product-card-title {
+    color: @ProductCardProductTitleTextColor;
+    margin-top: 0;
+    margin-bottom: 10px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid @ProductCardProductTitleBorderColor;
+  }
+
+  .cc-product-prices {
+    text-align: center;
+    margin-bottom: 10px;
+
+    .cc-product-price,
+    .cc-product-before-price {
+      display: inline-block;
+      font-size: @ProductCardProductPriceFontSize;
+    }
+
+    .cc-product-before-price {
+      color: @ProductCardProductBeforePriceTextColor;
+      font-weight: @ProductCardProductBeforePriceFontWeight;
+      text-decoration: line-through;
+    }
+
+    .cc-product-price {
+      color: @ProductCardProductPriceTextColor;
+      font-weight: @ProductCardProductPriceFontWeight;
+    }
+  }
+  
+  .cc-product-price-range-container {
+    border-top: 1px solid @ProductCardPriceRangeContainerBorderColor;
+    margin-top: 15px;
+    padding-top: 15px;
+    text-align: center;
+
+    .cc-product-price-range {
+      font-size: @ProductCardPriceRangeFontSize;
+      color: @ProductCardPriceRangeTextColor;
+      font-weight: @ProductCardPriceRangeFontWeight;
+    }
+  }
+
+  .cc-stars-container {
+    margin: 0 auto;
+  }
+
+  .cc-learn-more-link {
+    color: @ProductCardProductLearnMoreTextColor;
+  }
+}
+
+/*doc
+---
+title: Product Card Simple
+name: product-card-simple
+category: Components
+---
+
+###Product Card Simple
+
+Another type of product card which contains only the image of product and its price range.
+
+```html_example
+<div class="row cc-products-cards">
+
+  <div class="cc-product-card cc-product-card-simple col-xs-12 col-sm-6 col-lg-4 col-md-4">
+    <div class="cc-product-card-content-container">
+
+      <!-- Product Image -->
+      <figure class="cc-product-image-container">
+        <img class="cc-product-card-image img-responsive center-block" src="http://placehold.it/249x249">
+
+        <div class="cc-product-image-info-wrapper">
+          <figcaption class="cc-product-card-image-caption">Lorem Ipsum</figcaption>
+
+          <div class="cc-product-price-range-container">
+            <strong class="cc-product-price-range">Prices start at $99</strong>
+          </div>
+         </div>
+      </figure>
+      <!-- /Product Image -->
+      
+      <!-- Product details container -->
+      <div class="cc-product-card-content">
+
+        <div class="cc-product-card-details">
+          <!-- Product Card Buttons -->
+          <div class="cc-product-card-buttons cc-card-section">
+            <a href="#" class="cc-button-primary">Add to Cart</a>
+          </div>
+          <!-- /Product Card Buttons -->
+        </div>
+      </div>
+      <!-- /Product details container -->
+    </div>
+  </div>
+
+  <div class="cc-product-card cc-product-card-simple col-xs-12 col-sm-6 col-lg-4 col-md-4">
+    <div class="cc-product-card-content-container">
+
+      <!-- Product Image -->
+      <figure class="cc-product-image-container">
+        <img class="cc-product-card-image img-responsive center-block" src="http://placehold.it/249x300">
+
+        <div class="cc-product-image-info-wrapper">
+          <figcaption class="cc-product-card-image-caption">Lorem Ipsum</figcaption>
+
+          <div class="cc-product-price-range-container">
+            <strong class="cc-product-price-range">Prices start at $99</strong>
+          </div>
+        </div>
+      </figure>
+      <!-- /Product Image -->
+      
+      <!-- Product details container -->
+      <div class="cc-product-card-content">
+
+        <div class="cc-product-card-details">
+          <!-- Product Card Buttons -->
+          <div class="cc-product-card-buttons cc-card-section">
+            <a href="#" class="cc-button-primary">Add to Cart</a>
+          </div>
+          <!-- /Product Card Buttons -->
+        </div>
+      </div>
+      <!-- /Product details container -->
+    </div>
+  </div>
+</div>
+```
+*/
+&.cc-product-card.cc-product-card-simple {
+  .cc-product-card-image-caption {
+    font-size: @ProductCardSimpleImageCaptionFontSize;
+    color: @ProductCardSimpleImageCaptionTextColor;
+    border-bottom: none;
+    padding: 0;
+  }
+  
+  .cc-product-card-buttons {
+    margin-bottom: 28px;
+  }
+
+  &:hover,
+  &:focus,
+  &.active {
+    .cc-product-image-container {
+      visibility: visible;
+      height: 100%;
+
+      .cc-product-card-image-caption {
+        visibility: hidden;
+      }
+
+      .cc-product-price-range-container {
+        visibility: hidden;
+      }
+    }
+  }
+}
+/*doc
+---
+title: Stars
+name: stars
+category: Components
+---
+
+### Default Stars
+
+The stars state is based on its size. So, if we need 4 stars, we should set a style attribute on `cc-stars-active-container` containing `width:80%`. The same for other
+stars and states.
+
+```html_example_table
+<div class="cc-stars-component">
+  <div class="cc-stars-container">
+    <ul class="cc-stars">
+      <li class="cc-star"><span class="sr-only">1 Star</span></li>
+      <li class="cc-star"><span class="sr-only">2 Stars</span></li>
+      <li class="cc-star"><span class="sr-only">3 Stars</span></li>
+      <li class="cc-star"><span class="sr-only">4 Stars</span></li>
+      <li class="cc-star"><span class="sr-only">5 Stars</span></li>
+    </ul>
+    <div class="cc-stars-active-container">
+      <div class="cc-stars-active">
+        <span class="cc-star"></span>
+        <span class="cc-star"></span>
+        <span class="cc-star"></span>
+        <span class="cc-star"></span>
+        <span class="cc-star"></span>
+      </div>
+    </div>
+  </div>
+  <strong class="cc-stars-label">(322 Reviews)</strong>
+</div>
+```
+
+### Four Stars
+
+```html_example_table
+<div class="cc-stars-component">
+  <div class="cc-stars-container">
+    <ul class="cc-stars">
+      <li class="cc-star"><span class="sr-only">1 Star</span></li>
+      <li class="cc-star"><span class="sr-only">2 Stars</span></li>
+      <li class="cc-star"><span class="sr-only">3 Stars</span></li>
+      <li class="cc-star"><span class="sr-only">4 Stars</span></li>
+      <li class="cc-star"><span class="sr-only">5 Stars</span></li>
+    </ul>
+    <div class="cc-stars-active-container" style="width: 80%;">
+      <div class="cc-stars-active">
+        <span class="cc-star"></span>
+        <span class="cc-star"></span>
+        <span class="cc-star"></span>
+        <span class="cc-star"></span>
+        <span class="cc-star"></span>
+      </div>
+    </div>
+  </div>
+  <strong class="cc-stars-label">(322 Reviews)</strong>
+</div>
+```
+
+*/
+
+.cc-stars-component {
+  .cc-stars-container {
+    position: relative;
+    width: @StarsContainerWidth;
+
+    .cc-stars,
+    .cc-stars-active {
+      margin: 0;
+      padding: 0;
+      width: @StarsContainerWidth;
+      
+      .cc-star {
+        .glyphicon;
+        font-size: @StarsSize;
+        color: @StarInactiveColor;
+        
+        &:before {
+          content: @font-custom-icons-d2c-star;
+        }
+      }
+    }
+    
+    .cc-stars-active-container {
+      position: absolute;
+      top: 0;
+      width: 0;
+      overflow: hidden;
+    }
+
+    .cc-stars-active {
+      .cc-star &:before {
+        content: @font-custom-icons-d2c-star;
+        color: @StarActiveColor;
+      }
+    }
+  }
+
+  .cc-stars-label {
+    display: block;
+    color: @StarsLabelTextColor;
+    font-size: @StarsLabelFontSize;
+    font-weight: @StarsLabelFontWeight;
+    text-align: center;
+  }
+}
+
+/*doc
+---
+title: Tables
+name: tables
+category: Components
+---
+
+This is the default bootstrap table. 
+
+Taking a look at the code of this table we can notice this data attribute `data-td-title`, this would be
+the "th" or the title of each column when in mobile version. Try to resize the window and see that this `data-td-title`
+will be shown on the left side. So, remember to create this attribute to each td copying the th content.
+
+This is based on that solution: [https://elvery.net/demo/responsive-tables/#no-more-tables](https://elvery.net/demo/responsive-tables/#no-more-tables)
+
+```html_example
+<div class="doc-solid-background">
+  <table class="cc-table table table-striped">
+    <thead>
+      <tr>
+        <th>Column title A</th>
+        <th>Column title B</th>
+        <th>Column title C</th>
+        <th>Column title D</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-td-title="Column title A">Column content A</td>
+        <td data-td-title="Column title B">Column content B</td>
+        <td data-td-title="Column title C">Column content C</td>
+        <td data-td-title="Column title D">Column content D</td>
+      </tr>
+      <tr>
+        <td data-td-title="Column title A">Column content A</td>
+        <td data-td-title="Column title B">Column content B</td>
+        <td data-td-title="Column title C">Column content C</td>
+        <td data-td-title="Column title D">Column content D</td>
+      </tr>
+      <tr>
+        <td data-td-title="Column title A">Column content A</td>
+        <td data-td-title="Column title B">Column content B</td>
+        <td data-td-title="Column title C">Column content C</td>
+        <td data-td-title="Column title D">Column content D</td>
+      </tr>
+    </tbody>
+  </table>
+<div>
+```
+*/
+
+.vertical-table() {
+  display: block;
+
+  border: @TableVerticalBorderColor;
+  border-left: 0;
+  border-right: 0;
+
+  thead, th, td, tr, tbody {
+   display: block;
+  }
+
+  //hide heading
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr:nth-child(n+2) {
+    margin-top: @Spacing * 4;
+  }
+
+  td {
+    font-size: @TableVerticalFontSize;
+    position: relative;
+    padding: @Spacing @Spacing * 2 @Spacing @TableVerticalContentWidth !important;
+    white-space: normal;
+    word-break: break-word;
+
+    &:before {
+      content: attr(data-td-title);
+      position: absolute;
+      top: 30%;
+      left: 0;
+      width: @TableVerticalContentWidth;
+      padding-right: @Spacing;
+      text-align:left;
+      font-weight: bold;
+    }
+
+    ul, ol {
+      list-style: none;
+    }
+
+    &:nth-child(n+2) {
+      border-top: @TableVerticalColumnBorderColor;
+    }
+
+    &:first-child {
+      border-bottom: 1px solid @TableVerticalFirstColumnBorderColor;
+    }
+  }
+
+  &.col-top {
+    td {
+      &:before {
+        top: @Spacing;
+      }
+    }
+  }
+}
+
+table,
+.table {
+  background-color: @TableBackgroundColor;
+  
+  > thead > tr > th,
+  > tbody > tr > th,
+  > tfoot > tr > th,
+  > thead > tr > td,
+  > tbody > tr > td,
+  > tfoot > tr > td {
+    border-color: @TableColumnsBorderColor;
+  }
+
+  //Only mobile
+  @media (max-width: @screen-xs-max) {
+    .vertical-table;
+  }
+}
+
+.table-block {
+  display: block;
+
+  tbody, thead, tr, td {
+    display: block;
+  }
+
+  td {
+    word-wrap: break-word;
+  }
+}
+/*doc
+---
+title: Tabs
+name: tabs
+category: Components
+---
+
+###Default Tabs
+
+```html_example
+<div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs nav-justified" role="tablist">
+    <li role="presentation" class="active"><a href="#lorem" aria-controls="lorem" role="tab" data-toggle="tab">Lorem Ipsum</a></li>
+    <li role="presentation"><a href="#dolor" aria-controls="dolor" role="tab" data-toggle="tab">Dolor Sit Amet</a></li>
+    <li role="presentation"><a href="#consectetur" aria-controls="consectetur" role="tab" data-toggle="tab">Consectetur</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="lorem">
+      <strong class="tab-content-title">LOREM IPSUM DOLOR</strong>
+      <div class="tab-content-container">
+        Sit Amet, Consectetur Adipiscing Elit. Phasellus Fermentum Sit Amet Nisl Eu Auctor. Cras Ornare Soldales Augue Non Iaculis.
+      </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="dolor">...</div>
+    <div role="tabpanel" class="tab-pane" id="consectetur">...</div>
+  </div>
+
+</div>
+```
+*/
+.nav.nav-tabs {
+  margin-bottom: 15px;
+  > li,
+  > .tab-item {
+    > a {
+      .cc-card;
+      background-color: @TabDefaultBackgroundColor;
+      width: 100%;
+      font-size: @TabFontSize;
+      font-weight: @TabFontWeight;
+      padding-top: 16px;
+      padding-bottom: 16px;
+      color: @TabDefaultTextColor;
+      margin: 0;
+      text-decoration: none;
+      border-radius: 0;
+    }
+    
+    &.active {
+      .cc-arrow-base;  
+      &:after {
+        .cc-arrow-bottom-mix;
+        bottom: -18px;
+        border-width: 12px;
+      }
+      
+      a {
+        border-color: @TabActiveBorderColor;
+
+        &:hover,
+        &:link:hover,
+        &:focus {
+          color: @TabActiveTextColor;
+          border-color: @TabActiveBorderColor;
+          background-color: @TabActiveBorderColor;
+        }
+      }
+    }
+
+    &:not(.active) {
+      > a {
+        background: @TabDefaultBackgroundColor;
+
+        &:hover,
+        &:link:hover,
+        &:focus {
+          color: @TabDefaultTextColor;
+          border-color: @TabDefaultBackgroundColor;
+        }
+      }
+    }
+  }
+}
+
+.tab-content {
+  padding: 0 20px;
+  
+  .tab-content-title {
+    font-size: @TabContentTitleFontSize;
+    color: @TabContentTitleTextColor;
+    font-weight: @TabContentTitleFontWeight;
+    line-height: 175%;
+  }
+}
+
+footer.footer {
+  
+}
+#region-header {
+
+}
+/******************************************************************************
+    EXTERNAL FONTS
+******************************************************************************/
+
+/* https://fonts.google.com/specimen/Lato?selection.family=Lato:300,300i,400,400i,700,700i,900,900i */
+// @import url('https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i');
+
+/* https://fonts.google.com/?selection.family=Roboto+Slab:300,400,700&query=roboto */
+// @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700');
+
+//https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i');/*************************************************************************************
+**************************************************************************************
+***  ATTENTION:                                                                    ***
+***  File generated by FontCustom. DO NOT edit it directly! Please see the README. ***
+**************************************************************************************
+**************************************************************************************/
+
+/*doc
+---
+title: Glyphicons
+name: glyphicons
+category: Icons
+---
+
+We have some specific and customized icons which were generated for the project and we also have all
+Bootstrap icons which can be seen here:
+[Bootstrap Glyphicons](http://getbootstrap.com/components/#glyphicons)
+
+###Custom Icons
+<div class="bs-glyphicons">
+  <ul class="bs-glyphicons-list">
+    <li><span class="glyphicon-d2c-addopen"></span><span class="glyphicon-class">glyphicon-d2c-addopen</span></li>
+    <li><span class="glyphicon-d2c-arrowdown"></span><span class="glyphicon-class">glyphicon-d2c-arrowdown</span></li>
+    <li><span class="glyphicon-d2c-checksmall"></span><span class="glyphicon-class">glyphicon-d2c-checksmall</span></li>
+    <li><span class="glyphicon-d2c-chevrondown"></span><span class="glyphicon-class">glyphicon-d2c-chevrondown</span></li>
+    <li><span class="glyphicon-d2c-chevronleft"></span><span class="glyphicon-class">glyphicon-d2c-chevronleft</span></li>
+    <li><span class="glyphicon-d2c-chevronright"></span><span class="glyphicon-class">glyphicon-d2c-chevronright</span></li>
+    <li><span class="glyphicon-d2c-chevronup"></span><span class="glyphicon-class">glyphicon-d2c-chevronup</span></li>
+    <li><span class="glyphicon-d2c-close"></span><span class="glyphicon-class">glyphicon-d2c-close</span></li>
+    <li><span class="glyphicon-d2c-error"></span><span class="glyphicon-class">glyphicon-d2c-error</span></li>
+    <li><span class="glyphicon-d2c-fastshipping"></span><span class="glyphicon-class">glyphicon-d2c-fastshipping</span></li>
+    <li><span class="glyphicon-d2c-freeshipping"></span><span class="glyphicon-class">glyphicon-d2c-freeshipping</span></li>
+    <li><span class="glyphicon-d2c-mail"></span><span class="glyphicon-class">glyphicon-d2c-mail</span></li>
+    <li><span class="glyphicon-d2c-menu"></span><span class="glyphicon-class">glyphicon-d2c-menu</span></li>
+    <li><span class="glyphicon-d2c-minimize"></span><span class="glyphicon-class">glyphicon-d2c-minimize</span></li>
+    <li><span class="glyphicon-d2c-search"></span><span class="glyphicon-class">glyphicon-d2c-search</span></li>
+    <li><span class="glyphicon-d2c-star"></span><span class="glyphicon-class">glyphicon-d2c-star</span></li>
+    <li><span class="glyphicon-d2c-tooltip"></span><span class="glyphicon-class">glyphicon-d2c-tooltip</span></li>
+    <li><span class="glyphicon-d2c-zoomin"></span><span class="glyphicon-class">glyphicon-d2c-zoomin</span></li>
+    <li><span class="glyphicon-d2c-zoomout"></span><span class="glyphicon-class">glyphicon-d2c-zoomout</span></li>
+    <li><span class="glyphicon-arrow-down"></span><span class="glyphicon-class">glyphicon-arrow-down</span></li>
+    <li><span class="glyphicon-arrow-next"></span><span class="glyphicon-class">glyphicon-arrow-next</span></li>
+    <li><span class="glyphicon-arrow-right"></span><span class="glyphicon-class">glyphicon-arrow-right</span></li>
+    <li><span class="glyphicon-check"></span><span class="glyphicon-class">glyphicon-check</span></li>
+    <li><span class="glyphicon-close"></span><span class="glyphicon-class">glyphicon-close</span></li>
+    <li><span class="glyphicon-facebook"></span><span class="glyphicon-class">glyphicon-facebook</span></li>
+    <li><span class="glyphicon-logo"></span><span class="glyphicon-class">glyphicon-logo</span></li>
+    <li><span class="glyphicon-logo-filled"></span><span class="glyphicon-class">glyphicon-logo-filled</span></li>
+    <li><span class="glyphicon-mail"></span><span class="glyphicon-class">glyphicon-mail</span></li>
+    <li><span class="glyphicon-phone"></span><span class="glyphicon-class">glyphicon-phone</span></li>
+    <li><span class="glyphicon-pinterest"></span><span class="glyphicon-class">glyphicon-pinterest</span></li>
+    <li><span class="glyphicon-profile"></span><span class="glyphicon-class">glyphicon-profile</span></li>
+    <li><span class="glyphicon-search"></span><span class="glyphicon-class">glyphicon-search</span></li>
+    <li><span class="glyphicon-star"></span><span class="glyphicon-class">glyphicon-star</span></li>
+    <li><span class="glyphicon-thin-arrow-left"></span><span class="glyphicon-class">glyphicon-thin-arrow-left</span></li>
+    <li><span class="glyphicon-thin-arrow-right"></span><span class="glyphicon-class">glyphicon-thin-arrow-right</span></li>
+    <li><span class="glyphicon-twitter"></span><span class="glyphicon-class">glyphicon-twitter</span></li>
+  </ul>
+</div>
+
+*/
+
+
+@font-face {
+  font-family: 'custom-icons';
+  src: url('/file/general/custom-icons.eot');
+  src: url('/file/general/custom-icons.eot?#iefix') format('embedded-opentype'),
+       url('/file/general/custom-icons.woff2') format('woff2'),
+       url('/file/general/custom-icons.woff') format('woff'),
+       url('/file/general/custom-icons.ttf') format('truetype'),
+       url('/file/general/custom-icons.svg#custom-icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'custom-icons';
+    src: url('/file/general/custom-icons.svg#custom-icons') format('svg');
+  }
+}
+
+.glyphicon() {
+  display: inline-block;
+  font-family: "custom-icons";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+[data-icon]:before { content: attr(data-icon); }
+
+[data-icon]:before,
+.glyphicon-d2c-addopen:before,
+.glyphicon-d2c-arrowdown:before,
+.glyphicon-d2c-checksmall:before,
+.glyphicon-d2c-chevrondown:before,
+.glyphicon-d2c-chevronleft:before,
+.glyphicon-d2c-chevronright:before,
+.glyphicon-d2c-chevronup:before,
+.glyphicon-d2c-close:before,
+.glyphicon-d2c-error:before,
+.glyphicon-d2c-fastshipping:before,
+.glyphicon-d2c-freeshipping:before,
+.glyphicon-d2c-mail:before,
+.glyphicon-d2c-menu:before,
+.glyphicon-d2c-minimize:before,
+.glyphicon-d2c-search:before,
+.glyphicon-d2c-star:before,
+.glyphicon-d2c-tooltip:before,
+.glyphicon-d2c-zoomin:before,
+.glyphicon-d2c-zoomout:before,
+.glyphicon-arrow-down:before,
+.glyphicon-arrow-next:before,
+.glyphicon-arrow-right:before,
+.glyphicon-check:before,
+.glyphicon-close:before,
+.glyphicon-facebook:before,
+.glyphicon-logo:before,
+.glyphicon-logo-filled:before,
+.glyphicon-mail:before,
+.glyphicon-phone:before,
+.glyphicon-pinterest:before,
+.glyphicon-profile:before,
+.glyphicon-search:before,
+.glyphicon-star:before,
+.glyphicon-thin-arrow-left:before,
+.glyphicon-thin-arrow-right:before,
+.glyphicon-twitter:before {
+.glyphicon();
+}
+
+.glyphicon-arrow-down:before { content: '\e800'; }
+.glyphicon-arrow-next:before { content: '\e801'; }
+.glyphicon-arrow-right:before { content: '\e802'; }
+.glyphicon-check:before { content: '\e803'; }
+.glyphicon-close:before { content: '\e804'; }
+.glyphicon-d2c-addopen:before { content: '\e805'; }
+.glyphicon-d2c-arrowdown:before { content: '\e806'; }
+.glyphicon-d2c-checksmall:before { content: '\e807'; }
+.glyphicon-d2c-chevrondown:before { content: '\e808'; }
+.glyphicon-d2c-chevronleft:before { content: '\e809'; }
+.glyphicon-d2c-chevronright:before { content: '\e80a'; }
+.glyphicon-d2c-chevronup:before { content: '\e80b'; }
+.glyphicon-d2c-close:before { content: '\e80c'; }
+.glyphicon-d2c-error:before { content: '\e80d'; }
+.glyphicon-d2c-fastshipping:before { content: '\e80e'; }
+.glyphicon-d2c-freeshipping:before { content: '\e80f'; }
+.glyphicon-d2c-mail:before { content: '\e810'; }
+.glyphicon-d2c-menu:before { content: '\e811'; }
+.glyphicon-d2c-minimize:before { content: '\e812'; }
+.glyphicon-d2c-search:before { content: '\e813'; }
+.glyphicon-d2c-star:before { content: '\e814'; }
+.glyphicon-d2c-tooltip:before { content: '\e815'; }
+.glyphicon-d2c-zoomin:before { content: '\e816'; }
+.glyphicon-d2c-zoomout:before { content: '\e817'; }
+.glyphicon-facebook:before { content: '\e818'; }
+.glyphicon-logo:before { content: '\e819'; }
+.glyphicon-logo-filled:before { content: '\e81a'; }
+.glyphicon-mail:before { content: '\e81b'; }
+.glyphicon-phone:before { content: '\e81c'; }
+.glyphicon-pinterest:before { content: '\e81d'; }
+.glyphicon-profile:before { content: '\e81e'; }
+.glyphicon-search:before { content: '\e81f'; }
+.glyphicon-thin-arrow-left:before { content: '\e821'; }
+.glyphicon-thin-arrow-right:before { content: '\e822'; }
+.glyphicon-twitter:before { content: '\e823'; }
+
+
+@font-custom-icons-arrow-down: '\e800';
+@font-custom-icons-arrow-next: '\e801';
+@font-custom-icons-arrow-right: '\e802';
+@font-custom-icons-check: '\e803';
+@font-custom-icons-close: '\e804';
+@font-custom-icons-d2c-addopen: '\e805';
+@font-custom-icons-d2c-arrowdown: '\e806';
+@font-custom-icons-d2c-checksmall: '\e807';
+@font-custom-icons-d2c-chevrondown: '\e808';
+@font-custom-icons-d2c-chevronleft: '\e809';
+@font-custom-icons-d2c-chevronright: '\e80a';
+@font-custom-icons-d2c-chevronup: '\e80b';
+@font-custom-icons-d2c-close: '\e80c';
+@font-custom-icons-d2c-error: '\e80d';
+@font-custom-icons-d2c-fastshipping: '\e80e';
+@font-custom-icons-d2c-freeshipping: '\e80f';
+@font-custom-icons-d2c-mail: '\e810';
+@font-custom-icons-d2c-menu: '\e811';
+@font-custom-icons-d2c-minimize: '\e812';
+@font-custom-icons-d2c-search: '\e813';
+@font-custom-icons-d2c-star: '\e814';
+@font-custom-icons-d2c-tooltip: '\e815';
+@font-custom-icons-d2c-zoomin: '\e816';
+@font-custom-icons-d2c-zoomout: '\e817';
+@font-custom-icons-facebook: '\e818';
+@font-custom-icons-logo: '\e819';
+@font-custom-icons-logo-filled: '\e81a';
+@font-custom-icons-mail: '\e81b';
+@font-custom-icons-phone: '\e81c';
+@font-custom-icons-pinterest: '\e81d';
+@font-custom-icons-profile: '\e81e';
+@font-custom-icons-search: '\e81f';
+@font-custom-icons-thin-arrow-left: '\e821';
+@font-custom-icons-thin-arrow-right: '\e822';
+@font-custom-icons-twitter: '\e823';
+/*doc
+---
+title: Headers
+name: headers
+category: Typography
+---
+
+```html_example
+<h1>Title</h1>
+<h2>Title</h2>
+<h3>Title</h3>
+<h4>Title</h4>
+<h5>Title</h5>
+<h6>Title</h6>
+```
+
+Optional `bold` inside:
+
+```html_example
+<h2><strong>I'm bold</strong> and I'm not</h2>
+```
+
+*/
+
+h1, .h1 {
+  font-family: @H1FontFamily;
+  font-size: @H1FontSize;
+  font-weight: @H1FontWeight;
+  line-height: @H1LineHeight;
+  color: @H1TextColor;
+  text-decoration: @H1TextDecoration;
+}
+
+h2, .h2 {
+  font-family: @H2FontFamily;
+  font-size: @H2FontSize;
+  font-weight: @H2FontWeight;
+  line-height: @H2LineHeight;
+  color: @H2TextColor;
+  text-decoration: @H2TextDecoration;
+}
+
+h3, .h3 {
+  font-family: @H3FontFamily;
+  font-size: @H3FontSize;
+  font-weight: @H3FontWeight;
+  line-height: @H3LineHeight;
+  color: @H3TextColor;
+  text-decoration: @H3TextDecoration;
+}
+
+h4, .h4 {
+  font-family: @H4FontFamily;
+  font-size: @H4FontSize;
+  font-weight: @H4FontWeight;
+  line-height: @H4LineHeight;
+  color: @H4TextColor;
+  text-decoration: @H4TextDecoration;
+}
+
+h5, .h5 {
+  font-family: @H5FontFamily;
+  font-size: @H5FontSize;
+  font-weight: @H5FontWeight;
+  line-height: @H5LineHeight;
+  color: @H5TextColor;
+  text-decoration: @H5TextDecoration;
+}
+
+h6, .h6 {
+  font-family: @H6FontFamily;
+  font-size: @H6FontSize;
+  font-weight: @H6FontWeight;
+  line-height: @H6LineHeight;
+  color: @H6TextColor;
+  text-decoration: @H6TextDecoration;
+}
+/*doc
+---
+title: Paragraph
+name: paragraph
+category: Typography
+---
+Paragraph example
+
+```html_example
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
+ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla
+vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, <strong>detalhe metalizado no salto completo</strong>
+imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
+Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat
+vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat</p>
+```
+*/
+
+p {
+  font-family: @ParagraphFontFamily;
+  font-size: @ParagraphFontSize;
+  line-height: @ParagraphLineHeight;
+  color: @ParagraphTextColor;
+  text-decoration: @ParagraphTextDecoration;
+}
+
+
+/*doc
+---
+title: Links
+name: default-links
+category: Typography
+---
+Link example in paragraph
+
+```html_example
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
+ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo,
+fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae,
+justo. Nullam dictum <a href="#links"> Palmilha</a> felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper
+nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
+Aliquam lorem ante, dapibus in, viverra quis, feugiat</p>
+```
+
+```html_example
+<a href="#links">Link</a>
+```
+
+## Icons
+Links can have icons:
+
+```html_example
+<a href="#links" class="carat">
+  See More
+  <span class="glyphicon-chevron-right"></span>
+</a>
+```
+*/
+
+a {
+  color: @LinkColor;
+  text-decoration: underline;
+
+  &.link-as-button {
+    text-transform: uppercase;
+    color: @LinkColor;
+    font-weight: bold;
+    font-family: @DefaultSiteFontFamily;
+  }
+
+  /* Don't decorate the icon */
+  &[class^="glyphicon-"]:before {
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  &:visited{
+    color: @LinkVisitedColor;
+  }
+
+  &:hover {
+    color: @LinkHoverColor;
+  }
+
+  &:link, &:focus, &:active {
+    outline: 0;
+  }
+
+  &.carat *[class^="glyphicon-"] {
+    font-size: @FontSizeExtraSmall;
+  }
+}
+/**
+ * Use
+ *
+ * .for(@list); .each(@name, @value) {
+ *     &.my-class-@{name} {
+ *       color: @value;
+ *     }
+ *   }
+ *
+ */
+.for(@list) {
+ @name: "";
+ @value: "";
+
+ ._getValues(@index) when (isstring(extract(extract(@list, @index), 2))) {
+  @name: e(extract(extract(@list, @i), 1));
+  @value: e(extract(extract(@list, @i), 2));
+ }
+
+ ._getValues(@index) when not (isstring(extract(extract(@list, @index), 2))) {
+  @name: e(extract(extract(@list, @i), 1));
+  @value: extract(extract(@list, @i), 2);
+ }
+
+ ._for(@i:1) when (isstring(extract(extract(@list, @i), 1))) {
+  ._getValues(@i);
+  .each(@name, @value);
+  ._for(@i + 1);
+ }
+
+ ._for();
+}
+/*doc
+---
+title: Helpers
+name: helpers
+category: Utils
+---
+
+## Spacing Helpers
+
+Class                 | Description
+--------------------- | -------------------------------------------------------------
+`reset-margin`        | Resets all margins
+`reset-padding-left`  | Resets left's padding
+`reset-padding-right` | Resets right's padding
+
+## Vertical Align
+
+Class                 | Description
+--------------------- | -------------------------------------------------------------
+`vmiddle`             | Vertical align middle
+`vbottom`             | Vertical align bottom
+
+## Layout
+
+Class                 | Description
+--------------------- | -------------------------------------------------------------
+`full-width`          | Applies 100% of width to this element
+`row-full`            | Set a full width considering the viewport
+
+## Text
+
+Class                 | Description
+--------------------- | -------------------------------------------------------------
+`text-uppercase`      | Transform the text to uppercase;
+
+*/
+
+.vbottom,
+.vmiddle {
+  float: none;
+  display: inline-block;
+}
+
+.vbottom {
+  vertical-align: bottom;
+}
+
+.vmiddle {
+  vertical-align: middle;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.reset-margin {
+  margin: 0 !important;
+}
+
+.reset-padding-left {
+  padding-left: 0 !important;
+}
+
+.reset-padding-right {
+  padding-right: 0 !important;
+}
+
+.full-width {
+  width: 100%;
+}
+
+/**
+ * Set a full width considering the viewport
+ * REF: https://coderwall.com/p/hkgamw/creating-full-width-100-container-inside-fixed-width-container
+ */
+.row-full {
+  position: relative;
+  width: 100vw;
+  margin-left: -50vw;
+  left: 50%;
+}
+
+.col-v-center { //Grid vertical align
+  float: none;
+  display: inline-block !important;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+.row-v-center { //Grid vertical align
+
+  [class*='col']:extend(.col-v-center) {
+
+    &:first-of-type, .first-col {
+      padding-left: 0;
+    }
+
+    &:last-of-type, .last-col {
+      padding-right: 0;
+    }
+  }
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: @screen-xs-max) {
+  .col-xs-vspacing {
+    margin: @grid-gutter-width 0;
+  }
+
+  .text-center-xs {
+    text-align: center;
+  }
+
+  .text-right-xs {
+    text-align: right;
+  }
+
+  .full-width-xs {
+    width: 100%;
+  }
+
+  .reset-padding-left-xs {
+    padding-left: 0 !important;
+  }
+
+  .reset-padding-right-xs {
+    padding-right: 0 !important;
+  }
+}
+
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+  .full-width-md {
+    width: 100%;
+  }
+
+  .reset-padding-left-md {
+    padding-left: 0 !important;
+  }
+
+  .reset-padding-right-md {
+    padding-right: 0 !important;
+  }
+}
+
+.ellipsis {
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vertical-ellipsis {
+  .make-ellipsis();
+}
+.background-styles (@BackgroundColor, @BackgroundImageURL, @BackgroundImageRepeat, @BackgroundImagePosition,
+                    @BackgroundColorTop, @BackgroundColorBottom, @BackgroundImageAttachment) {
+
+
+  background: -moz-linear-gradient(top, @BackgroundColorTop 0%, @BackgroundColorBottom 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, @BackgroundColorTop), color-stop(100%, @BackgroundColorBottom));
+  background: -webkit-linear-gradient(top, @BackgroundColorTop 0%, @BackgroundColorBottom 100%);
+  background: -o-linear-gradient(top, @BackgroundColorTop 0%, @BackgroundColorBottom 100%);
+  background: -ms-linear-gradient(top, @BackgroundColorTop 0%, @BackgroundColorBottom 100%);
+  background: linear-gradient(to bottom, @BackgroundColorTop 0%, @BackgroundColorBottom 100%);
+  filter:~"progid:DXImageTransform.Microsoft.gradient(startColorstr='@{BackgroundColorTop}', endColorstr='@{BackgroundColorBottom}', GradientType=0)";
+}
+
+.column-count(@count) {
+  column-count: @count;
+  -webkit-column-count: @count;
+  -moz-column-count: @count;
+}
+
+.column-rule(@string) {
+  -webkit-column-rule: @string;
+  -moz-column-rule: @string;
+  column-rule: @string;
+}
+
+.column-gap(@gap) {
+  -webkit-column-gap: @gap;
+  -moz-column-gap: @gap;
+  column-gap: @gap;
+}
+
+.custom-icon-base() {
+  display: table-cell;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  vertical-align: middle;
+}
+
+.triangle-base() {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    -moz-transform: scale(.9999);
+}
+.triangle(@direction, @size, @color) {
+    .triangle(@direction, @size * 2, @size, @color);
+}
+.triangle(@direction, @width, @height, @color) when (@direction = up) {
+    .triangle-base();
+    border-left: (@width / 2) solid transparent;
+    border-right: (@width / 2) solid transparent;
+    border-bottom: @height solid @color;
+}
+.triangle(@direction, @width, @height, @color) when (@direction = down) {
+    .triangle-base();
+    border-left: (@width / 2) solid transparent;
+    border-right: (@width / 2) solid transparent;
+    border-top: @height solid @color;
+}
+.triangle(@direction, @width, @height, @color) when (@direction = left) {
+    .triangle-base();
+    border-top: (@width / 2) solid transparent;
+    border-bottom: (@width / 2) solid transparent;
+    border-right: @height solid @color;
+}
+.triangle(@direction, @width, @height, @color) when (@direction = right) {
+    .triangle-base();
+    border-top: (@width / 2) solid transparent;
+    border-bottom: (@width / 2) solid transparent;
+    border-left: @height solid @color;
+}
+
+.make-ellipsis(@FontSize: @FontSizeNormal, @LineHeight: 1.4, @LinesToShow: 3) {
+  width: 100%;
+  display: block; /* Fallback for non-webkit */
+  display: -webkit-box;
+  height: @FontSize * @LineHeight * @LinesToShow; /* Fallback for non-webkit */
+  margin: 0 auto;
+  font-size: @FontSize;
+  line-height: @LineHeight;
+  -webkit-line-clamp: @LinesToShow;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.change-ellipsis-height(@FontSize: @FontSizeNormal, @LineHeight: 1.4, @LinesToShow: 3) {
+  height: @FontSize * @LineHeight * @LinesToShow; /* Fallback for non-webkit */
+}
+.embed-responsive {
+  position: relative;
+  display: block;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+
+  .embed-responsive-item,
+  iframe,
+  embed,
+  object,
+  video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    border: 0;
+  }
+}
+
+// Modifier class for 16:9 aspect ratio
+.embed-responsive-16by9 {
+  padding-bottom: 56.25%;
+}
+
+// Modifier class for 4:3 aspect ratio
+.embed-responsive-4by3 {
+  padding-bottom: 75%;
+}
+/***** Global *****/
+@ButtonBorderRadius: 5px;
+@ButtonBorderSize: 2px;
+@ButtonFontWeight: @FontWeightBold;
+@ButtonBaseFontSize: @FontSizeNormal;
+@ButtonDisabledBackgroundColor: @ColorShadeLight;
+@ButtonVerticalPadding: 20px;
+@ButtonHorizontalPadding: 40px;
+@ButtonTextTransform: none;
+@ButtonIconFontSize: @FontSizeNormal;
+@ButtonIconTextFontSize: @FontSizeExtraSmall;
+
+//Primary
+@ButtonPrimaryHorizontalPadding: @ButtonHorizontalPadding;
+@ButtonPrimaryVerticalPadding: @ButtonVerticalPadding;
+@ButtonPrimaryBackgroundColor: @ColorSpinBlueRegular;
+@ButtonPrimaryBorderRadius: 0;
+@ButtonPrimaryBorder: @ButtonBorderSize solid @ColorSpinBlueRegular;
+@ButtonPrimaryFontFamily: @DefaultSiteFontFamily;
+@ButtonPrimaryFontStyle: normal;
+@ButtonPrimaryFontWeight: @ButtonFontWeight;
+@ButtonPrimaryFontSize: @FontSizeLarge;
+@ButtonPrimarySize: medium;
+@ButtonPrimaryTextColor: @ColorWhite;
+@ButtonPrimaryTextDecoration: none;
+@ButtonPrimaryUseGradient: false;
+@ButtonPrimaryBackgroundColorHover: @ColorSpinBlueBold;
+@ButtonPrimaryTextColorHover: @ColorWhite;
+@ButtonPrimaryBackgroundColorFocus: @ColorMineShaft;
+@ButtonPrimaryBorderColorHover: @ColorSpinBlueBold;
+
+//Secondary
+@ButtonSecondaryHorizontalPadding: @ButtonHorizontalPadding;
+@ButtonSecondaryVerticalPadding: @ButtonVerticalPadding;
+@ButtonSecondaryBackgroundColor: @ColorWhite;
+@ButtonSecondaryBorderRadius: 0;
+@ButtonSecondaryBorder: @ButtonBorderSize solid @ColorSpinBlueBold;
+@ButtonSecondaryFontFamily: @DefaultSiteFontFamily;
+@ButtonSecondaryFontStyle: normal;
+@ButtonSecondaryFontWeight: @ButtonFontWeight;
+@ButtonSecondaryFontSize: @FontSizeLarge;
+@ButtonSecondarySize: medium;
+@ButtonSecondaryTextColor: @ColorSpinBlueBold;
+@ButtonSecondaryTextDecoration: none;
+@ButtonSecondaryUseGradient: false;
+@ButtonSecondaryBackgroundColorHover: @ColorSpinBlueRegular;
+@ButtonSecondaryTextColorHover: @ColorWhite;
+@ButtonSecondaryBackgroundColorFocus: @ColorSpinBlueRegular;
+@ButtonSecondaryBorderColorHover: @ColorSpinBlueRegular;
+
+//Text Buttons
+@ButtonTextFontFamily: @DefaultSiteFontFamily;
+@ButtonTextFontStyle: normal;
+@ButtonTextFontWeight: @ButtonFontWeight;
+@ButtonTextFontSize: @FontSizeLarge;
+@ButtonTextSize: medium;
+@ButtonTextTextColor: @ColorSpinBlueRegular;
+@ButtonTextTextDecoration: underline;
+@ButtonTextUseGradient: false;
+@DefaultCardColor: @ColorMineShaft;
+@DefaultCardTextColor: @ColorWhite;
+@DefaultCardLineHeight: 117%;
+@DefaultCardVerticalPadding: 20px;
+@DefaultCardHorizontalPadding: 20px;
+@DefaultCardArrowSize: 15px;
+
+//Light Skin Card
+@CardSkinLightColor: @ColorWhite;
+@CardSkinLightTitleColor: @ColorMineShaft;
+@CardSkinLightSubtitleColor: @ColorMineShaft;
+
+//Rectangular Card
+@CardRectangleVerticalPadding: 15px;
+@CardRectangleHorizontalPadding: 20px;@CarouselArrowsColor: @ColorWhite;
+@CarouselArrowsWidth: 40px;
+@CarouselArrowsHeight: 60px;
+@CarouselIndicatorsSize: 5px;
+@CarouselIndicatorsActiveSize: 7px;
+@CarouselIndicatorsColor: @ColorWhite;
+
+//Secondary
+@CarouselSecondaryArrowsColor: @ColorMineShaft;
+@CarouselSecondaryIndicatorsColor: @ColorMineShaft;
+/*doc
+---
+title: Palette
+name: 1-palette
+category: Colors
+---
+
+Palette of colors, by [Name That Color](http://chir.ag/projects/name-that-color/).
+
+Color                                                            | Variable                  | Hex
+---------------------------------------------------------------- | ------------------------- | -----------
+<div style="background:#000000;">&nbsp;</div>                    | `@ColorBlack`             | `#000000`
+<div style="background:#333333;">&nbsp;</div>                    | `@ColorMineShaft`         | `#333333`
+<div style="background:#666666;">&nbsp;</div>                    | `@ColorDoveGray`          | `#666666`
+<div style="background:#cccccc;">&nbsp;</div>                    | `@ColorSilver`            | `#cccccc`
+<div style="background:#e5e5e5;">&nbsp;</div>                    | `@ColorMercury`           | `#e5e5e5`
+<div style="background:#FFFFFF;">&nbsp;</div>                    | `@ColorWhite`             | `#FFFFFF`
+<div style="background:rgba(255, 255, 255, .4);">&nbsp;</div>   | `@ColorWhiteTransparent`  | `rgba(255, 255, 255, .4)`
+<div style="background:#CC0000;">&nbsp;</div>                    | `@ColorRed`               | `#CC0000`
+<div style="background:#178401;">&nbsp;</div>                    | `@ColorGreen`             | `#178401`
+<div style="background:#1B3075;">&nbsp;</div>                    | `@ColorSpinBlueBold`      | `#1B3075`
+<div style="background:#223E99;">&nbsp;</div>                    | `@ColorSpinBlueRegular`   | `#223E99`
+<div style="background:#007AB8;">&nbsp;</div>                    | `@ColorSpinBlue`          | `#007AB8`
+<div style="background:#00D2FF;">&nbsp;</div>                    | `@ColorSpinBlueLight`     | `#00D2FF`
+<div style="background:#DFE0E8;">&nbsp;</div>                    | `@ColorShadeLight`        | `#DFE0E8`
+<div style="background:#635E68;">&nbsp;</div>                    | `@ColorShadeRegular`      | `#635E68`
+<div style="background:#303039;">&nbsp;</div>                    | `@ColorShadeBold`         | `#303039`
+*/
+
+@ColorBlack: #000000;
+@ColorMineShaft: #333333;
+@ColorDoveGray: #666666;
+@ColorSilver: #cccccc;
+@ColorMercury: #e5e5e5;
+@ColorWhite: #ffffff;
+@ColorWhiteTransparent: rgba(255, 255, 255, .4);
+@ColorRed: #cc0000;
+@ColorGreen: #178401;
+
+//Color spin blue and variants
+@ColorSpinBlueBold: #1b3075;
+@ColorSpinBlueRegular: #223e99;
+@ColorSpinBlue: #007ab8;
+@ColorSpinBlueLight: #00d2ff;
+
+//color shades and variants
+@ColorShadeLight: #dfe0e8;
+@ColorShadeRegular: #635e68;
+@ColorShadeBold: #303039;@FieldBorderWidth: 2px;
+@FieldBorderColor: @ColorShadeLight;
+@FormFieldTextColor: @ColorShadeBold;
+@FormFieldPlaceholderColor: @ColorShadeBold;
+@InvalidFieldFontSize: @FontSizeSmall;
+@InvalidFieldTextColor: @ColorRed;
+@InvalidFieldBorderColor: @ColorRed;
+@InvalidFieldBackgroundColor: @ColorWhite;
+@FormFieldSize: 42px;
+@FormFieldVerticalPadding: 5px;
+@FormFieldHorizontalPadding: 5px;
+@FormFieldFocusBorderColor: @ColorShadeLight;
+@FormHint: @ColorMercury;
+@FormLegendTextColor: @ColorMercury;
+@FormLegendFontSize: @FontSizeSmall;
+@FormLegendFontWeight: @FontWeightBold;
+@FormLabelFontSize: @FontSizeSmall;
+@FormFieldFontSize: @FontSizeNormal;
+@FormSelectIconFontSize: @FontSizeExtraSmall;
+@FormSelectTextColor: @ColorMineShaft;
+
+/** Form Box **/
+@FormBoxFieldsetBackgroundColor: @ColorWhite;
+@FormBoxFormControlBorderColor: @ColorWhite;
+@FormBoxFieldsetSpacingTop: @Spacing * 5;
+
+/** Checkbox **/
+@CheckBoxFontFamily: @DefaultSiteFontFamily;
+@CheckBoxIconFontSize: @FontSizeExtraLarge;
+@CheckBoxSize: 15px;
+@CheckBoxSizeBackGround: (@CheckBoxSize);
+@CheckBoxPaddingLeft: (@CheckBoxSize + 7px);
+@CheckBoxBorderRadius: 3px;
+@CheckBoxBorderWidth: 2px;
+@CheckBoxLeft: (@CheckBoxBorderWidth - 8px);
+@CheckBoxBackGroundSize: (@CheckBoxSize - 10px);
+@CheckBoxBorderColor: @ColorShadeLight;
+@CheckBoxBackGroundColor: @ColorShadeLight;
+@CheckBoxBackGroundColorChecked: @ColorSpinBlueRegular;
+@CheckBoxBorderColorChecked: @ColorSpinBlueRegular;
+@CheckboxInvalidFieldBackgroundColor: @ColorMineShaft;
+@CheckboxInvalidFieldBorderColor: @ColorMineShaft;
+@CheckBoxInlineLabelFontWeight: @FontWeightLight;
+@CheckBoxInlineFontSize: @SiteFontSize;
+@CheckBoxInlineFontWeight: @FontWeightLight;
+
+/** Radio **/
+@RadioFontFamily: @DefaultSiteFontFamily;
+@RadioIconFontSize: @FontSizeMedium;
+@RadioSize: 15px;
+@RadioSizeBackGround: (@RadioSize - 1px);
+@RadioPaddingLeft: (@RadioSize + 20px);
+@RadioBorderRadius: 50%;
+@RadioBorderWidth: 10px;
+@RadioLeft: (@RadioBorderWidth - 7px);
+@RadioBackGroundSize: (@RadioSize);
+@RadioBorderColor: @ColorShadeLight;
+@RadioBackGroundColor: @ColorShadeLight;
+@RadioBackGroundColorChecked: @ColorSpinBlueRegular;
+@RadioBorderColorChecked: @ColorSpinBlueRegular;
+@RadioInvalidFieldBackgroundColor: @ColorMineShaft;
+@RadioInvalidFieldBorderColor: @ColorMineShaft;
+@RadioInlineLabelFontWeight: @FontWeightLight;
+@RadioInlineFontSize: @SiteFontSize;
+@RadioInlineFontWeight: @FontWeightLight;
+
+@HeaderBackgroundColor : @ColorWhite;
+@HeaderBackgroundColorBottom : @ColorWhite;
+@HeaderBackgroundColorTop : @ColorWhite;
+@HeaderBackgroundImageAttachment : scroll;
+@HeaderBackgroundImagePosition : top left;
+@HeaderBackgroundImageRepeat : repeat-x;
+@HeaderBackgroundImageURL : none;
+@HeaderBackgroundUseGradient : false;
+@HeaderTopBackgroundColor : @ColorWhite;
+@HeaderTopBackgroundColorBottom : @ColorWhite;
+@HeaderTopBackgroundColorTop : @ColorWhite;
+@HeaderTopBackgroundImageAttachment : scroll;
+@HeaderTopBackgroundImagePosition : top left;
+@HeaderTopBackgroundImageRepeat : repeat-x;
+@HeaderTopBackgroundImageURL : none;
+@HeaderTopBackgroundUseGradient : false;
+@HeaderTopBorderBottomColor : @ColorWhite;
+@HeaderTopPaddingTop : 25px;@LinkColor : @ColorMineShaft;
+@LinkHoverColor : @ColorDoveGray;
+@LinkVisitedColor : @ColorDoveGray;
+@ArrowLinkColor: @ColorMineShaft;@ModalPadding: 40px;
+@ModalCloseButtonFontSize: @FontSizeExtraLarge;
+@ModalTitleFontSize: @FontSizeHuge;
+@ModalTitleTextColor: @ColorMineShaft;
+@ModalContentTitleTextColor: @ColorMineShaft;
+@ModalContentTitleFontSize: @FontSizeExtraLarge;
+@ModalContentSubTitleFontSize: @FontSizeLarge;
+@ModalContentSubTitleTextColor: @ColorMercury;
+@ModalBodyTextColor: @ColorMineShaft;
+@ModalCenteredContentTitleTextColor: @ColorMineShaft;
+@ModalCenteredContentSubTitleFontSize: @FontSizeNormal;
+@ModalMobileDialogBackgroundColor: @ColorWhite;@NavbarBackgroundColor : #ffffff;
+@NavbarBackgroundHoverColor : #ffffff;
+@NavbarLinkColor : #000000;
+@NavbarLinkHoverColor : #000000;
+@NavbarTextColor : #ffa403;@PaginationBackgroundColor: @ColorWhite;
+@PaginationBorder: 0;
+@PaginationColor: @ColorMineShaft;
+@PaginationActiveColor: @ColorMineShaft;
+@PaginationActiveBackgroundColor: @PaginationBackgroundColor;
+@PaginationActiveBorderColor: @ColorWhite;
+@PaginationHoverColor: @ColorMineShaft;
+@PaginationHoverBackgroundColor: @PaginationBackgroundColor;
+@PaginationHoverBorderColor: transparent;
+@PaginationButtonsTextColor: @ColorMineShaft;
+@PaginationButtonsFontSize: @FontSizeNormal;
+@ProductCardMinHeight: 280px;
+@ProductCardSectionSpacing: 10px;
+@ProductCardProductTitleSize: @FontSizeNormal;
+@ProductCardProductTitleFontWeight: @FontWeightBold;
+@ProductCardProductTitleTextColor: @ColorSilver;
+@ProductCardProductTitleBorderColor: @ColorMercury;
+@ProductCardNewFlagColor: @ColorMineShaft;
+@ProductCardNewFlagFontSize: @FontSizeLarge;
+@ProductCardImageCaptionTextColor: @ColorMineShaft;
+@ProductCardImageCaptionBorderBottomColor: @ColorMercury;
+@ProductCardProductPriceFontSize: @FontSizeLarge;
+@ProductCardProductBeforePriceTextColor: @ColorSilver;
+@ProductCardProductBeforePriceFontWeight: @FontWeightLight;
+@ProductCardProductPriceTextColor: @ColorMineShaft;
+@ProductCardProductPriceFontWeight: @FontWeightNormal;
+@ProductCardPriceRangeContainerBorderColor: @ColorMercury;
+@ProductCardPriceRangeFontSize: @FontSizeLarge;
+@ProductCardPriceRangeTextColor: @ColorMineShaft;
+@ProductCardPriceRangeFontWeight: @FontWeightLight;
+@ProductCardProductLearnMoreTextColor: @ColorMineShaft;
+
+//Card simple
+@ProductCardSimpleImageCaptionFontSize: @FontSizeExtraLarge;
+@ProductCardSimpleImageCaptionTextColor: @ColorMineShaft;
+@SiteBackgroundColor : @ColorWhite;
+@SiteBackgroundColorBottom : @ColorWhite;
+@SiteBackgroundColorTop : @ColorWhite;
+@SiteBackgroundImageAttachment : scroll;
+@SiteBackgroundImagePosition : top left;
+@SiteBackgroundImageRepeat : no-repeat;
+@SiteBackgroundImageURL : none;
+@SiteBackgroundUseGradient : false;
+@SitePageBackgroundColor : @ColorWhite;/***** Spacing *****/
+@PaddingVertical: 10px;
+@PaddingHorizontal: 10px;
+@MarginVertical: 10px;
+@MarginHorizontal: 10px;
+@Spacing: 10px;@StarsSize: @FontSizeMedium;
+@StarsContainerWidth: 100px;
+@StarInactiveColor: @ColorSilver;
+@StarActiveColor: @ColorMineShaft;
+@StarsLabelTextColor: @ColorSilver;
+@StarsLabelFontSize: @FontSizeSmall;
+@StarsLabelFontWeight: @FontWeightLight;@SubNavigationBackgroundColor : #000000;
+@SubNavigationBackgroundHoverColor : #000000;
+@SubNavigationLinkColor : #ffa403;
+@SubNavigationLinkHoverColor : #000000;
+@SubNavigationTextColor : #ffa403;
+@TextColor : #000000;
+@mobileNavBarButtonColor : #333333;@TableBackgroundColor: @ColorWhite;
+@TableColumnsBorderColor: @ColorMercury;
+@TableVerticalBorderColor: @ColorMineShaft;
+@TableVerticalFontSize: @FontSizeNormal;
+@TableVerticalContentWidth: 50%;
+@TableVerticalColumnBorderColor: @ColorMineShaft;
+@TableVerticalFirstColumnBorderColor: @ColorMineShaft;
+@TabFontSize: @FontSizeLarge;
+@TabFontWeight: @FontWeightLight;
+@TabDefaultTextColor: @ColorSpinBlueRegular;
+@TabDefaultBackgroundColor: @ColorWhite;
+@TabActiveBorderColor: @ColorShadeRegular;
+@TabActiveTextColor: @ColorSpinBlueRegular;
+@TabContentTitleTextColor: @ColorSpinBlueRegular;
+@TabContentTitleFontSize: @FontSizeNormal;
+@TabContentTitleFontWeight: @FontWeightBold;/***** Typography *****/
+
+/** Font Family */
+@TitlesFontFamily: 'Open Sans', sans-serif;
+@DefaultSiteFontFamily: 'Open Sans';
+
+
+/** Font Weight */
+@FontWeightLight: 300;
+@FontWeightNormal: 400;
+@FontWeightBold: 700;
+@FontWeightBlack: 900;
+
+/** Line Height */
+@LineHeightBase: 150%;
+
+/** Font Size **/
+@FontSizeBase: 90%; /** it will be the html font-size **/
+@FontSizeExtraSmall: .675rem; /** 10.8px **/
+@FontSizeSmall: .775rem; /** 12.4px **/
+@FontSizeNormal: .875rem; /** 14px **/
+@FontSizeMedium: 1rem; /** 16px **/
+@FontSizeLarge: 1.25rem; /** 20px **/
+@FontSizeExtraLarge: 1.875rem; /** 40px **/
+@FontSizeDoubleExraLarge: 3rem; /** 48px **/
+@FontSizeBig: 3.75rem; /** 60px **/
+@FontSizeHuge: 6rem; /** 96px **/
+
+/**
+ * Specific
+ */
+@H1FontFamily: @TitlesFontFamily;
+@H1FontSize: @FontSizeBig;
+@H1FontStyle: inherit;
+@H1FontWeight: @FontWeightBlack;
+@H1LineHeight: 120%;
+@H1TextAlign: inherit;
+@H1TextColor: @ColorMineShaft;
+@H1TextDecoration: inherit;
+@H1LetterSpacing: -2px;
+
+@H2FontFamily: @TitlesFontFamily;
+@H2FontSize: @FontSizeExtraLarge;
+@H2FontStyle: inherit;
+@H2FontWeight: @FontWeightBlack;
+@H2LineHeight: 100%;
+@H2TextAlign: inherit;
+@H2TextColor: @ColorMineShaft;
+@H2TextDecoration: inherit;
+@H2LetterSpacing: -1px;
+
+@H3FontFamily: @TitlesFontFamily;
+@H3FontSize: @FontSizeExtraLarge;
+@H3FontStyle: inherit;
+@H3FontWeight: @FontWeightNormal;
+@H3LineHeight: 100%;
+@H3TextAlign: inherit;
+@H3TextColor: @ColorMineShaft;
+@H3TextDecoration: inherit;
+@H3LetterSpacing: -1px;
+
+@H4FontFamily: @TitlesFontFamily;
+@H4FontSize: @FontSizeLarge;
+@H4FontStyle: inherit;
+@H4FontWeight: @FontWeightNormal;
+@H4LineHeight: @LineHeightBase;
+@H4TextAlign: inherit;
+@H4TextColor: @ColorMineShaft;
+@H4TextDecoration: inherit;
+@H4LetterSpacing: inherit;
+
+@H5FontFamily: @TitlesFontFamily;
+@H5FontSize: @FontSizeLarge;
+@H5FontStyle: inherit;
+@H5FontWeight: @FontWeightBold;
+@H5LineHeight: @LineHeightBase;
+@H5TextAlign: inherit;
+@H5TextColor: @ColorMineShaft;
+@H5TextDecoration: inherit;
+@H5LetterSpacing: inherit;
+
+@H6FontFamily: @TitlesFontFamily;
+@H6FontSize: @FontSizeNormal;
+@H6FontStyle: inherit;
+@H6FontWeight: @FontWeightLight;
+@H6LineHeight: @LineHeightBase;
+@H6TextAlign: inherit;
+@H6TextColor: @ColorMineShaft;
+@H6TextDecoration: inherit;
+@H6LetterSpacing: inherit;
+
+@SubHeading1FontFamily: @TitlesFontFamily;
+@SubHeading1FontSize: @FontSizeLarge;
+@SubHeading1FontStyle: inherit;
+@SubHeading1FontWeight: @FontWeightNormal;
+@SubHeading1LineHeight: @LineHeightBase;
+@SubHeading1TextAlign: inherit;
+@SubHeading1TextColor: @ColorMineShaft;
+@SubHeading1TextDecoration: inherit;
+@SubHeading1LetterSpacing: inherit;
+
+@SubHeading2FontFamily: @TitlesFontFamily;
+@SubHeading2FontSize: @FontSizeLarge;
+@SubHeading2FontStyle: inherit;
+@SubHeading2FontWeight: @FontWeightBold;
+@SubHeading2LineHeight: @LineHeightBase;
+@SubHeading2TextAlign: inherit;
+@SubHeading2TextColor: @ColorMineShaft;
+@SubHeading2TextDecoration: inherit;
+@SubHeading2LetterSpacing: inherit;
+
+@SubHeading3FontFamily: @TitlesFontFamily;
+@SubHeading3FontSize: @FontSizeMedium;
+@SubHeading3FontStyle: inherit;
+@SubHeading3FontWeight: @FontWeightNormal;
+@SubHeading3LineHeight: @LineHeightBase;
+@SubHeading3TextAlign: inherit;
+@SubHeading3TextColor: @ColorMineShaft;
+@SubHeading3TextDecoration: inherit;
+@SubHeading3LetterSpacing: inherit;
+
+@SubHeading4FontFamily: @TitlesFontFamily;
+@SubHeading4FontSize: @FontSizeMedium;
+@SubHeading4FontStyle: inherit;
+@SubHeading4FontWeight: @FontWeightBold;
+@SubHeading4LineHeight: @LineHeightBase;
+@SubHeading4TextAlign: inherit;
+@SubHeading4TextColor: @ColorMineShaft;
+@SubHeading4TextDecoration: inherit;
+@SubHeading4LetterSpacing: inherit;
+
+@ParagraphFontFamily: inherit;
+@ParagraphFontSize: @FontSizeNormal;
+@ParagraphFontStyle: inherit;
+@ParagraphFontWeight: @FontWeightLight;
+@ParagraphLineHeight: 172%;
+@ParagraphTextAlign: inherit;
+@ParagraphTextColor: @ColorMineShaft;
+@ParagraphTextDecoration: inherit;
+
+@Paragraph2FontFamily: inherit;
+@Paragraph2FontSize: @FontSizeNormal;
+@Paragraph2FontStyle: italic;
+@Paragraph2FontWeight: @FontWeightLight;
+@Paragraph2LineHeight: 172%;
+@Paragraph2TextAlign: inherit;
+@Paragraph2TextColor: @ColorMineShaft;
+@Paragraph2TextDecoration: inherit;
+
+@ButtonFontFamily: inherit;
+@ButtonFontSize: @FontSizeNormal;
+@ButtonFontStyle: italic;
+@ButtonFontWeight: @FontWeightBold;
+@ButtonLineHeight: 172%;
+@ButtonTextAlign: inherit;
+@ButtonTextColor: @ColorMineShaft;
+@ButtonTextDecoration: inherit;
+
+@SiteFontFamily: @DefaultSiteFontFamily;
+@SiteFontSize: @FontSizeNormal;
+@SiteFontStyle: normal;
+@SiteFontWeight: @FontWeightNormal;
+@SiteLineHeight: @LineHeightBase;
+@SiteTextAlign: left;
+@SiteTextColor: @ColorMineShaft;
+@SiteTextDecoration: none;

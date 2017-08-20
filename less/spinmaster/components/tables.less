@@ -1,0 +1,143 @@
+/*doc
+---
+title: Tables
+name: tables
+category: Components
+---
+
+This is the default bootstrap table. 
+
+Taking a look at the code of this table we can notice this data attribute `data-td-title`, this would be
+the "th" or the title of each column when in mobile version. Try to resize the window and see that this `data-td-title`
+will be shown on the left side. So, remember to create this attribute to each td copying the th content.
+
+This is based on that solution: [https://elvery.net/demo/responsive-tables/#no-more-tables](https://elvery.net/demo/responsive-tables/#no-more-tables)
+
+```html_example
+<div class="doc-solid-background">
+  <table class="cc-table table table-striped">
+    <thead>
+      <tr>
+        <th>Column title A</th>
+        <th>Column title B</th>
+        <th>Column title C</th>
+        <th>Column title D</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-td-title="Column title A">Column content A</td>
+        <td data-td-title="Column title B">Column content B</td>
+        <td data-td-title="Column title C">Column content C</td>
+        <td data-td-title="Column title D">Column content D</td>
+      </tr>
+      <tr>
+        <td data-td-title="Column title A">Column content A</td>
+        <td data-td-title="Column title B">Column content B</td>
+        <td data-td-title="Column title C">Column content C</td>
+        <td data-td-title="Column title D">Column content D</td>
+      </tr>
+      <tr>
+        <td data-td-title="Column title A">Column content A</td>
+        <td data-td-title="Column title B">Column content B</td>
+        <td data-td-title="Column title C">Column content C</td>
+        <td data-td-title="Column title D">Column content D</td>
+      </tr>
+    </tbody>
+  </table>
+<div>
+```
+*/
+
+.vertical-table() {
+  display: block;
+
+  border: @TableVerticalBorderColor;
+  border-left: 0;
+  border-right: 0;
+
+  thead, th, td, tr, tbody {
+   display: block;
+  }
+
+  //hide heading
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr:nth-child(n+2) {
+    margin-top: @Spacing * 4;
+  }
+
+  td {
+    font-size: @TableVerticalFontSize;
+    position: relative;
+    padding: @Spacing @Spacing * 2 @Spacing @TableVerticalContentWidth !important;
+    white-space: normal;
+    word-break: break-word;
+
+    &:before {
+      content: attr(data-td-title);
+      position: absolute;
+      top: 30%;
+      left: 0;
+      width: @TableVerticalContentWidth;
+      padding-right: @Spacing;
+      text-align:left;
+      font-weight: bold;
+    }
+
+    ul, ol {
+      list-style: none;
+    }
+
+    &:nth-child(n+2) {
+      border-top: @TableVerticalColumnBorderColor;
+    }
+
+    &:first-child {
+      border-bottom: 1px solid @TableVerticalFirstColumnBorderColor;
+    }
+  }
+
+  &.col-top {
+    td {
+      &:before {
+        top: @Spacing;
+      }
+    }
+  }
+}
+
+table,
+.table {
+  background-color: @TableBackgroundColor;
+  
+  > thead > tr > th,
+  > tbody > tr > th,
+  > tfoot > tr > th,
+  > thead > tr > td,
+  > tbody > tr > td,
+  > tfoot > tr > td {
+    border-color: @TableColumnsBorderColor;
+  }
+
+  //Only mobile
+  @media (max-width: @screen-xs-max) {
+    .vertical-table;
+  }
+}
+
+.table-block {
+  display: block;
+
+  tbody, thead, tr, td {
+    display: block;
+  }
+
+  td {
+    word-wrap: break-word;
+  }
+}

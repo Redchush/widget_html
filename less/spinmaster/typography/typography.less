@@ -1,0 +1,171 @@
+/*doc
+---
+title: Headers
+name: headers
+category: Typography
+---
+
+```html_example
+<h1>Title</h1>
+<h2>Title</h2>
+<h3>Title</h3>
+<h4>Title</h4>
+<h5>Title</h5>
+<h6>Title</h6>
+```
+
+Optional `bold` inside:
+
+```html_example
+<h2><strong>I'm bold</strong> and I'm not</h2>
+```
+
+*/
+
+h1, .h1 {
+  font-family: @H1FontFamily;
+  font-size: @H1FontSize;
+  font-weight: @H1FontWeight;
+  line-height: @H1LineHeight;
+  color: @H1TextColor;
+  text-decoration: @H1TextDecoration;
+}
+
+h2, .h2 {
+  font-family: @H2FontFamily;
+  font-size: @H2FontSize;
+  font-weight: @H2FontWeight;
+  line-height: @H2LineHeight;
+  color: @H2TextColor;
+  text-decoration: @H2TextDecoration;
+}
+
+h3, .h3 {
+  font-family: @H3FontFamily;
+  font-size: @H3FontSize;
+  font-weight: @H3FontWeight;
+  line-height: @H3LineHeight;
+  color: @H3TextColor;
+  text-decoration: @H3TextDecoration;
+}
+
+h4, .h4 {
+  font-family: @H4FontFamily;
+  font-size: @H4FontSize;
+  font-weight: @H4FontWeight;
+  line-height: @H4LineHeight;
+  color: @H4TextColor;
+  text-decoration: @H4TextDecoration;
+}
+
+h5, .h5 {
+  font-family: @H5FontFamily;
+  font-size: @H5FontSize;
+  font-weight: @H5FontWeight;
+  line-height: @H5LineHeight;
+  color: @H5TextColor;
+  text-decoration: @H5TextDecoration;
+}
+
+h6, .h6 {
+  font-family: @H6FontFamily;
+  font-size: @H6FontSize;
+  font-weight: @H6FontWeight;
+  line-height: @H6LineHeight;
+  color: @H6TextColor;
+  text-decoration: @H6TextDecoration;
+}
+/*doc
+---
+title: Paragraph
+name: paragraph
+category: Typography
+---
+Paragraph example
+
+```html_example
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
+ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla
+vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, <strong>detalhe metalizado no salto completo</strong>
+imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
+Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat
+vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat</p>
+```
+*/
+
+p {
+  font-family: @ParagraphFontFamily;
+  font-size: @ParagraphFontSize;
+  line-height: @ParagraphLineHeight;
+  color: @ParagraphTextColor;
+  text-decoration: @ParagraphTextDecoration;
+}
+
+
+/*doc
+---
+title: Links
+name: default-links
+category: Typography
+---
+Link example in paragraph
+
+```html_example
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
+ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo,
+fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae,
+justo. Nullam dictum <a href="#links"> Palmilha</a> felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper
+nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
+Aliquam lorem ante, dapibus in, viverra quis, feugiat</p>
+```
+
+```html_example
+<a href="#links">Link</a>
+```
+
+## Icons
+Links can have icons:
+
+```html_example
+<a href="#links" class="carat">
+  See More
+  <span class="glyphicon-chevron-right"></span>
+</a>
+```
+*/
+
+a {
+  color: @LinkColor;
+  text-decoration: underline;
+
+  &.link-as-button {
+    text-transform: uppercase;
+    color: @LinkColor;
+    font-weight: bold;
+    font-family: @DefaultSiteFontFamily;
+  }
+
+  /* Don't decorate the icon */
+  &[class^="glyphicon-"]:before {
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  &:visited{
+    color: @LinkVisitedColor;
+  }
+
+  &:hover {
+    color: @LinkHoverColor;
+  }
+
+  &:link, &:focus, &:active {
+    outline: 0;
+  }
+
+  &.carat *[class^="glyphicon-"] {
+    font-size: @FontSizeExtraSmall;
+  }
+}

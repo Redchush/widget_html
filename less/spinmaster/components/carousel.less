@@ -1,0 +1,206 @@
+/*doc
+---
+title: Carousel
+name: carousel
+category: Components
+---
+
+###Default carousel
+
+####Attention: Don't use the class __doc-solid-background darken__ on your element, it's only for the styleguide
+
+```html_example
+<div class="doc-solid-background darken"><!-- DON'T USE this element on you application, this is only for the styleguide -->
+  <div class="carousel slide">
+    <div class="carousel-inner">
+      <div class="item active">
+        <a href="#">
+            <img alt="Hero Image 1" class="img-responsive center-block" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=500&h=300">
+        </a>
+      </div>
+    
+      <div class="item ">
+        <a href="#">
+            <img alt="Hero Image 1" class="img-responsive center-block" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=500&h=300">
+        </a>
+      </div>
+    </div>
+    <div class="left carousel-control hidden-xs hidden-sm">
+      <a href="#">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <div class="sr-only">previous</div>
+      </a>
+    </div>
+    <div class="right carousel-control hidden-xs hidden-sm">
+      <a href="#">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <div class="sr-only">next</div>
+      </a>
+    </div>
+    <ol class="carousel-indicators">
+      <li class="active"></li>
+      <li></li>
+    </ol>
+  </div>
+</div>
+```
+
+###Second carousel style
+
+```html_example
+<div class="carousel slide cc-carousel-secondary">
+  <div class="carousel-inner">
+    <div class="item active">
+      <a href="#">
+          <img alt="Hero Image 1" class="img-responsive center-block" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=500&h=300">
+      </a>
+    </div>
+  
+    <div class="item ">
+      <a href="#">
+          <img alt="Hero Image 1" class="img-responsive center-block" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=500&h=300">
+      </a>
+    </div>
+  </div>
+  <div class="left carousel-control hidden-xs hidden-sm">
+    <a href="#">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <div class="sr-only">previous</div>
+    </a>
+  </div>
+  <div class="right carousel-control hidden-xs hidden-sm">
+    <a href="#">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <div class="sr-only">next</div>
+    </a>
+  </div>
+  <ol class="carousel-indicators">
+    <li class="active"></li>
+    <li></li>
+  </ol>
+</div>
+```
+
+*/
+
+.carousel.slide {
+  .carousel-inner {
+    padding: 0 30px 20px;
+  }
+
+  .carousel-control {
+    background: none;
+    text-shadow: none;
+    width: 4%;
+    
+    &.left,
+    &.right {
+      display: block;
+      height: @CarouselSizeBorderRadiusDouble;
+      width: @CarouselSizeBorderRadius;
+      background-color: @ColorSpinBlueRegular;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      &:hover {
+        height: @CarouselSizeBorderRadiusDouble + 10px;
+        width: @CarouselSizeBorderRadius + 10px;
+      }
+      
+      .glyphicon {
+        font-family: 'custom-icons';
+        font-size: 6rem;
+        width: @CarouselArrowsWidth;
+        height: auto;
+        margin: 0;    
+        top: auto;    
+        color: @CarouselArrowsColor;
+      }
+    }
+
+    &.left {
+      left: 0;
+      border-bottom-right-radius: @CarouselSizeBorderRadius * 2;
+      border-top-right-radius: @CarouselSizeBorderRadius * 2;
+      
+      .glyphicon {
+        left: 0;
+        
+        &:hover {
+          top: 5px;
+        }
+        
+        &:before {
+          content: @font-custom-icons-d2c-chevronleft;
+          text-indent: 0;
+          position: relative; 
+          right: 18px;
+          font-size: @CarouselArrowsSize;
+          top: 10px;
+        }
+      }
+    }
+
+    &.right {
+      right: 0;
+      //left: 0;
+      border-top-left-radius: @CarouselSizeBorderRadius * 2;
+      border-bottom-left-radius: @CarouselSizeBorderRadius * 2;
+      .glyphicon {
+        right: 0;
+        
+        &:hover {
+          top: 5px;
+        }
+        
+        &:before {
+          text-indent: 0;
+          content: @font-custom-icons-d2c-chevronright;
+          position: relative; 
+          left: -40px;
+          font-size: @CarouselArrowsSize;
+          top: 10px;
+        }
+      }
+    }
+  }
+
+  .carousel-indicators {
+    bottom: -5%;
+    
+    > li {
+      width: @CarouselIndicatorsSize;
+      height: @CarouselIndicatorsSize;
+      background: @CarouselIndicatorsColor;
+      opacity: 0.5;
+
+      &.active {
+        width: @CarouselIndicatorsActiveSize;
+        height: @CarouselIndicatorsActiveSize;
+        background-color: @ColorSpinBlueRegular;
+        border-color: @ColorSpinBlueRegular;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.carousel.slide.cc-carousel-secondary {
+  .carousel-control {
+    &.left,
+    &.right {
+      .glyphicon {
+        color: @CarouselSecondaryArrowsColor;
+      }
+    }
+  }
+
+  .carousel-indicators {
+    > li {
+      background: @CarouselSecondaryIndicatorsColor;
+      border-color: @CarouselSecondaryIndicatorsColor;
+    }
+  }
+}
+

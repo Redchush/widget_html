@@ -1,0 +1,254 @@
+/*doc
+---
+title: Modals
+name: modals
+category: Components
+---
+
+### Default modal
+
+```html_example
+<div class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close hidden-xs" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close visible-xs" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">FECHAR</span></button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <h5 class="modal-content-title">Content Title Example</h5>
+
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+        when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+        and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+
+        <h6 class="modal-content-subtitle">Content Subtitle Example</h6>
+
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+        when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="cc-button-primary">Save changes <i class="glyphicon glyphicon-chevron-right"></i></button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+```
+
+### Modal with form
+
+```html_example
+<div class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close hidden-xs" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close visible-xs" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">FECHAR</span></button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal">
+          <legend>
+            All fields are required
+          </legend>
+          <div class="centered-fields">
+            <div class="form-group">
+              <label for="modalInputFirstName" class="col-sm-3 control-label">First Name</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="modalInputFirstName">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="modalInputLastName" class="col-sm-3 control-label">Last Name</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="modalInputLastName">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="modalInputCPF" class="col-sm-3 control-label">CPF</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control" id="modalInputCPF">
+              </div>
+              <label for="modalInputTelephone" class="col-sm-2 control-label">Telephone</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control" id="modalInputTelephone">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="modalInputEmail" class="col-sm-3 control-label">Email</label>
+              <div class="col-sm-9">
+                <input type="email" class="form-control" id="modalInputEmail">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="modalInputPostalCode" class="col-sm-3 control-label">Postal Code</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control" id="modalInputPostalCode">
+              </div>
+              <div class="col-sm-6">
+                <div class="form-hint">
+                 <div class="hint-content">
+                  <a href="#postal-code-helper">I don't know my Postal Code</a>
+                 </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="modalInputLastName" class="col-sm-3 control-label">Last Name</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="modalInputLastName">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-12">
+                <button type="button" class="cc-button-primary pull-right">Send <i class="glyphicon glyphicon-chevron-right"></i></button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+```
+
+### Modal with centered content
+
+```html_example
+<div class="modal fade modal-centered-content" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close hidden-xs" data-dismiss="modal" aria-label="Close"><span class='glyphicon-d2c-close'></span></button>
+        <button type="button" class="close visible-xs" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">FECHAR</span></button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <div class="centered-content">
+          <h5 class="modal-content-title">Content Title Example</h5>
+          <h6 class="modal-content-subtitle">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's...</h6>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="cc-button-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+```
+*/
+
+.modal {
+  @ModalPadding: 40px;
+
+  .modal-header {
+    border: none;
+  }
+
+  .close {
+    opacity: 1;
+    font-size: @ModalCloseButtonFontSize;
+    padding: 2px 6px;
+    line-height: 100%;
+    background-color: @ColorWhite;
+    border-color: @ColorWhite;
+    color: @ColorShadeBold;
+    font-size: @FontSizeExtraLarge;
+  }
+
+  .modal-title {
+    font-size: @ModalTitleFontSize;
+    text-transform: none;
+    color: @ModalTitleTextColor;
+    font-style: normal;
+    margin: 50px 0 0;
+    padding-left: @ModalPadding;
+    padding-right: @ModalPadding;
+    line-height: 100%;
+    text-align: left;
+  }
+
+  .modal-content {
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+  }
+
+  .modal-dialog {
+    width: 80%;
+  }
+
+  .modal-content-title {
+    color: @ModalContentTitleTextColor;
+    font-style: italic;
+    font-size: @ModalContentTitleFontSize;
+    text-transform: uppercase;
+  }
+
+  .modal-content-subtitle {
+    color: @ColorBlack;
+    font-size: @ModalContentSubTitleFontSize;
+  }
+
+  .modal-body {
+    color: @ModalBodyTextColor;
+    padding: 20px @ModalPadding;
+    min-height: 400px;
+    overflow-y: auto;
+  }
+
+  .modal-footer {
+    border: none;
+    padding: 20px @ModalPadding;
+  }
+
+  &.modal-centered-content {
+    .modal-body,
+    .modal-footer {
+      text-align: center;
+    }
+
+    .modal-body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content-title {
+      color: @ModalCenteredContentTitleTextColor;
+      font-style: normal;
+      margin-bottom: 0;
+
+      & + .modal-content-subtitle {
+        margin-top: 0;
+      }
+    }
+
+    .modal-content-subtitle {
+      font-style: normal;
+      font-size: @ModalCenteredContentSubTitleFontSize;
+    }
+  }
+  @media screen and (max-width: @screen-xs-max) {
+    .modal-dialog {
+      width: 100%;
+      margin: 0;
+      height: 100%;
+      background-color: @ModalMobileDialogBackgroundColor;
+    }
+    .modal-title {
+      font-size: 4rem;
+      word-break: break-word;
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .close {
+      font-size: 1.2rem;
+      line-height: 150%;
+    }
+    .modal-body {
+      padding: 20px 15px;
+    }
+  }
+}

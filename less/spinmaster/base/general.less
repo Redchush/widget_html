@@ -1,0 +1,53 @@
+/******************************************************************************
+    GENERAL STYLES
+******************************************************************************/
+html {
+  font-size:            @FontSizeBase;
+}
+
+html, body {
+  overflow-x: hidden;
+
+  /**
+   * height 100% breaks the scroll event
+   * when using with overflow-x: hidden;
+   */
+  height: auto;
+}
+
+body {
+  background: @SiteBackgroundColor @SiteBackgroundImageURL @SiteBackgroundImagePosition @SiteBackgroundImageRepeat;
+
+  .SiteBackground() when (@SiteBackgroundUseGradient) {
+    .background-styles (@SiteBackgroundColor, @SiteBackgroundImageURL, @SiteBackgroundImageRepeat, @SiteBackgroundImagePosition,
+                        @SiteBackgroundColorTop, @SiteBackgroundColorBottom, @SiteBackgroundImageAttachment);
+  }
+  .SiteBackground;
+
+  background-attachment: @SiteBackgroundImageAttachment;
+
+  color:                @TextColor;
+  font-family:          @SiteFontFamily;
+  font-size:            @FontSizeNormal;
+  font-style:           @SiteFontStyle;
+  font-weight:          @SiteFontWeight;
+  line-height:          @SiteLineHeight;
+  text-align:           @SiteTextAlign;
+  text-decoration:      @SiteTextDecoration;
+
+  #page {
+    background-color:     @SitePageBackgroundColor;
+
+    &.preview {
+      padding-top: 0;
+    }
+  }
+
+  //We don't have footer, so let's force some spacing at bottom
+  margin-bottom: 100px;
+}
+
+.cart {
+  padding-top: 0;
+  padding-bottom: 0;
+}

@@ -1,0 +1,98 @@
+.background-styles (@BackgroundColor, @BackgroundImageURL, @BackgroundImageRepeat, @BackgroundImagePosition,
+                    @BackgroundColorTop, @BackgroundColorBottom, @BackgroundImageAttachment) {
+
+
+  background: -moz-linear-gradient(top, @BackgroundColorTop 0%, @BackgroundColorBottom 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, @BackgroundColorTop), color-stop(100%, @BackgroundColorBottom));
+  background: -webkit-linear-gradient(top, @BackgroundColorTop 0%, @BackgroundColorBottom 100%);
+  background: -o-linear-gradient(top, @BackgroundColorTop 0%, @BackgroundColorBottom 100%);
+  background: -ms-linear-gradient(top, @BackgroundColorTop 0%, @BackgroundColorBottom 100%);
+  background: linear-gradient(to bottom, @BackgroundColorTop 0%, @BackgroundColorBottom 100%);
+  filter:~"progid:DXImageTransform.Microsoft.gradient(startColorstr='@{BackgroundColorTop}', endColorstr='@{BackgroundColorBottom}', GradientType=0)";
+}
+
+.column-count(@count) {
+  column-count: @count;
+  -webkit-column-count: @count;
+  -moz-column-count: @count;
+}
+
+.column-rule(@string) {
+  -webkit-column-rule: @string;
+  -moz-column-rule: @string;
+  column-rule: @string;
+}
+
+.column-gap(@gap) {
+  -webkit-column-gap: @gap;
+  -moz-column-gap: @gap;
+  column-gap: @gap;
+}
+
+.custom-icon-base() {
+  display: table-cell;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  vertical-align: middle;
+}
+
+.triangle-base() {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    -moz-transform: scale(.9999);
+}
+.triangle(@direction, @size, @color) {
+    .triangle(@direction, @size * 2, @size, @color);
+}
+.triangle(@direction, @width, @height, @color) when (@direction = up) {
+    .triangle-base();
+    border-left: (@width / 2) solid transparent;
+    border-right: (@width / 2) solid transparent;
+    border-bottom: @height solid @color;
+}
+.triangle(@direction, @width, @height, @color) when (@direction = down) {
+    .triangle-base();
+    border-left: (@width / 2) solid transparent;
+    border-right: (@width / 2) solid transparent;
+    border-top: @height solid @color;
+}
+.triangle(@direction, @width, @height, @color) when (@direction = left) {
+    .triangle-base();
+    border-top: (@width / 2) solid transparent;
+    border-bottom: (@width / 2) solid transparent;
+    border-right: @height solid @color;
+}
+.triangle(@direction, @width, @height, @color) when (@direction = right) {
+    .triangle-base();
+    border-top: (@width / 2) solid transparent;
+    border-bottom: (@width / 2) solid transparent;
+    border-left: @height solid @color;
+}
+
+.make-ellipsis(@FontSize: @FontSizeNormal, @LineHeight: 1.4, @LinesToShow: 3) {
+  width: 100%;
+  display: block; /* Fallback for non-webkit */
+  display: -webkit-box;
+  height: @FontSize * @LineHeight * @LinesToShow; /* Fallback for non-webkit */
+  margin: 0 auto;
+  font-size: @FontSize;
+  line-height: @LineHeight;
+  -webkit-line-clamp: @LinesToShow;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.change-ellipsis-height(@FontSize: @FontSizeNormal, @LineHeight: 1.4, @LinesToShow: 3) {
+  height: @FontSize * @LineHeight * @LinesToShow; /* Fallback for non-webkit */
+}

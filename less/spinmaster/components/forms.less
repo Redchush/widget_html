@@ -1,0 +1,779 @@
+/*doc
+---
+title: Introduction
+name: 1-introduction
+category: Forms
+---
+
+That project uses Bootstrap as a basis style. So, all forms structures should follow
+the Boostrap's recommendations.
+
+Any doubt you can take a look at the [Bootstrap Forms](http://getbootstrap.com/css/#forms)
+documentation.
+
+##sr-only
+
+Important note: Remember to always use the label element in order to keep our application
+well indexable and accessible. You can do that using the `sr-only` class of bootstrap. e.g:
+
+```html_example
+<form>
+  <div class="form-group">
+    <label class="sr-only" for="my-sr-only-field">SR Field</label>
+    <input type="text" placeholder="SR Field" class="form-control" id="my-sr-only-field" />
+  </div>
+  <button type="submit" class="cc-button-primary">Submit</button>
+</form>
+```
+*/
+
+/*doc
+---
+title: Text Fields
+name: 2-text-fields
+category: Forms
+---
+
+###Simple text field
+
+```html_example
+<form>
+  <div class="form-group">
+    <label class="sr-only" for="simple-field-name">Name</label>
+    <input type="text" placeholder="Name" class="form-control" id="simple-field-name" />
+  </div>
+  <button type="submit" class="cc-button-primary">Submit</button>
+</form>
+```
+
+###Text field with a button and a glyphicon
+
+```html_example
+<form>
+  <div class="form-group">
+    <div class="input-group">
+      <input type="text" placeholder="Search" class="form-control" />
+        <div class="input-group-btn">
+          <span class="form-info glyphicon-D2C-ToolTip"></span>
+        </div>
+    </div>
+  </div>
+</form>
+```
+
+###Invalid text field
+
+```html_example
+<form>
+  <div class="form-group">
+    <label class="sr-only" for="invalid-text-field">Invalid Text Field</label>
+    <input type="text" placeholder="Search" class="form-control search-field invalid" id="invalid-text-field" />
+    <span class="invalid-field-text">Error</span>
+  </div>
+</form>
+```
+
+###Invalid text field with icon
+
+```html_example
+<form>
+  <div class="form-group">
+    <div class="input-group">
+      <input type="text" placeholder="Search" class="form-control invalid search-field" />
+        <div class="input-group-btn">
+          <button type="submit" class="btn btn-default form-control">
+            <span class="sr-only">Search</span>
+            <span class="glyphicon-d2c-search"></span>
+          </button>
+        </div>
+    </div>
+    <span class="invalid-field-text">Error</span>
+  </div>
+</form>
+```
+
+
+*/
+
+/**
+ * Placeholders
+ */
+
+::-webkit-input-placeholder {
+  color: @FormFieldPlaceholderColor !important;
+}
+
+:-moz-placeholder {
+  color: @FormFieldPlaceholderColor !important;
+}
+::-moz-placeholder {
+  color: @FormFieldPlaceholderColor !important;
+}
+:-ms-input-placeholder {  
+  color: @FormFieldPlaceholderColor !important;
+}
+
+.form-control,
+.input-group-btn button {
+  height: @FormFieldSize;
+  font-size: @FormFieldFontSize;
+  color: @FormFieldTextColor;
+  padding: @FormFieldVerticalPadding @FormFieldHorizontalPadding;
+  border: @FieldBorderWidth solid @FieldBorderColor;
+
+  &,
+  &#searchSubmit {
+    border-radius: 0;
+  }
+
+  &,
+  &:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  
+  &:focus {
+    border-color: @FormFieldFocusBorderColor
+  }
+}
+
+//Adding border
+.form-control:not(.search-field):not(.btn):not(textarea) {
+  border-bottom-width: @FieldBorderWidth;
+  border-radius: 5px;
+}
+
+//Search
+.form-control.search-field {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.form-control.search-field:focus + .input-group-btn .btn {
+  border: @FieldBorderWidth solid @FormFieldFocusBorderColor;
+  border-left: none;
+}
+
+.control-label,
+label {
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: @FormLabelFontSize;
+}
+
+legend {
+  border: none;
+  font-size: @FormLegendFontSize;
+  font-weight: normal;
+  color: @FormLegendTextColor;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  font-weight: @FormLegendFontWeight;
+}
+
+.form-hint {
+  height: @FormFieldSize;
+  position: relative;
+
+  .hint-content {
+    position: absolute;
+    bottom: 0;
+  }
+
+  .hint-content,
+  .hint-content a {
+    color: @FormHint;
+    text-transform: uppercase;
+  }
+}
+
+.form-info {
+  color: @ColorSpinBlueRegular;
+  font-size: @FontSizeExtraLarge;
+}
+
+.centered-fields {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.input-group-btn {
+  &:last-child {
+    & > .btn,
+    & > .btn-group {
+      margin-left: -@FieldBorderWidth;
+    }
+  }
+}
+
+.form-control.invalid {
+  border-color: @InvalidFieldBorderColor;
+  background-color: @InvalidFieldBackgroundColor;
+  border-radius: 5px;
+  ~ .input-group-btn button {
+    border-color: @InvalidFieldBorderColor;
+    background-color: @InvalidFieldBackgroundColor;
+  }
+}
+
+.invalid-field-text {
+  display: inline-block;
+  margin-top: 5px;
+  font-size: @InvalidFieldFontSize;
+  font-style: normal;
+  color: @InvalidFieldTextColor;
+  margin-left: 20px;
+}
+
+.invalid-field-text-icon {
+  color: @ColorRed;
+}
+
+/*doc
+---
+title: Text area fields
+name: 3-text-area-fields
+category: Forms
+---
+
+###Simple text area
+
+```html_example
+<form>
+  <div class="form-group">
+    <label for="simple-text-area" class="sr-only">Text Area</label>
+    <textarea class="form-control" rows="5" placeholder="text area" id="simple-text-area"></textarea>
+  </div>
+  <button type="submit" class="cc-button-primary">Submit</button>
+</form>
+```
+
+###Invalid text area
+
+```html_example
+<form>
+  <div class="form-group">
+    <label for="invalid-simple-text-area" class="sr-only">Text Area</label>
+    <textarea class="form-control invalid" rows="5" placeholder="text area" id="invalid-simple-text-area"></textarea>
+    <span class="invalid-field-text">Error</span>
+  </div>
+  <button type="submit" class="cc-button-primary">Submit</button>
+</form>
+```
+*/
+textarea.form-control {
+  height: auto;
+  border-width: @FieldBorderWidth;
+}
+
+/* REF: http://stackoverflow.com/questions/3062968/remove-textarea-inner-shadow-on-mobile-safari-iphone */
+input[type='text'],
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.input-group-btn button {
+  border-left: none;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/*doc
+---
+title: Select fields
+name: 4-select-fields
+category: Forms
+---
+
+All selects have a JS to customize them better, but only the classes and elements are being used
+in the project.
+
+So, it needs a container element called `control` and `picker`, it should be the select container and the
+select element itself.
+
+```html_example
+<form>
+  <div class="form-group">
+    <label class="sr-only" for="select-example">Select Example</label>
+    <div class="control picker">
+      <select class="form-control" id="select-example">
+        <option>First Option</option>
+        <option>Second Option</option>
+        <option>Third Option</option>
+      </select>
+    </div>
+  </div>
+</form>
+```
+
+###Invalid Select field
+```html_example
+<form>
+  <div class="form-group">
+    <label class="sr-only" for="invalid-select-example">Select Example</label>
+    <div class="control picker">
+      <select class="form-control invalid" id="invalid-select-example">
+        <option>First Option</option>
+        <option>Second Option</option>
+        <option>Third Option</option>
+      </select>
+    </div>
+    <span class="invalid-field-text">Error</span>
+  </div>
+</form>
+```
+*/
+.chosen-container {
+  display: none;
+}
+
+.picker {
+  position: relative;
+
+  select {
+    position: relative;
+    display: block !important;
+    padding-right: 30px;
+  }
+
+  &:after,
+  &:before {
+    font-family: 'custom-icons';
+    content: @font-custom-icons-arrow-down;
+    position: absolute;
+    top: 15px;
+    bottom: 0;
+    margin: auto;
+    right: 10px;
+    pointer-events: none;
+    color: @FormSelectTextColor;
+    font-size: @FormSelectIconFontSize;
+  }
+}
+
+/*doc
+---
+title: Checkbox
+name: 5-checkbox
+category: Forms
+---
+This is an example of a checkbox input
+
+```html_example
+<div class="checkbox">
+  <label>
+    <input type="checkbox" id="checkbox1">
+    <span for="checkbox1">Check This</span>
+  </label>
+</div>
+<div class="checkbox">
+  <label>
+    <input type="checkbox" checked id="checkbox2">
+    <span for="checkbox2">Checked</span>
+  </label>
+</div>
+<div class="checkbox">
+  <label>
+    <input type="checkbox" disabled id="checkbox2">
+    <span for="checkbox2">Checked</span>
+  </label>
+</div>
+<div class="checkbox">
+  <label>
+    <input type="checkbox" disabled checked id="checkbox2">
+    <span for="checkbox2">Checked disabled</span>
+  </label>
+</div>
+```
+This is an example of a checkbox-inline input
+
+```html_example
+<div class="checkbox-inline">
+  <label>
+    <input type="checkbox" id="checkbox1">
+    <span for="checkbox1">Check This</span>
+  </label>
+</div>
+<div class="checkbox-inline">
+  <label>
+    <input type="checkbox" checked id="checkbox2">
+    <span for="checkbox2">Checked</span>
+  </label>
+</div>
+<div class="checkbox-inline">
+  <label>
+    <input type="checkbox" disabled id="checkbox2">
+    <span for="checkbox2">Checked</span>
+  </label>
+</div>
+<div class="checkbox-inline">
+  <label>
+    <input type="checkbox" disabled checked id="checkbox2">
+    <span for="checkbox2">Checked disabled</span>
+  </label>
+</div>
+```
+
+###Invalid Checkbox field
+
+```html_example
+<div class="checkbox">
+  <label>
+    <input type="checkbox" class="invalid" id="checkbox1-invalid">
+    <span for="checkbox1">Check This</span>
+  </label>
+  <span class="invalid-field-text">Error</span>
+</div>
+<div class="checkbox">
+  <label>
+    <input type="checkbox" class="invalid" checked id="checkbox2-invalid">
+    <span for="checkbox2">Invalid</span>
+  </label>
+  <span class="invalid-field-text">Error</span>
+</div>
+```
+*/
+.checkbox {
+  padding-left: 0;
+
+  label {
+    display: inline-block;
+  }
+}
+
+.checkbox-inline {
+  padding: 0;
+  label {
+    font-weight: @CheckBoxInlineLabelFontWeight;
+  }
+}
+
+.checkbox, .checkbox-inline {
+  font-family: @CheckBoxFontFamily;
+  font-size: @CheckBoxInlineFontSize;
+  font-weight: @CheckBoxInlineFontWeight;
+  /* Base for label styling */
+  [type='checkbox']:not(:checked),
+  [type='checkbox']:checked {
+    display: none;
+  }
+  [type='checkbox']:not(:checked) + span,
+  [type='checkbox']:checked + span {
+    position: relative;
+    padding-left: @CheckBoxPaddingLeft;
+    cursor: pointer;
+  }
+
+  /* checkbox aspect */
+  [type='checkbox']:not(:checked) + span:before,
+  [type='checkbox']:checked + span:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 1px;
+    width: @CheckBoxSize;
+    height: @CheckBoxSize;
+    border: @CheckBoxBorderWidth solid @CheckBoxBorderColor;
+    background: @CheckBoxBackGroundColor;
+    border-radius: @CheckBoxBorderRadius;
+  }
+  /* checked mark aspect */
+  [type='checkbox']:not(:checked) + span:after,
+  [type='checkbox']:checked + span:after {
+    font-family: 'custom-icons';// NOSONAR
+    font-size: @CheckBoxIconFontSize;
+    content: @font-custom-icons-d2c-checksmall;
+    color: @CheckBoxBackGroundColorChecked;
+    background: none;
+    position: absolute;
+    top: 0;
+    left: @CheckBoxLeft;
+    width: @CheckBoxSizeBackGround; 
+    height: @CheckBoxSizeBackGround;
+  }
+  /* checked mark aspect changes */
+  [type='checkbox']:not(:checked) + span:after {
+    opacity: 0;
+  }
+  [type='checkbox']:checked + span:after {
+    opacity: 1;
+  }
+  /* disabled checkbox */
+  [type='checkbox']:disabled:not(:checked) + span:before,
+  [type='checkbox']:disabled:not(:checked) + span:after,
+  [type='checkbox']:disabled:checked + span:before,
+  [type='checkbox']:disabled:checked + span:after {
+    opacity: .4;
+  }
+
+  [type='checkbox']:disabled + span {
+    cursor: not-allowed;
+  }
+
+  /* accessibility */
+  [type='checkbox']:checked:focus + span:before,
+  [type='checkbox']:not(:checked):focus + span:before {
+    border: @CheckBoxBorderWidth solid @CheckBoxBorderColor;
+  }
+
+  /* invalid */
+  [type='checkbox'].invalid {
+    & + span:before {
+      border-color: @CheckboxInvalidFieldBorderColor;
+    }
+
+    & + span:after {
+      background: none;
+    }
+  }
+}
+
+/*doc
+---
+title: Radio button
+name: 6-radio-button
+category: Forms
+---
+This is an example of a radio button input
+
+```html_example
+<div class="radio">
+  <label>
+    <input type="radio" checked id="radio1" name="radio">
+    <span for="radio1">Option 1</span>
+  </label>
+</div>
+<div class="radio">
+  <label>
+    <input type="radio" id="radio1" name="radio">
+    <span for="radio1">Option 1</span>
+  </label>
+</div>
+<div class="radio">
+  <label>
+    <input type="radio" disabled id="radio" name="radio">
+    <span for="radio2">Option 2</span>
+  </label>
+</div>
+<div class="radio">
+  <label>
+    <input type="radio" disabled checked id="radio" name="radio">
+    <span for="radio2">Option 2</span>
+  </label>
+</div>
+```
+This is an example of a radio-inline button input
+
+```html_example
+<div class="radio-inline">
+  <label>
+    <input type="radio" checked id="radio1" name="radio">
+    <span for="radio1">Option 1</span>
+  </label>
+</div>
+<div class="radio-inline">
+  <label>
+    <input type="radio" id="radio1" name="radio">
+    <span for="radio1">Option 1</span>
+  </label>
+</div>
+<div class="radio-inline">
+  <label>
+    <input type="radio" disabled id="radio" name="radio">
+    <span for="radio2">Option 2</span>
+  </label>
+</div>
+<div class="radio-inline">
+  <label>
+    <input type="radio" disabled checked id="radio" name="radio">
+    <span for="radio2">Option 2</span>
+  </label>
+</div>
+```
+
+###Invalid radio field
+
+```html_example
+<div class="radio">
+  <label>
+    <input type="radio" class="invalid" id="radio1-invalid">
+    <span for="radio1-invalid">Check This</span>
+  </label>
+  <span class="invalid-field-text">Error</span>
+</div>
+<div class="radio">
+  <label>
+    <input type="radio" class="invalid" checked id="radio2-invalid">
+    <span for="radio2-invalid">Invalid</span>
+  </label>
+  <span class="invalid-field-text">Error</span>
+</div>
+```
+*/
+.radio {
+  padding-left: 0;
+
+  label {
+    display: inline-block;
+  }
+}
+
+.radio-inline {
+  padding: 0;
+  label {
+    font-weight: @RadioInlineLabelFontWeight;
+  }
+}
+
+.radio, .radio-inline {
+  font-family: @RadioFontFamily;
+  font-size: @RadioInlineFontSize;
+  font-weight: @RadioInlineFontWeight;
+  /* Base for label styling */
+  [type='radio']:not(:checked),
+  [type='radio']:checked {
+    display: none;
+  }
+  [type='radio']:not(:checked) + span,
+  [type='radio']:checked + span {
+    position: relative;
+    padding-left: @RadioPaddingLeft;
+    cursor: pointer;
+  }
+
+  /* checkbox aspect */
+  [type='radio']:not(:checked) + span:before,
+  [type='radio']:checked + span:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -3px;
+    width: @RadioSize;
+    height: @RadioSize;
+    border: @RadioBorderWidth solid @RadioBorderColor;
+    background: @RadioBackGroundColor;
+    border-radius: @RadioBorderRadius;
+  }
+  /* checked mark aspect */
+  [type='radio']:not(:checked) + span:after,
+  [type='radio']:checked + span:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: @RadioSizeBackGround;
+    height: @RadioSizeBackGround;
+    background: @RadioBackGroundColorChecked;
+    border-radius: @RadioBorderRadius;
+    background-size: @RadioBackGroundSize;
+    left: @RadioLeft;
+  }
+  /* checked mark aspect changes */
+  [type='radio']:not(:checked) + span:after {
+    opacity: 0;
+  }
+  [type='radio']:checked + span:after {
+    opacity: 1;
+  }
+  /* disabled checkbox */
+  [type='radio']:disabled:not(:checked) + span:before,
+  [type='radio']:disabled:not(:checked) + span:after,
+  [type='radio']:disabled:checked + span:before,
+  [type='radio']:disabled:checked + span:after {
+    opacity: .4;
+  }
+
+  [type='radio']:disabled + span {
+    cursor: not-allowed;
+  }
+
+  /* accessibility */
+  [type='radio']:checked:focus + span:before,
+  [type='radio']:not(:checked):focus + span:before {
+    border: @RadioBorderWidth solid @RadioBorderColor;
+  }
+
+  /* Invalid */
+  [type='radio'].invalid {
+    & + span:before {
+      border-color: @RadioInvalidFieldBorderColor;
+    }
+
+    & + span:after {
+      background-color: @RadioInvalidFieldBackgroundColor;
+    }
+  }
+}
+
+/*doc
+---
+title: Form Fieldset Box
+name: 7-form-fieldset-box
+category: Forms
+---
+
+```html_example
+<form class="cc-form-box">
+  <fieldset>
+    <div class="form-group">
+      <label class="sr-only" for="simple-field-name-box">Name</label>
+      <input type="text" placeholder="Name" class="form-control" id="simple-field-name-box" />
+    </div>
+    <div class="form-group">
+      <label class="sr-only" for="invalid-text-field">Invalid Text Field</label>
+      <input type="text" placeholder="Search" class="form-control search-field invalid" id="invalid-text-field" />
+      <span class="invalid-field-text">Error</span>
+    </div>
+    <div class="form-group">
+      <div class="input-group">
+        <input type="text" placeholder="Search" class="form-control search-field" />
+          <div class="input-group-btn">
+            <button type="submit" class="btn btn-default form-control">
+              <span class="sr-only">Search</span>
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </div>
+      </div>
+    </div>
+  </fieldset>
+  <fieldset>
+    <div class="form-group">
+      <label class="sr-only" for="simple-field-name-box">Name</label>
+      <input type="text" placeholder="Name" class="form-control" id="simple-field-name-box" />
+    </div>
+    <div class="form-group">
+      <label class="sr-only" for="invalid-text-field">Invalid Text Field</label>
+      <input type="text" placeholder="Search" class="form-control search-field invalid" id="invalid-text-field" />
+      <span class="invalid-field-text">Error</span>
+    </div>
+  </fieldset>
+</form>
+```
+*/
+
+.cc-form-box {
+  fieldset {
+    background: @FormBoxFieldsetBackgroundColor;
+    padding: 20px;
+    
+    .form-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .form-control {
+      padding-left: 15px;
+      padding-right: 15px;
+
+      &:not(.invalid):not(:focus) {
+        border-color: @FormBoxFormControlBorderColor;
+      }
+    }
+
+    ~ fieldset {
+      margin-top: @FormBoxFieldsetSpacingTop;
+    }
+  }
+}
+

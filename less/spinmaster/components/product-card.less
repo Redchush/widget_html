@@ -1,0 +1,493 @@
+/*doc
+---
+title: Product Card
+name: product-card
+category: Components
+---
+
+###Product Card Default 
+
+```html_example
+<div class="row cc-products-cards">
+
+  <div class="cc-product-card col-xs-12 col-sm-6 col-lg-4 col-md-4">
+    <div class="cc-product-card-content-container">
+
+      <!-- Product Image -->
+      <figure class="cc-product-image-container">
+        <img class="cc-product-card-image img-responsive center-block" src="http://placehold.it/249x249">
+
+        <div class="cc-product-image-info-wrapper">
+          <figcaption class="cc-product-card-image-caption">Lorem Ipsum</figcaption>
+          <span class="cc-product-new-flag">New</span>
+        </div>
+      </figure>
+      <!-- /Product Image -->
+      
+      <!-- Product details container -->
+      <div class="cc-product-card-content">
+
+        <!-- Product Title -->
+        <h3 class="cc-product-card-title">
+          TRACER SX5 QUICK SHIP
+        </h3>
+        <!-- /Product Title -->
+
+        <div class="cc-product-card-details">
+          <div class="cc-product-details-content-wrap">
+            <!-- Prices -->
+            <div class="cc-product-prices">
+              <span class="cc-product-before-price">
+                $695
+              </span>
+              <span class="cc-product-price">
+                $289
+              </span>
+            </div>
+            <!-- /Prices -->
+
+            <!-- Reviews -->
+            <div class="cc-stars-component">
+              <div class="cc-stars-container cc-card-section">
+                <ul class="cc-stars">
+                  <li class="cc-star"><span class="sr-only">1 Star</span></li>
+                  <li class="cc-star"><span class="sr-only">2 Stars</span></li>
+                  <li class="cc-star"><span class="sr-only">3 Stars</span></li>
+                  <li class="cc-star"><span class="sr-only">4 Stars</span></li>
+                  <li class="cc-star"><span class="sr-only">5 Stars</span></li>
+                </ul>
+                <div class="cc-stars-active-container" style="width: 70%;">
+                  <div class="cc-stars-active">
+                    <span class="cc-star"></span>
+                    <span class="cc-star"></span>
+                    <span class="cc-star"></span>
+                    <span class="cc-star"></span>
+                    <span class="cc-star"></span>
+                  </div>
+                </div>
+              </div>
+              <strong class="cc-stars-label">(322 Reviews)</strong>
+            </div>
+            <!-- /Reviews -->
+
+            <!-- Learn More -->
+            <div class="cc-learn-more-section cc-card-section">
+              <a href="#" class="cc-learn-more-link">Learn More</a>
+            </div>
+            <!-- /Learn More -->
+          </div>
+
+          <!-- Product Card Buttons -->
+          <div class="cc-product-card-buttons cc-card-section">
+            <a href="#" class="cc-button-primary">Add to Cart</a>
+          </div>
+          <!-- /Product Card Buttons -->
+        </div>
+      </div>
+      <!-- /Product details container -->
+    </div>
+  </div>
+
+  <div class="cc-product-card col-xs-12 col-sm-6 col-lg-4 col-md-4">
+    <div class="cc-product-card-content-container">
+
+      <!-- Product Image -->
+      <figure class="cc-product-image-container">
+        <img class="cc-product-card-image img-responsive center-block" src="http://placehold.it/249x300">
+
+        <div class="cc-product-image-info-wrapper">
+          <figcaption class="cc-product-card-image-caption">Lorem Ipsum</figcaption>
+          <span class="cc-product-new-flag">New</span>
+        </div>
+      </figure>
+      <!-- /Product Image -->
+      
+      <!-- Product details container -->
+      <div class="cc-product-card-content">
+
+        <!-- Product Title -->
+        <h3 class="cc-product-card-title">
+          TRACER SX5 QUICK SHIP
+        </h3>
+        <!-- /Product Title -->
+
+        <div class="cc-product-card-details">
+          <div class="cc-product-details-content-wrap">
+            <!-- Prices -->
+            <div class="cc-product-prices">
+              <span class="cc-product-before-price">
+                $695
+              </span>
+              <span class="cc-product-price">
+                $289
+              </span>
+            </div>
+            <!-- /Prices -->
+
+            <!-- Reviews -->
+            <div class="cc-stars-component">
+              <div class="cc-stars-container cc-card-section">
+                <ul class="cc-stars">
+                  <li class="cc-star"><span class="sr-only">1 Star</span></li>
+                  <li class="cc-star"><span class="sr-only">2 Stars</span></li>
+                  <li class="cc-star"><span class="sr-only">3 Stars</span></li>
+                  <li class="cc-star"><span class="sr-only">4 Stars</span></li>
+                  <li class="cc-star"><span class="sr-only">5 Stars</span></li>
+                </ul>
+                <div class="cc-stars-active-container" style="width: 70%;">
+                  <div class="cc-stars-active">
+                    <span class="cc-star"></span>
+                    <span class="cc-star"></span>
+                    <span class="cc-star"></span>
+                    <span class="cc-star"></span>
+                    <span class="cc-star"></span>
+                  </div>
+                </div>
+              </div>
+              <strong class="cc-stars-label">(322 Reviews)</strong>
+            </div>
+            <!-- /Reviews -->
+
+            <!-- Learn More -->
+            <div class="cc-learn-more-section cc-card-section">
+              <a href="#" class="cc-learn-more-link">Learn More</a>
+            </div>
+            <!-- /Learn More -->
+          </div>
+          <!-- Product Card Buttons -->
+          <div class="cc-product-card-buttons cc-card-section">
+            <a href="#" class="cc-button-primary">Add to Cart</a>
+          </div>
+          <!-- /Product Card Buttons -->
+        </div>
+      </div>
+      <!-- /Product details container -->
+    </div>
+  </div>
+</div>
+```
+*/
+
+/**
+ * Defines the wrap as flex
+ */
+.cc-products-cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/**
+ * Set the flexbox properties to each
+ * card
+ */
+.product-card-flex() {
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  float: none;
+}
+
+/**
+ * Set content card flexbox and height 100%
+ * in order to keep the content aligned
+ */
+.product-card-content-flex() {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 100%;
+}
+
+/**
+ * Set content card flexbox and height 100%
+ */
+.product-card-details-flex() {
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  float: none;
+  height: 100%;
+}
+
+/**
+ * Container
+ */
+.cc-product-card {
+  .product-card-flex;
+  float: none;
+  min-height: @ProductCardMinHeight;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  
+  /**
+   * We need a height 100% so that the button
+   * can ben placed at the bottom
+   */
+  .cc-product-card-content-container {
+    height: 100%;
+  }
+  
+  /**
+   * Each section of card details
+   */
+  .cc-card-section {
+    margin: @ProductCardSectionSpacing auto;
+    text-align: center;
+  }
+
+  /**
+   * The hidden content
+   */
+  .cc-product-card-content {
+    display: flex;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    .product-card-content-flex;
+  }
+  
+  /**
+   * The content of the hidden content
+   * which contains, prices, product title and so on..
+   */
+  .cc-product-card-details {
+    .product-card-details-flex;
+  }
+  
+  .cc-product-details-content-wrap {
+    margin: auto;
+  }
+
+  /**
+   * Product Buttons container
+   */
+  .cc-product-card-buttons {
+    margin-top: auto;
+  }
+  
+  /**
+   * Show cc-product-card-content on
+   * :hover(desktop), :focus(mobile) and
+   * by the class .active
+   */
+  &:hover,
+  &:focus,
+  &.active {
+    .cc-product-card-content {
+      visibility: visible;
+    }
+
+    .cc-product-image-container {
+      visibility: hidden;
+    }
+  }
+  
+  .cc-product-image-container {
+    position: relative;
+    .product-card-details-flex;
+  }
+  
+  .cc-product-image-info-wrapper {
+    margin-top: auto;
+  }
+
+  .cc-product-card-image-caption,
+  .cc-product-card-title {
+    font-size: @ProductCardProductTitleSize;
+    font-weight: @ProductCardProductTitleFontWeight;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  
+  .cc-product-new-flag {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: @ProductCardNewFlagColor;
+    font-size: @ProductCardNewFlagFontSize;
+    text-transform: uppercase;
+  }
+
+  .cc-product-card-image-caption {
+    color: @ProductCardImageCaptionTextColor;
+    margin-top: 10px;
+    border-bottom: 1px solid @ProductCardImageCaptionBorderBottomColor;
+    padding-bottom: 13px;
+  }
+  
+  .cc-product-card-title {
+    color: @ProductCardProductTitleTextColor;
+    margin-top: 0;
+    margin-bottom: 10px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid @ProductCardProductTitleBorderColor;
+  }
+
+  .cc-product-prices {
+    text-align: center;
+    margin-bottom: 10px;
+
+    .cc-product-price,
+    .cc-product-before-price {
+      display: inline-block;
+      font-size: @ProductCardProductPriceFontSize;
+    }
+
+    .cc-product-before-price {
+      color: @ProductCardProductBeforePriceTextColor;
+      font-weight: @ProductCardProductBeforePriceFontWeight;
+      text-decoration: line-through;
+    }
+
+    .cc-product-price {
+      color: @ProductCardProductPriceTextColor;
+      font-weight: @ProductCardProductPriceFontWeight;
+    }
+  }
+  
+  .cc-product-price-range-container {
+    border-top: 1px solid @ProductCardPriceRangeContainerBorderColor;
+    margin-top: 15px;
+    padding-top: 15px;
+    text-align: center;
+
+    .cc-product-price-range {
+      font-size: @ProductCardPriceRangeFontSize;
+      color: @ProductCardPriceRangeTextColor;
+      font-weight: @ProductCardPriceRangeFontWeight;
+    }
+  }
+
+  .cc-stars-container {
+    margin: 0 auto;
+  }
+
+  .cc-learn-more-link {
+    color: @ProductCardProductLearnMoreTextColor;
+  }
+}
+
+/*doc
+---
+title: Product Card Simple
+name: product-card-simple
+category: Components
+---
+
+###Product Card Simple
+
+Another type of product card which contains only the image of product and its price range.
+
+```html_example
+<div class="row cc-products-cards">
+
+  <div class="cc-product-card cc-product-card-simple col-xs-12 col-sm-6 col-lg-4 col-md-4">
+    <div class="cc-product-card-content-container">
+
+      <!-- Product Image -->
+      <figure class="cc-product-image-container">
+        <img class="cc-product-card-image img-responsive center-block" src="http://placehold.it/249x249">
+
+        <div class="cc-product-image-info-wrapper">
+          <figcaption class="cc-product-card-image-caption">Lorem Ipsum</figcaption>
+
+          <div class="cc-product-price-range-container">
+            <strong class="cc-product-price-range">Prices start at $99</strong>
+          </div>
+         </div>
+      </figure>
+      <!-- /Product Image -->
+      
+      <!-- Product details container -->
+      <div class="cc-product-card-content">
+
+        <div class="cc-product-card-details">
+          <!-- Product Card Buttons -->
+          <div class="cc-product-card-buttons cc-card-section">
+            <a href="#" class="cc-button-primary">Add to Cart</a>
+          </div>
+          <!-- /Product Card Buttons -->
+        </div>
+      </div>
+      <!-- /Product details container -->
+    </div>
+  </div>
+
+  <div class="cc-product-card cc-product-card-simple col-xs-12 col-sm-6 col-lg-4 col-md-4">
+    <div class="cc-product-card-content-container">
+
+      <!-- Product Image -->
+      <figure class="cc-product-image-container">
+        <img class="cc-product-card-image img-responsive center-block" src="http://placehold.it/249x300">
+
+        <div class="cc-product-image-info-wrapper">
+          <figcaption class="cc-product-card-image-caption">Lorem Ipsum</figcaption>
+
+          <div class="cc-product-price-range-container">
+            <strong class="cc-product-price-range">Prices start at $99</strong>
+          </div>
+        </div>
+      </figure>
+      <!-- /Product Image -->
+      
+      <!-- Product details container -->
+      <div class="cc-product-card-content">
+
+        <div class="cc-product-card-details">
+          <!-- Product Card Buttons -->
+          <div class="cc-product-card-buttons cc-card-section">
+            <a href="#" class="cc-button-primary">Add to Cart</a>
+          </div>
+          <!-- /Product Card Buttons -->
+        </div>
+      </div>
+      <!-- /Product details container -->
+    </div>
+  </div>
+</div>
+```
+*/
+&.cc-product-card.cc-product-card-simple {
+  .cc-product-card-image-caption {
+    font-size: @ProductCardSimpleImageCaptionFontSize;
+    color: @ProductCardSimpleImageCaptionTextColor;
+    border-bottom: none;
+    padding: 0;
+  }
+  
+  .cc-product-card-buttons {
+    margin-bottom: 28px;
+  }
+
+  &:hover,
+  &:focus,
+  &.active {
+    .cc-product-image-container {
+      visibility: visible;
+      height: 100%;
+
+      .cc-product-card-image-caption {
+        visibility: hidden;
+      }
+
+      .cc-product-price-range-container {
+        visibility: hidden;
+      }
+    }
+  }
+}

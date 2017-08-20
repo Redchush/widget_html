@@ -1,0 +1,265 @@
+/*doc
+---
+title: Buttons
+name: button
+category: Components
+---
+Button styles can be applied to any element. Typically you'll want to
+use either a `<button>` or an `<a>` element:
+
+```html_example
+<a class="cc-button-primary" href="#">
+  Lorem Ipsum
+</a>
+<button class="cc-button-primary">
+  Lorem Ipsum
+</button>
+```
+
+### Sizes
+
+```html_example_table 
+<a class="cc-button-large cc-button-primary" href="#">Lorem Ipsum</a>
+
+<a class="cc-button-full cc-button-primary" href="#">Lorem Ipsum</a>
+```
+
+```html_example_table 
+<a class="cc-button-primary" href="#">Lorem Ipsum</a>
+
+<a class="cc-button-primary hovered-button" href="#">Lorem Ipsum</a>
+
+<a class="cc-button-primary disabled" href="#">Lorem Ipsum</a>
+
+<a class="cc-button-primary cc-button-transparent" href="#">Lorem Ipsum</a>
+
+<a class="cc-button-secondary" href="#">Lorem Ipsum</a>
+
+<a class="cc-button-secondary hovered-button" href="#">Lorem Ipsum</a>
+
+<a class="cc-button-secondary disabled" href="#">Lorem Ipsum</a>
+
+<a class="cc-button-secondary cc-button-transparent" href="#">Lorem Ipsum</a>
+
+<a class="cc-button-text" href="#">Lorem Ipsum </a>
+
+<a class="cc-button-text hovered-button" href="#">Lorem Ipsum </a>
+
+<a class="cc-button-text" href="#">Lorem Ipsum <i class="glyphicon glyphicon-chevron-right"></i></a>
+
+```
+-----------
+> The button `transparent` is class which you can add to any other buttons types. It's a special type and will invert the default button style and set a transparent background.
+
+### Buttons with Icons
+
+If you want to use a large button with an icon, you will have to add a container to your text with a classe `cc-icon-text`. See some examples right below.
+
+```html_example_table
+<a class="cc-button-primary" href="#">Lorem Ipsum <i class="glyphicon glyphicon-chevron-right"></i></a>
+ ```
+
+*/
+
+.button {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 0; // For input.btn
+  font-size: @FontSizeMedium;
+  font-weight: @ButtonFontWeight;
+  text-align: center;
+  line-height: 100%;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  white-space: nowrap;
+  .user-select(none);
+  border-radius: @ButtonBorderRadius;
+  text-decoration: none;
+  text-transform: @ButtonTextTransform;
+  padding: @ButtonVerticalPadding @ButtonHorizontalPadding;
+
+  &:focus,
+  &:visited,
+  &:link,
+  &:active,
+  &:link:hover,
+  &:hover {
+    text-decoration: none;
+    box-shadow: none;
+    outline: none;
+    font-weight: @ButtonFontWeight;
+  }
+
+  &.disabled,
+  &[disabled] {
+    opacity: 1;
+    &:after {
+     content: '';
+     position: absolute;
+     left: -@ButtonBorderSize;
+     right: -@ButtonBorderSize;
+     top: -@ButtonBorderSize;
+     bottom: -@ButtonBorderSize;
+   }
+  }
+
+  &.cc-button-uppercase {
+    text-transform: uppercase;
+  }
+}
+
+.cc-button-primary:extend(.button all) {
+  color: @ButtonPrimaryTextColor;
+  background-color: @ButtonPrimaryBackgroundColor;
+  border: @ButtonPrimaryBorder;
+  font-size: @ButtonPrimaryFontSize;
+  padding: @ButtonPrimaryVerticalPadding @ButtonPrimaryHorizontalPadding;
+
+  &:focus,
+  &:visited,
+  &:link,
+  &:active {
+    background-color: @ButtonPrimaryBackgroundColor;
+    color: @ButtonPrimaryTextColor;
+  }
+
+  &:link:hover,
+  &:link.hovered-button,
+  &:hover {
+    background-color: @ButtonPrimaryBackgroundColorHover;
+    color: @ButtonPrimaryTextColorHover;
+    border-color: @ButtonPrimaryBorderColorHover;
+  }
+
+  &.cc-button-transparent {
+    color: @ButtonPrimaryBackgroundColor;
+    background-color: transparent;
+
+    &:focus,
+    &:visited,
+    &:link,
+    &:active {
+      color: @ButtonPrimaryBackgroundColor;
+      background-color: transparent;
+    }
+
+    &:hover {
+      background-color: @ButtonPrimaryTextColorHover;
+      color: @ButtonPrimaryBackgroundColorHover;
+      border-color: @ButtonPrimaryBorderColorHover;
+    }
+  }
+  &.disabled,
+  &[disabled] {
+    background-color: @ButtonDisabledBackgroundColor;
+    color: @ColorShadeBold;
+    border-color: @ButtonDisabledBackgroundColor;
+  }
+
+  &.hovered-button {
+    background-color: @ButtonPrimaryBackgroundColorHover;
+    color: @ButtonPrimaryTextColorHover;
+    border-color: @ButtonPrimaryBorderColorHover;
+  }
+}
+
+.cc-button-secondary:extend(.button all) {
+  color: @ButtonSecondaryTextColor;  
+  background-color: @ButtonSecondaryBackgroundColor;
+  border: @ButtonSecondaryBorder;
+  font-size: @ButtonSecondaryFontSize;
+  padding: @ButtonSecondaryVerticalPadding @ButtonSecondaryHorizontalPadding;
+
+  &:focus,
+  &:visited,
+  &:link,
+  &:active {
+    color: @ButtonSecondaryTextColor;  
+    background-color: @ButtonSecondaryBackgroundColor;
+  }
+
+  &:link:hover,
+  &:link.hovered-button,
+  &:hover {
+    background-color: @ButtonSecondaryBackgroundColorHover;
+    color: @ButtonSecondaryTextColorHover;
+    border-color: @ButtonSecondaryBorderColorHover;
+  }
+
+  &.cc-button-transparent {
+    color: @ColorSpinBlueRegular;
+    background-color: transparent;
+
+    &:focus,
+    &:visited,
+    &:link,
+    &:active {
+      color: @ColorSpinBlueRegular;
+      background-color: transparent;
+    }
+
+    &:hover {
+      background-color: @ButtonSecondaryTextColorHover;
+      color: @ButtonSecondaryBackgroundColorHover;
+      border-color: @ButtonSecondaryBorderColorHover;
+    }
+  }
+  &.disabled,
+  &[disabled] {
+    background-color: @ButtonDisabledBackgroundColor;
+    color: @ColorShadeBold;
+    border-color: @ButtonDisabledBackgroundColor;
+  }
+  &.hovered-button {
+    background-color: @ButtonSecondaryBackgroundColorHover;
+    color: @ButtonSecondaryTextColorHover;
+    border-color: @ButtonSecondaryBorderColorHover;
+  }
+}
+
+.cc-button-text {
+  font-size: @FontSizeMedium;
+  text-align: center;
+  color: @ButtonTextTextColor;
+  &:link,
+  &:visited,
+  &:link:visited,
+  &:link.visited-link  {
+    color: @ButtonTextTextColor;
+    text-decoration: none;
+  }
+  &:hover {
+    text-decoration: @ButtonTextTextDecoration;
+  }
+  &.hovered-button {
+    text-decoration: @ButtonTextTextDecoration;
+  }
+}
+
+.cc-button-large {
+  white-space: normal;
+  vertical-align: middle;
+  padding-top: @ButtonHorizontalPadding + 14;
+  padding-bottom: @ButtonHorizontalPadding + 14;
+
+  .glyphicon {
+    font-size: @ButtonIconFontSize;
+    vertical-align: super;
+  }
+
+  .cc-icon-text {
+    width: 50%;
+    display: inline-block;
+    font-size: @ButtonIconTextFontSize;
+    text-transform: uppercase;
+    text-align: left;
+    vertical-align: super;
+    line-height: 100%;
+  }
+}
+
+.cc-button-full {
+  width: 100%;
+}

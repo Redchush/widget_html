@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script data-main="config.js" src="lib/require.js"></script>
+
+
+    <link rel="stylesheet" href="lib/bootstrap-3.1.1-dist/css/bootstrap.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="lib/bootstrap-3.1.1-dist/css/bootstrap-theme.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="lib/bootstrap-3.1.1-dist/css/bootstrap.css.map">
+    <link rel="stylesheet" href="lib/bootstrap-3.1.1-dist/css/bootstrap-theme.css.map">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!--<script src="lib/bootstrap-3.1.1-dist/js/bootstrap.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="lib/bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+
+<body>
+
+    <style>
+        #widget-frame {
+            display: none;
+        }
+        /* @ColorBlack: #000000;@ColorMineShaft: #333333;@ColorDoveGray: #666666;
+@ColorSilver: #cccccc;
+@ColorMercury: #e5e5e5;
+@ColorWhite: #ffffff;
+@ColorWhiteTransparent: rgba(255, 255, 255, .4);
+@ColorRed: #cc0000;
+@ColorGreen: #178401;
+//Color spin blue and variants
+@ColorSpinBlueBold: #1b3075;
+@ColorSpinBlueRegular: #223e99;
+@ColorSpinBlue: #007ab8;
+@ColorSpinBlueLight: #00d2ff;
+//color shades and variants
+@ColorShadeLight: #dfe0e8;
+@ColorShadeRegular: #635e68;
+@ColorShadeBold: #303039;
+@FieldBorderWidth: 2px; */
+    </style>
+
+
+    <iframe id="widget-frame" src="display.html"></iframe>
+
+    <div id="navbar_viewer">
+        <div id="ColorMineShaft"> </div>
+        <div id="ColorSilver"> </div>
+        <div id="ColorMercury"> </div>
+        <div id="ColorWhiteTransparent"> </div>
+        <div id="ColorRed"> </div>
+        <div id="ColorGreen"> </div>
+        <div id="ColorSpinBlueBold"> </div>
+        <div id="ColorSpinBlueRegular"> </div>
+        <div id="ColorSpinBlue"> </div>
+        <div id="ColorSpinBlueLight"> </div>
+
+        <div id="ColorShadeLight"> </div>
+        <div id="ColorShadeRegular"> </div>
+        <div id="ColorShadeBold"> </div>
+        <div id="FieldBorderWidth"> </div>
+
+
+    </div>
+
+    <div id="page" data-bind="css:{&#39;preview&#39;: isPreview, &#39;container&#39;: containPage}" class="container preview">
+
+        <main class="page-row page-row-expanded">
+            <div id="main" data-bind="css:{&#39;container&#39;: containMain}">
+
+                <div class="row">
+                    <div class="redBox" id="widget-container">
+
+
+                        <div class="templateRegion" id="oeHomeSection" data-oc-id="oeHomeSection">
+                            <div class="oeHomeSection-background">
+
+                                <!-- oc layout: panels -->
+                                <div class="row block-container">
+
+                                    <div class="center-box">
+                                        <div class="oc-panel sectionBlock block-large" data-oc-id="panel-2">
+                                            <div class="sectionBlock-content_light">
+                                                <span data-bind="element: 'rich-text',id: '300001'"></span>
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="oc-panel sectionBlock block-small" data-oc-id="panel-1">
+                                            <!-- oc section: oeHomeSection-box-content-dark -->
+                                            <div class="sectionBlock-content_light">
+                                                <span data-bind="element: 'rich-text',id: '300001'"></span>
+                                            </div>
+                                            <!--/oc -->
+                                        </div>
+                                        <div class="oc-panel sectionBlock block-small" data-oc-id="panel-2">
+                                            <div class="sectionBlock-content_middle">
+                                                <span data-bind="element: 'rich-text',id: '300001'"></span>
+                                            </div>
+                                        </div>
+                                        <div class="oc-panel sectionBlock block-small" data-oc-id="panel-2">
+                                            <div class="sectionBlock-content_dark">
+                                                <span data-bind="element: 'rich-text',id: '300001'"></span>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="oc-panel sectionBlock block-small" data-oc-id="panel-2">
+                                            <div class="element-container dark-box">
+                                                <span data-bind="element: 'rich-text',id: '300001'"></span>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="oc-panel sectionBlock block-small" data-oc-id="panel-2">
+                                            <div class="element-container dark-box">
+                                                <span data-bind="element: 'rich-text',id: '300001'"></span>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="oc-panel sectionBlock block-small" data-oc-id="panel-2">
+                                            <div class="element-container small-box dark-box">
+                                                <span data-bind="element: 'rich-text',id: '300001'"></span>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    Examples : Card
+
+                                    <div class="center-box">
+                                        <div class="cc-card cc-rectangle">
+                                            <h3 class="cc-card-title">Title</h3>
+                                            <h4 class="cc-card-subtitle">Subtitle</h4>
+                                        </div>
+
+                                        <div class="cc-card cc-rectangle cc-light">
+                                            <h3 class="cc-card-title">Title</h3>
+                                            <h4 class="cc-card-subtitle">Subtitle</h4>
+                                        </div>
+
+                                        ### Rectangular card ```html_example_table
+                                        <div class="cc-card cc-rectangle">
+                                            <h3 class="cc-card-title">Title Lorem</h3>
+                                            <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
+                                        </div>
+
+                                        <div class="cc-card cc-rectangle cc-large">
+                                            <h3 class="cc-card-title">Title Lorem</h3>
+                                            <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
+                                        </div>
+                                        ``` ### Card with arrow ```html_example_table
+                                        <div class="cc-card cc-rectangle cc-arrow">
+                                            <h3 class="cc-card-title">Title Lorem</h3>
+                                            <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
+                                        </div>
+
+                                        <div class="cc-card cc-rectangle cc-arrow cc-arrow-left">
+                                            <h3 class="cc-card-title">Title Lorem</h3>
+                                            <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
+                                        </div>
+
+                                        <div class="cc-card cc-rectangle cc-arrow cc-arrow-top">
+                                            <h3 class="cc-card-title">Title Lorem</h3>
+                                            <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
+                                        </div>
+
+                                        <div class="cc-card cc-rectangle cc-arrow cc-arrow-bottom">
+                                            <h3 class="cc-card-title">Title Lorem</h3>
+                                            <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
+                                        </div>
+
+                                        <div class="cc-card cc-rectangle cc-arrow cc-large">
+                                            <h3 class="cc-card-title">Title Lorem</h3>
+                                            <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
+                                        </div>
+                                    </div>
+
+                                    Examples:Buttons ```html_example
+                                    <a class="cc-button-primary" href="#">
+                  Lorem Ipsum
+                </a>
+                                    <button class="cc-button-primary">
+                  Lorem Ipsum
+                </button> ``` ### Sizes ```html_example_table
+                                    <a class="cc-button-large cc-button-primary" href="#">Lorem Ipsum</a>
+
+                                    <a class="cc-button-full cc-button-primary" href="#">Lorem Ipsum</a> ``` ```html_example_table
+                                    <a class="cc-button-primary" href="#">Lorem Ipsum</a>
+
+                                    <a class="cc-button-primary hovered-button" href="#">Lorem Ipsum</a>
+
+                                    <a class="cc-button-primary disabled" href="#">Lorem Ipsum</a>
+
+                                    <a class="cc-button-primary cc-button-transparent" href="#">Lorem Ipsum</a>
+
+                                    <a class="cc-button-secondary" href="#">Lorem Ipsum</a>
+
+                                    <a class="cc-button-secondary hovered-button" href="#">Lorem Ipsum</a>
+
+                                    <a class="cc-button-secondary disabled" href="#">Lorem Ipsum</a>
+
+                                    <a class="cc-button-secondary cc-button-transparent" href="#">Lorem Ipsum</a>
+
+                                    <a class="cc-button-text" href="#">Lorem Ipsum </a>
+
+                                    <a class="cc-button-text hovered-button" href="#">Lorem Ipsum </a>
+
+                                    <a class="cc-button-text" href="#">Lorem Ipsum <i class="glyphicon glyphicon-chevron-right"></i></a> ``` ----------- > The button `transparent` is class which you can add to any other buttons types. It's a special type
+                                    and will invert the default button style and set a transparent background. ### Buttons with Icons If you want to use a large button with an icon, you will have to add a container to your text with a classe `cc-icon-text`.
+                                    See some examples right below. ```html_example_table
+                                    <a class="cc-button-primary" href="#">Lorem Ipsum <i class="glyphicon glyphicon-chevron-right"></i></a>
+
+
+                                </div>
+
+
+                                <!--<div data-bind="element: 'oeHomeSection-box-content-light'"></div>-->
+                                <!-- /oc -->
+                            </div>
+
+
+
+                        </div>
+                        <!-- /oc -->
+
+                    </div>
+
+                </div>
+
+
+
+
+
+
+            </div>
+    </div>
+
+
+
+    <div id="loadingModal" class="hide loadingIndicator"></div>
+    </main>
+
+    </div>
+</body>
+
+</html>
+
+</html>

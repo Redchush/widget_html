@@ -1,0 +1,110 @@
+/*doc
+---
+title: Stars
+name: stars
+category: Components
+---
+
+### Default Stars
+
+The stars state is based on its size. So, if we need 4 stars, we should set a style attribute on `cc-stars-active-container` containing `width:80%`. The same for other
+stars and states.
+
+```html_example_table
+<div class="cc-stars-component">
+  <div class="cc-stars-container">
+    <ul class="cc-stars">
+      <li class="cc-star"><span class="sr-only">1 Star</span></li>
+      <li class="cc-star"><span class="sr-only">2 Stars</span></li>
+      <li class="cc-star"><span class="sr-only">3 Stars</span></li>
+      <li class="cc-star"><span class="sr-only">4 Stars</span></li>
+      <li class="cc-star"><span class="sr-only">5 Stars</span></li>
+    </ul>
+    <div class="cc-stars-active-container">
+      <div class="cc-stars-active">
+        <span class="cc-star"></span>
+        <span class="cc-star"></span>
+        <span class="cc-star"></span>
+        <span class="cc-star"></span>
+        <span class="cc-star"></span>
+      </div>
+    </div>
+  </div>
+  <strong class="cc-stars-label">(322 Reviews)</strong>
+</div>
+```
+
+### Four Stars
+
+```html_example_table
+<div class="cc-stars-component">
+  <div class="cc-stars-container">
+    <ul class="cc-stars">
+      <li class="cc-star"><span class="sr-only">1 Star</span></li>
+      <li class="cc-star"><span class="sr-only">2 Stars</span></li>
+      <li class="cc-star"><span class="sr-only">3 Stars</span></li>
+      <li class="cc-star"><span class="sr-only">4 Stars</span></li>
+      <li class="cc-star"><span class="sr-only">5 Stars</span></li>
+    </ul>
+    <div class="cc-stars-active-container" style="width: 80%;">
+      <div class="cc-stars-active">
+        <span class="cc-star"></span>
+        <span class="cc-star"></span>
+        <span class="cc-star"></span>
+        <span class="cc-star"></span>
+        <span class="cc-star"></span>
+      </div>
+    </div>
+  </div>
+  <strong class="cc-stars-label">(322 Reviews)</strong>
+</div>
+```
+
+*/
+
+.cc-stars-component {
+  .cc-stars-container {
+    position: relative;
+    width: @StarsContainerWidth;
+
+    .cc-stars,
+    .cc-stars-active {
+      margin: 0;
+      padding: 0;
+      width: @StarsContainerWidth;
+      
+      .cc-star {
+        .glyphicon;
+        font-size: @StarsSize;
+        color: @StarInactiveColor;
+
+        &:before {
+          content: @font-custom-icons-d2c-star;
+        }
+      }
+    }
+    
+    .cc-stars-active-container {
+      position: absolute;
+      top: 0;
+      width: 0;
+      overflow: hidden;
+    }
+
+    .cc-stars-active {
+      .cc-star &:before {
+        content: @font-custom-icons-d2c-star;
+        color: @StarActiveColor;
+      }
+    }
+  }
+
+  .cc-stars-label {
+    display: block;
+    color: @StarsLabelTextColor;
+    font-size: @StarsLabelFontSize;
+    font-weight: @StarsLabelFontWeight;
+    text-align: center;
+  }
+}
+

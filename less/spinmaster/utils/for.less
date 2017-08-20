@@ -1,0 +1,32 @@
+/**
+ * Use
+ *
+ * .for(@list); .each(@name, @value) {
+ *     &.my-class-@{name} {
+ *       color: @value;
+ *     }
+ *   }
+ *
+ */
+.for(@list) {
+ @name: "";
+ @value: "";
+
+ ._getValues(@index) when (isstring(extract(extract(@list, @index), 2))) {
+  @name: e(extract(extract(@list, @i), 1));
+  @value: e(extract(extract(@list, @i), 2));
+ }
+
+ ._getValues(@index) when not (isstring(extract(extract(@list, @index), 2))) {
+  @name: e(extract(extract(@list, @i), 1));
+  @value: extract(extract(@list, @i), 2);
+ }
+
+ ._for(@i:1) when (isstring(extract(extract(@list, @i), 1))) {
+  ._getValues(@i);
+  .each(@name, @value);
+  ._for(@i + 1);
+ }
+
+ ._for();
+}

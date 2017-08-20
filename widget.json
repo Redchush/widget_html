@@ -1,0 +1,104 @@
+{
+  "availableToAllPages": true,
+  "version": 1,
+  "global": false,
+  "globalEnabled": true,
+  "imports": [],
+  "javascript": "kseniaPodHeroBanner",
+  "jsEditable": true,
+  "minWidth": 1,
+  "name": "KseniaPod Hero Banner",
+  "widgetFamily": "kseniaPodHeroBanner",
+  "widgetType": "kseniaPodHeroBanner",
+  "config": {
+    "boolAutoplayCarousel": true,
+    "boolLoopCarousel": true,
+    "generalconfigTitle": "",
+    "timeSwitchImage": "4",
+
+    "imageUrl1": {
+      "mediaName": "/general/01939_norwegiancoast_800x480-500x300.jpg",
+      "src": "http://www.freeimageslive.com/galleries/space/earth/pics/g07_s65_63873.gif"
+    },
+    "mobileImageUrl1": {
+      "mediaName": "/general/300x200_ggb_fort_point.jpg",
+      "src": "http://lorempixel.com/400/200/"
+    },
+    "imageTitle1": "",
+    "startDate1": "20170001",
+    "endDate1": "",
+    "bannerLink1": "",
+    "bannerText1": "The Testing Text1",
+
+    "mobileImageUrl2": {
+      "mediaName": "/general/Flabellina-300x200.jpg",
+      "src": "http://lorempixel.com/400/200/"
+    },
+    "imageUrl2": {
+      "mediaName": "",
+      "src": "http://www.freeimageslive.com/galleries/space/planets/pics/mgn_p39224.gif"
+    },
+    "imageTitle2": "",
+    "startDate2": "20171001",
+    "endDate2": "",
+    "bannerLink2": "http://google.com",
+    "bannerText2": "The Testing Text2",
+
+    "imageUrl3": {
+      "mediaName": "",
+      "src": "http://www.freeimageslive.com/galleries/space/planets/pics/vg2_p23953.gif"
+    },
+    "mobileImageUrl3": {
+      "mediaName": "",
+      "src": ""
+    },
+    "imageTitle3": "",
+    "startDate3": "",
+    "endDate3": "",
+    "bannerLink3": "http://www.google.com",
+    "bannerText3": "The Testing Text3",
+
+
+    "imageUrl4": {
+      "mediaName": "",
+      "src": "http://www.freeimageslive.com/galleries/space/moon/pics/vg1_p21287.gif"
+    },
+    "mobileImageUrl4": {
+      "mediaName": "",
+      "src": ""
+    },
+    "imageTitle4": "",
+    "startDate4": "",
+    "endDate4": "20180101",
+    "bannerLink4": "",
+    "bannerText4": "The Testing Text4",
+
+    "imageUrl5": {
+      "mediaName": "http://lorempixel.com/400/200/",
+      "src": ""
+    },
+    "mobileImageUrl5": {
+      "mediaName": "",
+      "src": ""
+    },
+    "imageTitle5": "",
+    "startDate5": "20170002",
+    "endDate5": "20170101",
+    "bannerLink5": "http://www.deviantart.com",
+    "bannerText5": "The Testing Text5",
+
+    "imageUrl6": {
+      "mediaName": "",
+      "src": ""
+    },
+    "mobileImageUrl6": {
+      "mediaName": "",
+      "src": ""
+    },
+    "imageTitle6": "",
+    "startDate6": "",
+    "endDate6": "",
+    "bannerLink6": "",
+    "bannerText6": ""
+  }
+}

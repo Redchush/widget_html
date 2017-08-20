@@ -1,0 +1,21 @@
+/*doc
+---
+title: CSS Icons
+name: css-icons
+category: Icons
+---
+None
+*/
+
+*[class^="glyphicon-"] {
+  font-family: 'Glyphicons Halflings';
+  font-size: @FontSizeExtraLarge;
+
+  &:before {
+    display: table-cell;
+  }
+}
+
+.glyphicon.glyphicon:before {
+  .custom-icon-base();
+}

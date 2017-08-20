@@ -1,0 +1,106 @@
+/*doc
+---
+title: Tabs
+name: tabs
+category: Components
+---
+
+###Default Tabs
+
+```html_example
+<div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs nav-justified" role="tablist">
+    <li role="presentation" class="active"><a href="#lorem" aria-controls="lorem" role="tab" data-toggle="tab">Lorem Ipsum</a></li>
+    <li role="presentation"><a href="#dolor" aria-controls="dolor" role="tab" data-toggle="tab">Dolor Sit Amet</a></li>
+    <li role="presentation"><a href="#consectetur" aria-controls="consectetur" role="tab" data-toggle="tab">Consectetur</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="lorem">
+      <strong class="tab-content-title">LOREM IPSUM DOLOR</strong>
+      <div class="tab-content-container">
+        Sit Amet, Consectetur Adipiscing Elit. Phasellus Fermentum Sit Amet Nisl Eu Auctor. Cras Ornare Soldales Augue Non Iaculis.
+      </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="dolor">...</div>
+    <div role="tabpanel" class="tab-pane" id="consectetur">...</div>
+  </div>
+
+</div>
+```
+*/
+.nav.nav-tabs {
+  margin-bottom: 15px;
+  > li,
+  > .tab-item {
+    > a {
+      .cc-card;
+      background-color: @TabDefaultBackgroundColor;
+      width: 100%;
+      font-size: @TabFontSize;
+      font-weight: @TabFontWeight;
+      padding-top: 16px;
+      padding-bottom: 16px;
+      color: @TabDefaultTextColor;
+      margin: 0;
+      text-decoration: none;
+      border-radius: 0;
+    }
+    
+    &.active {
+      .cc-arrow-base;  
+      &:after {
+        .cc-arrow-bottom-mix;
+        display: none;
+      }
+
+      a {
+        background-color: @TabActiveBorderColor;
+        border-top: 10px solid @TabDefaultTextColor;
+        border-bottom-color: @TabActiveBorderColor;
+        border-left-color: @ColorShadeLight;
+        border-right-color: @ColorShadeLight;
+        &:hover,
+        &:link:hover,
+        &:focus {
+          color: @TabActiveTextColor;
+          border-top: 10px solid @TabDefaultTextColor;
+          border-bottom-color: @TabActiveBorderColor;
+          border-left-color: @ColorShadeLight;
+          border-right-color: @ColorShadeLight;
+          background-color: @TabActiveBorderColor;
+        }
+      }
+    }
+
+    &:not(.active) {
+      > a {
+        background: @TabDefaultBackgroundColor;
+
+        &:hover,
+        &:link:hover,
+        &:focus {
+          color: @TabDefaultTextColor;
+          border-top-color: @TabDefaultBackgroundColor;
+          border-left-color: @TabDefaultBackgroundColor;
+          border-right-color: @TabDefaultBackgroundColor;
+        }
+      }
+    }
+  }
+}
+
+.tab-content {
+  padding: 0 20px;
+  
+  .tab-content-title {
+    font-size: @TabContentTitleFontSize;
+    color: @TabContentTitleTextColor;
+    font-weight: @TabContentTitleFontWeight;
+    line-height: 175%;
+  }
+}
+

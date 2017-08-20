@@ -1,0 +1,34 @@
+/*doc
+---
+title: Links
+name: links
+category: Components
+---
+
+### Default links
+
+State               | Class      | Element
+------------------- | ---------- | ----------------------------------------------------
+Link normal         | `cc-link`  | <a class="cc-link" href="#">Normal Link</a>
+Link on hover       | `cc-link`  | <a class="cc-link hovered-link" href="#">Link on hover</a>
+Link on visted      | `cc-link`  | <a class="cc-link visted-link" href="#">Link on visited</a>
+
+*/
+
+a,
+a:link,
+.cc-link {
+  color: @LinkColor;
+  text-decoration: underline;
+
+  &:hover,
+  &.hovered-link {
+    color: @LinkHoverColor;
+    text-decoration: underline;
+  }
+
+  &:visited,
+  &.visited-link {
+    color: @LinkVisitedColor;
+  }
+}

@@ -1,0 +1,108 @@
+/*doc
+---
+title: Paginations
+name: paginations
+category: Components
+---
+
+```html_example
+<div class="row cc-paginated-controls-bottom">
+  <button class="btn btn-info disabled">First</button>
+  <button class="btn btn-info cc-prev-button" >Prev</button>
+  <div class="page-items">
+    <label class="sr-only" for="select-example">Select Example</label>
+    <div class="control picker">
+      <select class="form-control" id="select-example">
+        <option>Page 1</option>
+        <option>Page 2</option>
+        <option>Page 3</option>
+      </select>
+    </div>
+  </div>  
+  <button class="btn btn-info cc-next-button" >Next</button>
+  <button class="btn btn-info" >Last</button>
+</div>
+```
+*/
+
+.cc-paginated-controls-bottom {
+  margin-bottom: 90px;
+
+  .page-items,
+  .control.picker {
+    display: inline-block;
+  }
+  
+  .page-items {
+    min-width: 34%;
+  }
+
+  .control.picker {
+    width: 100%;
+  }
+
+  .btn,
+  .btn-info {
+    border-radius: 0;
+    background: none;
+    border: none;
+    color: @PaginationButtonsTextColor;
+
+    &.active,
+    &:focus {
+      border-color: @PaginationActiveBorderColor;
+      background: @PaginationActiveBackgroundColor;
+      color: @PaginationActiveColor;
+    }
+
+    &:hover {
+      border-color: @PaginationHoverBorderColor;
+      background: @PaginationHoverBackgroundColor;
+      color: @PaginationHoverColor;
+    }
+
+    &:first-child,
+    &.cc-prev-button,
+    &:first-child,
+    &:nth-last-child(1),
+    &.cc-next-button {
+      font-size: 0;
+
+      &:after {
+        font-family: "custom-icons";
+        line-height: 182%;
+        font-size: @PaginationButtonsFontSize;
+      }
+    }
+    
+    &.cc-prev-button {
+      transform: rotate(180deg);
+      padding-right: 0;
+
+      &:after {
+        content: @font-custom-icons-arrow-right;
+      }
+    }
+
+    &:first-child {
+      transform: rotate(180deg);
+
+      &:after {
+        content: @font-custom-icons-arrow-next;
+      }
+    }
+    
+    &.cc-next-button {
+      padding-left: 10px;
+      padding-right: 0;
+      
+      &:after {
+        content: @font-custom-icons-arrow-right;
+      }
+    }
+
+    &:nth-last-child(1):after {
+      content: @font-custom-icons-arrow-next;
+    }
+  }
+}

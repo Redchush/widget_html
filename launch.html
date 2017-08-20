@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script data-main="config.js" src="lib/require.js"></script>
+
+    <link rel="stylesheet" href="lib/bootstrap-3.1.1-dist/css/bootstrap.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="lib/bootstrap-3.1.1-dist/css/bootstrap-theme.css">
+    <!--<script src="lib/bootstrap-3.1.1-dist/js/bootstrap.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="lib/bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<style>
+    form.settingsForm{
+        margin: 10px;
+    }
+</style>
+
+<form class="settingsForm">
+    <label>
+        <input type="text">
+    </label> <br>
+    <label>
+        <input type="text">
+    </label> <br>
+    <label>
+        <input type="text">
+    </label> <br>
+</form>
+
+<style>
+    #widget-frame{
+        display:none;
+    }
+    #widget-container{
+        border: 1px solid gray;
+        margin: 100px;
+    }
+</style>
+
+<iframe id="widget-frame" src="display.html"></iframe>
+
+<div id="widget-container"></div>
+
+</body>
+</html>

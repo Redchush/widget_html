@@ -1,0 +1,158 @@
+/*doc
+---
+title: Helpers
+name: helpers
+category: Utils
+---
+
+## Spacing Helpers
+
+Class                 | Description
+--------------------- | -------------------------------------------------------------
+`reset-margin`        | Resets all margins
+`reset-padding-left`  | Resets left's padding
+`reset-padding-right` | Resets right's padding
+
+## Vertical Align
+
+Class                 | Description
+--------------------- | -------------------------------------------------------------
+`vmiddle`             | Vertical align middle
+`vbottom`             | Vertical align bottom
+
+## Layout
+
+Class                 | Description
+--------------------- | -------------------------------------------------------------
+`full-width`          | Applies 100% of width to this element
+`row-full`            | Set a full width considering the viewport
+
+## Text
+
+Class                 | Description
+--------------------- | -------------------------------------------------------------
+`text-uppercase`      | Transform the text to uppercase;
+
+*/
+
+.vbottom,
+.vmiddle {
+  float: none;
+  display: inline-block;
+}
+
+.vbottom {
+  vertical-align: bottom;
+}
+
+.vmiddle {
+  vertical-align: middle;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.reset-margin {
+  margin: 0 !important;
+}
+
+.reset-padding-left {
+  padding-left: 0 !important;
+}
+
+.reset-padding-right {
+  padding-right: 0 !important;
+}
+
+.full-width {
+  width: 100%;
+}
+
+/**
+ * Set a full width considering the viewport
+ * REF: https://coderwall.com/p/hkgamw/creating-full-width-100-container-inside-fixed-width-container
+ */
+.row-full {
+  position: relative;
+  width: 100vw;
+  margin-left: -50vw;
+  left: 50%;
+}
+
+.col-v-center { //Grid vertical align
+  float: none;
+  display: inline-block !important;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+.row-v-center { //Grid vertical align
+
+  [class*='col']:extend(.col-v-center) {
+
+    &:first-of-type, .first-col {
+      padding-left: 0;
+    }
+
+    &:last-of-type, .last-col {
+      padding-right: 0;
+    }
+  }
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: @screen-xs-max) {
+  .col-xs-vspacing {
+    margin: @grid-gutter-width 0;
+  }
+
+  .text-center-xs {
+    text-align: center;
+  }
+
+  .text-right-xs {
+    text-align: right;
+  }
+
+  .full-width-xs {
+    width: 100%;
+  }
+
+  .reset-padding-left-xs {
+    padding-left: 0 !important;
+  }
+
+  .reset-padding-right-xs {
+    padding-right: 0 !important;
+  }
+}
+
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+  .full-width-md {
+    width: 100%;
+  }
+
+  .reset-padding-left-md {
+    padding-left: 0 !important;
+  }
+
+  .reset-padding-right-md {
+    padding-right: 0 !important;
+  }
+}
+
+.ellipsis {
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vertical-ellipsis {
+  .make-ellipsis();
+}
