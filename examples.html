@@ -2,36 +2,40 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <script data-main="config.js" src="lib/require.js"></script>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script data-main="config.js" src="lib/require.js"></script>
 
 
-    <link rel="stylesheet" href="lib/bootstrap-3.1.1-dist/css/bootstrap.css">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="lib/bootstrap-3.1.1-dist/css/bootstrap-theme.css">
+  <link rel="stylesheet" href="lib/bootstrap-3.1.1-dist/css/bootstrap.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="lib/bootstrap-3.1.1-dist/css/bootstrap-theme.css">
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="lib/bootstrap-3.1.1-dist/css/bootstrap.css.map">
-    <link rel="stylesheet" href="lib/bootstrap-3.1.1-dist/css/bootstrap-theme.css.map">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="lib/bootstrap-3.1.1-dist/css/bootstrap.css.map">
+  <link rel="stylesheet" href="lib/bootstrap-3.1.1-dist/css/bootstrap-theme.css.map">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <!--<script src="lib/bootstrap-3.1.1-dist/js/bootstrap.js"></script>-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <!--<script src="lib/bootstrap-3.1.1-dist/js/bootstrap.js"></script>-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <script src="lib/bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <script src="lib/bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Title</title>
 
 </head>
 
 <body>
 
-    <style>
-        #widget-frame {
-            display: none;
-        }
-        /* @ColorBlack: #000000;@ColorMineShaft: #333333;@ColorDoveGray: #666666;
+<style>
+  #widget-frame {
+    display: none;
+    margin-bottom: 30px;
+  }
+  .example{
+    border: 1px solid black;
+  }
+  /* @ColorBlack: #000000;@ColorMineShaft: #333333;@ColorDoveGray: #666666;
 @ColorSilver: #cccccc;
 @ColorMercury: #e5e5e5;
 @ColorWhite: #ffffff;
@@ -48,180 +52,1291 @@
 @ColorShadeRegular: #635e68;
 @ColorShadeBold: #303039;
 @FieldBorderWidth: 2px; */
-    </style>
+</style>
 
 
-    <iframe id="widget-frame" src="display.html"></iframe>
+<iframe id="widget-frame" src="display.html"></iframe>
 
-    <div id="navbar_viewer">
-        <div id="ColorMineShaft"> </div>
-        <div id="ColorSilver"> </div>
-        <div id="ColorMercury"> </div>
-        <div id="ColorWhiteTransparent"> </div>
-        <div id="ColorRed"> </div>
-        <div id="ColorGreen"> </div>
-        <div id="ColorSpinBlueBold"> </div>
-        <div id="ColorSpinBlueRegular"> </div>
-        <div id="ColorSpinBlue"> </div>
-        <div id="ColorSpinBlueLight"> </div>
+<div id="navbar_viewer">
+  <div id="ColorMineShaft"> </div>
+  <div id="ColorSilver"> </div>
+  <div id="ColorMercury"> </div>
+  <div id="ColorWhiteTransparent"> </div>
+  <div id="ColorRed"> </div>
+  <div id="ColorGreen"> </div>
+  <div id="ColorSpinBlueBold"> </div>
+  <div id="ColorSpinBlueRegular"> </div>
+  <div id="ColorSpinBlue"> </div>
+  <div id="ColorSpinBlueLight"> </div>
 
-        <div id="ColorShadeLight"> </div>
-        <div id="ColorShadeRegular"> </div>
-        <div id="ColorShadeBold"> </div>
-        <div id="FieldBorderWidth"> </div>
-
-
-    </div>
-
-    <div id="page" data-bind="css:{&#39;preview&#39;: isPreview, &#39;container&#39;: containPage}" class="container preview">
-        <main class="page-row page-row-expanded">
-            <div id="main" data-bind="css:{&#39;container&#39;: containMain}">
-                <div class="row">
-                    <div class="redBox" id="widget-container">
-                        <div class="templateRegion" id="oeHomeSection" data-oc-id="oeHomeSection">
-                            <div class="oeHomeSection-background">
-                                <!-- oc layout: panels -->
-                                <div class="row block-container">
-                                    <h3>Buttons
-                                        <h3>
-                                            <div class="center-box example buttons">
-                                                Examples:Buttons ```html_example
-                                                <a class="cc-button-primary" href="#">Lorem Ipsum</a>
-                                                <button class="cc-button-primary">Lorem Ipsum</button> ``` ### Sizes ```html_example_table
-                                                <a class="cc-button-large cc-button-primary" href="#">Lorem Ipsum</a>
-
-                                                <a class="cc-button-full cc-button-primary" href="#">Lorem Ipsum</a> ``` ```html_example_table
-                                                <a class="cc-button-primary" href="#">Lorem Ipsum</a>
-
-                                                <a class="cc-button-primary hovered-button" href="#">Lorem Ipsum</a>
-
-                                                <a class="cc-button-primary disabled" href="#">Lorem Ipsum</a>
-
-                                                <a class="cc-button-primary cc-button-transparent" href="#">Lorem Ipsum</a>
-
-                                                <a class="cc-button-secondary" href="#">Lorem Ipsum</a>
-
-                                                <a class="cc-button-secondary hovered-button" href="#">Lorem Ipsum</a>
-
-                                                <a class="cc-button-secondary disabled" href="#">Lorem Ipsum</a>
-
-                                                <a class="cc-button-secondary cc-button-transparent" href="#">Lorem Ipsum</a>
-
-                                                <a class="cc-button-text" href="#">Lorem Ipsum </a>
-
-                                                <a class="cc-button-text hovered-button" href="#">Lorem Ipsum </a>
-
-                                                <a class="cc-button-text" href="#">Lorem Ipsum <i class="glyphicon glyphicon-chevron-right"></i></a> ``` ----------- > The button `transparent` is class which you can add to any other buttons types. It's
-                                                a special type and will invert the default button style and set a transparent background. ### Buttons with Icons If you want to use a large button with an icon, you will have to add a container to your text
-                                                with a classe `cc-icon-text`. See some examples right below. ```html_example_table
-                                                <a class="cc-button-primary" href="#">Lorem Ipsum <i class="glyphicon glyphicon-chevron-right"></i></a>
+  <div id="ColorShadeLight"> </div>
+  <div id="ColorShadeRegular"> </div>
+  <div id="ColorShadeBold"> </div>
+  <div id="FieldBorderWidth"> </div>
 
 
-                                            </div>
-                                            <h3>Cards
-                                                <h3>
-                                                    <div class="center-box example cards">
-                                                        <div class="cc-card cc-rectangle">
-                                                            <h3 class="cc-card-title">Title</h3>
-                                                            <h4 class="cc-card-subtitle">Subtitle</h4>
-                                                        </div>
+</div>
 
-                                                        <div class="cc-card cc-rectangle cc-light">
-                                                            <h3 class="cc-card-title">Title</h3>
-                                                            <h4 class="cc-card-subtitle">Subtitle</h4>
-                                                        </div>
+<div id="Texts">
+  <h1>H1 text size</h1>
+  <h2>H2 text size</h2>
+  <h3>H3 text size</h3>
+  <h4>H4 text size</h4>
+  <h5>H5 text size</h5>
+  <h6>H6 text size</h6>
+  <p>Paragraph size</p>
 
-                                                        ### Rectangular card ```html_example_table
-                                                        <div class="cc-card cc-rectangle">
-                                                            <h3 class="cc-card-title">Title Lorem</h3>
-                                                            <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
-                                                        </div>
+  <div class="subheading1">Lorem subheading1</div>
+  <div class="subheading2">Lorem subheading2</div>
+  <div class="subheading3">Lorem subheading3</div>
+  <div class="subheading4">Lorem subheading4</div>
 
-                                                        <div class="cc-card cc-rectangle cc-large">
-                                                            <h3 class="cc-card-title">Title Lorem</h3>
-                                                            <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
-                                                        </div>
-                                                        ``` ### Card with arrow ```html_example_table
-                                                        <div class="cc-card cc-rectangle cc-arrow">
-                                                            <h3 class="cc-card-title">Title Lorem</h3>
-                                                            <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
-                                                        </div>
+  <div class="bs-glyphicons">
+    <ul class="bs-glyphicons-list">
+      <li><span class="glyphicon-d2c-addopen"></span><span class="glyphicon-class">glyphicon-d2c-addopen</span></li>
+      <li><span class="glyphicon-d2c-arrowdown"></span><span class="glyphicon-class">glyphicon-d2c-arrowdown</span></li>
+      <li><span class="glyphicon-d2c-checksmall"></span><span class="glyphicon-class">glyphicon-d2c-checksmall</span></li>
+      <li><span class="glyphicon-d2c-chevrondown"></span><span class="glyphicon-class">glyphicon-d2c-chevrondown</span></li>
+      <li><span class="glyphicon-d2c-chevronleft"></span><span class="glyphicon-class">glyphicon-d2c-chevronleft</span></li>
+      <li><span class="glyphicon-d2c-chevronright"></span><span class="glyphicon-class">glyphicon-d2c-chevronright</span></li>
+      <li><span class="glyphicon-d2c-chevronup"></span><span class="glyphicon-class">glyphicon-d2c-chevronup</span></li>
+      <li><span class="glyphicon-d2c-close"></span><span class="glyphicon-class">glyphicon-d2c-close</span></li>
+      <li><span class="glyphicon-d2c-error"></span><span class="glyphicon-class">glyphicon-d2c-error</span></li>
+      <li><span class="glyphicon-d2c-fastshipping"></span><span class="glyphicon-class">glyphicon-d2c-fastshipping</span></li>
+      <li><span class="glyphicon-d2c-freeshipping"></span><span class="glyphicon-class">glyphicon-d2c-freeshipping</span></li>
+      <li><span class="glyphicon-d2c-mail"></span><span class="glyphicon-class">glyphicon-d2c-mail</span></li>
+      <li><span class="glyphicon-d2c-menu"></span><span class="glyphicon-class">glyphicon-d2c-menu</span></li>
+      <li><span class="glyphicon-d2c-minimize"></span><span class="glyphicon-class">glyphicon-d2c-minimize</span></li>
+      <li><span class="glyphicon-d2c-search"></span><span class="glyphicon-class">glyphicon-d2c-search</span></li>
+      <li><span class="glyphicon-d2c-star"></span><span class="glyphicon-class">glyphicon-d2c-star</span></li>
+      <li><span class="glyphicon-d2c-tooltip"></span><span class="glyphicon-class">glyphicon-d2c-tooltip</span></li>
+      <li><span class="glyphicon-d2c-zoomin"></span><span class="glyphicon-class">glyphicon-d2c-zoomin</span></li>
+      <li><span class="glyphicon-d2c-zoomout"></span><span class="glyphicon-class">glyphicon-d2c-zoomout</span></li>
+      <li><span class="glyphicon-arrow-down"></span><span class="glyphicon-class">glyphicon-arrow-down</span></li>
+      <li><span class="glyphicon-arrow-next"></span><span class="glyphicon-class">glyphicon-arrow-next</span></li>
+      <li><span class="glyphicon-arrow-right"></span><span class="glyphicon-class">glyphicon-arrow-right</span></li>
+      <li><span class="glyphicon-check"></span><span class="glyphicon-class">glyphicon-check</span></li>
+      <li><span class="glyphicon-close"></span><span class="glyphicon-class">glyphicon-close</span></li>
+      <li><span class="glyphicon-facebook"></span><span class="glyphicon-class">glyphicon-facebook</span></li>
+      <li><span class="glyphicon-logo"></span><span class="glyphicon-class">glyphicon-logo</span></li>
+      <li><span class="glyphicon-logo-filled"></span><span class="glyphicon-class">glyphicon-logo-filled</span></li>
+      <li><span class="glyphicon-mail"></span><span class="glyphicon-class">glyphicon-mail</span></li>
+      <li><span class="glyphicon-phone"></span><span class="glyphicon-class">glyphicon-phone</span></li>
+      <li><span class="glyphicon-pinterest"></span><span class="glyphicon-class">glyphicon-pinterest</span></li>
+      <li><span class="glyphicon-profile"></span><span class="glyphicon-class">glyphicon-profile</span></li>
+      <li><span class="glyphicon-search"></span><span class="glyphicon-class">glyphicon-search</span></li>
+      <li><span class="glyphicon-star"></span><span class="glyphicon-class">glyphicon-star</span></li>
+      <li><span class="glyphicon-thin-arrow-left"></span><span class="glyphicon-class">glyphicon-thin-arrow-left</span></li>
+      <li><span class="glyphicon-thin-arrow-right"></span><span class="glyphicon-class">glyphicon-thin-arrow-right</span></li>
+      <li><span class="glyphicon-twitter"></span><span class="glyphicon-class">glyphicon-twitter</span></li>
+    </ul>
+  </div>
 
-                                                        <div class="cc-card cc-rectangle cc-arrow cc-arrow-left">
-                                                            <h3 class="cc-card-title">Title Lorem</h3>
-                                                            <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
-                                                        </div>
+</div>
 
-                                                        <div class="cc-card cc-rectangle cc-arrow cc-arrow-top">
-                                                            <h3 class="cc-card-title">Title Lorem</h3>
-                                                            <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
-                                                        </div>
+<div id="page" data-bind="css:{&#39;preview&#39;: isPreview, &#39;container&#39;: containPage}" class="container preview">
+  <main class="page-row page-row-expanded">
+    <div id="main" data-bind="css:{&#39;container&#39;: containMain}">
+      <div class="row">
+        <div class="redBox" id="widget-container">
+          <div class="templateRegion" id="oeHomeSection" data-oc-id="oeHomeSection">
+            <div class="oeHomeSection-background">
+              <a class="cc-button-primary" href="#">Lorem Ipsum</a>
+              <!-- oc layout: panels -->
+              <div class="row block-container">
+                <h3>Buttons</h3>
+                <div class="example buttons">
+                  Examples:Buttons
+                  <a class="cc-button-primary" href="#">Lorem Ipsum</a>
+                  <button class="cc-button-primary">Lorem Ipsum</button> ``` ### Sizes ```html_example_table
+                  <a class="cc-button-large cc-button-primary" href="#">Lorem Ipsum</a>
+                  <a class="cc-button-full cc-button-primary" href="#">Lorem Ipsum</a> ``` ```html_example_table
+                  <a class="cc-button-primary" href="#">Lorem Ipsum</a>
+                  <a class="cc-button-primary hovered-button" href="#">Lorem Ipsum</a>
+                  <a class="cc-button-primary disabled" href="#">Lorem Ipsum</a>
+                  <a class="cc-button-primary cc-button-transparent" href="#">Lorem Ipsum</a>
+                  <a class="cc-button-secondary" href="#">Lorem Ipsum</a>
+                  <a class="cc-button-secondary hovered-button" href="#">Lorem Ipsum</a>
+                  <a class="cc-button-secondary disabled" href="#">Lorem Ipsum</a>
+                  <a class="cc-button-secondary cc-button-transparent" href="#">Lorem Ipsum</a>
+                  <a class="cc-button-text" href="#">Lorem Ipsum </a>
+                  <a class="cc-button-text hovered-button" href="#">Lorem Ipsum </a>
+                  <a class="cc-button-text" href="#">Lorem Ipsum <i class="glyphicon glyphicon-chevron-right"></i></a>
+                  ``` ----------- > The button `transparent` is class which you can add to any other buttons types. It's
+                  a special type and will invert the default button style and set a transparent background. ### Buttons with Icons If you want to use a large button with an icon, you will have to add a container to your text
+                  with a classe `cc-icon-text`. See some examples right below. ```html_example_table
+                  <a class="cc-button-primary" href="#">Lorem Ipsum <i class="glyphicon glyphicon-chevron-right"></i></a>
 
-                                                        <div class="cc-card cc-rectangle cc-arrow cc-arrow-bottom">
-                                                            <h3 class="cc-card-title">Title Lorem</h3>
-                                                            <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
-                                                        </div>
-
-                                                        <div class="cc-card cc-rectangle cc-arrow cc-large">
-                                                            <h3 class="cc-card-title">Title Lorem</h3>
-                                                            <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
-                                                        </div>
-                                                    </div>
-                                                    <h3> Carousel</h3>
-                                                    <div class="center-box example carousel"></div>
-                                                    <h3>DatePicker
-                                                    </h3>
-                                                    <div class="center-box example datepicker"></div>
-                                                    <h3>Forms
-                                                    </h3>
-                                                    <div class="center-box example forms"></div>
-                                                    <h3>Links
-                                                    </h3>
-                                                    <div class="center-box example links"></div>
-                                                    <h3>Modals
-                                                    </h3>
-                                                    <div class="center-box example modals"></div>
-                                                    <h3>Links
-                                                    </h3>
-                                                    <div class="center-box example modals"></div>
-                                                    <h3>Lists
-                                                    </h3>
-                                                    <div class="center-box example modals"></div>
-                                                    <h3>Pagination
-                                                    </h3>
-                                                    <div class="center-box example modals"></div>
-                                                    <h3>Product-card
-                                                    </h3>
-                                                    <div class="center-box example modals"></div>
-                                                    <h3>Product-card
-                                                    </h3>
-                                                    <div class="center-box example modals"></div>
-                                                    <h3>Product-card-list
-                                                    </h3>
-                                                    <div class="center-box example modals"></div>
-                                                    <h3>Stars
-                                                    </h3>
-                                                    <div class="center-box example modals"></div>
-                                                    <h3>Tables
-                                                    </h3>
-                                                    <div class="center-box example modals"></div>
-                                                    <h3>Tabs
-                                                    </h3>
-                                                    <div class="center-box example modals"></div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /oc -->
-                    </div>
                 </div>
+                <h3>Cards</h3>
+                <div class="  example cards">
+                  <div class="cc-card cc-rectangle">
+                    <h3 class="cc-card-title">Title</h3>
+                    <h4 class="cc-card-subtitle">Subtitle</h4>
+                  </div>
+
+                  <div class="cc-card cc-rectangle cc-light">
+                    <h3 class="cc-card-title">Title</h3>
+                    <h4 class="cc-card-subtitle">Subtitle</h4>
+                  </div>
+
+                  ### Rectangular card ```html_example_table
+                  <div class="cc-card cc-rectangle">
+                    <h3 class="cc-card-title">Title Lorem</h3>
+                    <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
+                  </div>
+
+                  <div class="cc-card cc-rectangle cc-large">
+                    <h3 class="cc-card-title">Title Lorem</h3>
+                    <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
+                  </div>
+                  ``` ### Card with arrow ```html_example_table
+                  <div class="cc-card cc-rectangle cc-arrow">
+                    <h3 class="cc-card-title">Title Lorem</h3>
+                    <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
+                  </div>
+
+                  <div class="cc-card cc-rectangle cc-arrow cc-arrow-left">
+                    <h3 class="cc-card-title">Title Lorem</h3>
+                    <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
+                  </div>
+
+                  <div class="cc-card cc-rectangle cc-arrow cc-arrow-top">
+                    <h3 class="cc-card-title">Title Lorem</h3>
+                    <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
+                  </div>
+
+                  <div class="cc-card cc-rectangle cc-arrow cc-arrow-bottom">
+                    <h3 class="cc-card-title">Title Lorem</h3>
+                    <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
+                  </div>
+
+                  <div class="cc-card cc-rectangle cc-arrow cc-large">
+                    <h3 class="cc-card-title">Title Lorem</h3>
+                    <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
+                  </div>
+                </div>
+                <h3> Carousel</h3>
+                <div class="  example carousel">
+                  <div class="doc-solid-background darken"><!-- DON'T USE this element on you application, this is only for the styleguide -->
+                    <div class="carousel slide">
+                      <div class="carousel-inner">
+                        <div class="item active">
+                          <a href="#">
+                            <img alt="Hero Image 1" class="img-responsive center-block" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=500&h=300">
+                          </a>
+                        </div>
+
+                        <div class="item ">
+                          <a href="#">
+                            <img alt="Hero Image 1" class="img-responsive center-block" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=500&h=300">
+                          </a>
+                        </div>
+                      </div>
+                      <div class="left carousel-control hidden-xs hidden-sm">
+                        <a href="#">
+                          <span class="glyphicon glyphicon-chevron-left"></span>
+                          <div class="sr-only">previous</div>
+                        </a>
+                      </div>
+                      <div class="right carousel-control hidden-xs hidden-sm">
+                        <a href="#">
+                          <span class="glyphicon glyphicon-chevron-right"></span>
+                          <div class="sr-only">next</div>
+                        </a>
+                      </div>
+                      <ol class="carousel-indicators">
+                        <li class="active"></li>
+                        <li></li>
+                      </ol>
+                    </div>
+                  </div>
+                  ```
+
+                  ###Second carousel style
+
+                  ```html_example
+                  <div class="carousel slide cc-carousel-secondary">
+                    <div class="carousel-inner">
+                      <div class="item active">
+                        <a href="#">
+                          <img alt="Hero Image 1" class="img-responsive center-block" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=500&h=300">
+                        </a>
+                      </div>
+
+                      <div class="item ">
+                        <a href="#">
+                          <img alt="Hero Image 1" class="img-responsive center-block" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=500&h=300">
+                        </a>
+                      </div>
+                    </div>
+                    <div class="left carousel-control hidden-xs hidden-sm">
+                      <a href="#">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <div class="sr-only">previous</div>
+                      </a>
+                    </div>
+                    <div class="right carousel-control hidden-xs hidden-sm">
+                      <a href="#">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <div class="sr-only">next</div>
+                      </a>
+                    </div>
+                    <ol class="carousel-indicators">
+                      <li class="active"></li>
+                      <li></li>
+                    </ol>
+                  </div>
+
+                </div>
+                <h3>DatePicker</h3>
+                <div class="  example datepicker"></div>
+                <h3>Forms</h3>
+                <div class="  example forms">
+                  <div>
+                    That project uses Bootstrap as a basis style. So, all forms structures should follow
+                    the Boostrap's recommendations.
+
+                    Any doubt you can take a look at the [Bootstrap Forms](http://getbootstrap.com/css/#forms)
+                    documentation.
+
+                    ##sr-only
+
+                    Important note: Remember to always use the label element in order to keep our application
+                    well indexable and accessible. You can do that using the `sr-only` class of bootstrap. e.g:
+
+                    ```html_example
+                    <form>
+                      <div class="form-group">
+                        <label class="sr-only" for="my-sr-only-field">SR Field</label>
+                        <input type="text" placeholder="SR Field" class="form-control" id="my-sr-only-field" />
+                      </div>
+                      <button type="submit" class="cc-button-primary">Submit</button>
+                    </form>
+                    ```
+                    */
+
+                    /*doc
+                    ---
+                    title: Text Fields
+                    name: 2-text-fields
+                    category: Forms
+                    ---
+
+                    ###Simple text field
+
+                    ```html_example
+                    <form>
+                      <div class="form-group">
+                        <label class="sr-only" for="simple-field-name">Name</label>
+                        <input type="text" placeholder="Name" class="form-control" id="simple-field-name" />
+                      </div>
+                      <button type="submit" class="cc-button-primary">Submit</button>
+                    </form>
+                    ```
+
+                    ###Text field with a button and a glyphicon
+
+                    ```html_example
+                    <form>
+                      <div class="form-group">
+                        <div class="input-group">
+                          <input type="text" placeholder="Search" class="form-control" />
+                          <div class="input-group-btn">
+                            <span class="form-info glyphicon-D2C-ToolTip"></span>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                    ```
+
+                    ###Invalid text field
+
+                    ```html_example
+                    <form>
+                      <div class="form-group">
+                        <label class="sr-only" for="invalid-text-field">Invalid Text Field</label>
+                        <input type="text" placeholder="Search" class="form-control search-field invalid" id="invalid-text-field" />
+                        <span class="invalid-field-text">Error</span>
+                      </div>
+                    </form>
+                    ```
+
+                    ###Invalid text field with icon
+
+                    ```html_example
+                    <form>
+                      <div class="form-group">
+                        <div class="input-group">
+                          <input type="text" placeholder="Search" class="form-control invalid search-field" />
+                          <div class="input-group-btn">
+                            <button type="submit" class="btn btn-default form-control">
+                              <span class="sr-only">Search</span>
+                              <span class="glyphicon-d2c-search"></span>
+                            </button>
+                          </div>
+                        </div>
+                        <span class="invalid-field-text">Error</span>
+                      </div>
+                    </form>
+                  </div>
+                  <div>
+                    ###Simple text area
+
+                    ```html_example
+                    <form>
+                      <div class="form-group">
+                        <label for="simple-text-area" class="sr-only">Text Area</label>
+                        <textarea class="form-control" rows="5" placeholder="text area" id="simple-text-area"></textarea>
+                      </div>
+                      <button type="submit" class="cc-button-primary">Submit</button>
+                    </form>
+                    ```
+
+                    ###Invalid text area
+
+                    ```html_example
+                    <form>
+                      <div class="form-group">
+                        <label for="invalid-simple-text-area" class="sr-only">Text Area</label>
+                        <textarea class="form-control invalid" rows="5" placeholder="text area" id="invalid-simple-text-area"></textarea>
+                        <span class="invalid-field-text">Error</span>
+                      </div>
+                      <button type="submit" class="cc-button-primary">Submit</button>
+                    </form>
+                    ```
+                  </div>
+                  <div>
+                    All selects have a JS to customize them better, but only the classes and elements are being used
+                    in the project.
+
+                    So, it needs a container element called `control` and `picker`, it should be the select container and the
+                    select element itself.
+
+                    ```html_example
+                    <form>
+                      <div class="form-group">
+                        <label class="sr-only" for="select-example">Select Example</label>
+                        <div class="control picker">
+                          <select class="form-control" id="select-example">
+                            <option>First Option</option>
+                            <option>Second Option</option>
+                            <option>Third Option</option>
+                          </select>
+                        </div>
+                      </div>
+                    </form>
+                    ```
+
+                    ###Invalid Select field
+                    ```html_example
+                    <form>
+                      <div class="form-group">
+                        <label class="sr-only" for="invalid-select-example">Select Example</label>
+                        <div class="control picker">
+                          <select class="form-control invalid" id="invalid-select-example">
+                            <option>First Option</option>
+                            <option>Second Option</option>
+                            <option>Third Option</option>
+                          </select>
+                        </div>
+                        <span class="invalid-field-text">Error</span>
+                      </div>
+                    </form>
+                  </div>
+                  <div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" id="checkbox1">
+                        <span for="checkbox1">Check This</span>
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" checked id="checkbox2">
+                        <span for="checkbox2">Checked</span>
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" disabled id="checkbox2">
+                        <span for="checkbox2">Checked</span>
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" disabled checked id="checkbox2">
+                        <span for="checkbox2">Checked disabled</span>
+                      </label>
+                    </div>
+                    ```
+                    This is an example of a checkbox-inline input
+
+                    ```html_example
+                    <div class="checkbox-inline">
+                      <label>
+                        <input type="checkbox" id="checkbox1">
+                        <span for="checkbox1">Check This</span>
+                      </label>
+                    </div>
+                    <div class="checkbox-inline">
+                      <label>
+                        <input type="checkbox" checked id="checkbox2">
+                        <span for="checkbox2">Checked</span>
+                      </label>
+                    </div>
+                    <div class="checkbox-inline">
+                      <label>
+                        <input type="checkbox" disabled id="checkbox2">
+                        <span for="checkbox2">Checked</span>
+                      </label>
+                    </div>
+                    <div class="checkbox-inline">
+                      <label>
+                        <input type="checkbox" disabled checked id="checkbox2">
+                        <span for="checkbox2">Checked disabled</span>
+                      </label>
+                    </div>
+                    ```
+
+                    ###Invalid Checkbox field
+
+                    ```html_example
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" class="invalid" id="checkbox1-invalid">
+                        <span for="checkbox1">Check This</span>
+                      </label>
+                      <span class="invalid-field-text">Error</span>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" class="invalid" checked id="checkbox2-invalid">
+                        <span for="checkbox2">Invalid</span>
+                      </label>
+                      <span class="invalid-field-text">Error</span>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" checked id="radio1" name="radio">
+                        <span for="radio1">Option 1</span>
+                      </label>
+                    </div>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" id="radio1" name="radio">
+                        <span for="radio1">Option 1</span>
+                      </label>
+                    </div>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" disabled id="radio" name="radio">
+                        <span for="radio2">Option 2</span>
+                      </label>
+                    </div>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" disabled checked id="radio" name="radio">
+                        <span for="radio2">Option 2</span>
+                      </label>
+                    </div>
+                    ```
+                    This is an example of a radio-inline button input
+
+                    ```html_example
+                    <div class="radio-inline">
+                      <label>
+                        <input type="radio" checked id="radio1" name="radio">
+                        <span for="radio1">Option 1</span>
+                      </label>
+                    </div>
+                    <div class="radio-inline">
+                      <label>
+                        <input type="radio" id="radio1" name="radio">
+                        <span for="radio1">Option 1</span>
+                      </label>
+                    </div>
+                    <div class="radio-inline">
+                      <label>
+                        <input type="radio" disabled id="radio" name="radio">
+                        <span for="radio2">Option 2</span>
+                      </label>
+                    </div>
+                    <div class="radio-inline">
+                      <label>
+                        <input type="radio" disabled checked id="radio" name="radio">
+                        <span for="radio2">Option 2</span>
+                      </label>
+                    </div>
+                    ```
+
+                    ###Invalid radio field
+
+                    ```html_example
+                    <div class="radio">
+                      <label>
+                        <input type="radio" class="invalid" id="radio1-invalid">
+                        <span for="radio1-invalid">Check This</span>
+                      </label>
+                      <span class="invalid-field-text">Error</span>
+                    </div>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" class="invalid" checked id="radio2-invalid">
+                        <span for="radio2-invalid">Invalid</span>
+                      </label>
+                      <span class="invalid-field-text">Error</span>
+                    </div>
+                  </div>
+                  <div>
+                    <form class="cc-form-box">
+                      <fieldset>
+                        <div class="form-group">
+                          <label class="sr-only" for="simple-field-name-box">Name</label>
+                          <input type="text" placeholder="Name" class="form-control" id="simple-field-name-box" />
+                        </div>
+                        <div class="form-group">
+                          <label class="sr-only" for="invalid-text-field">Invalid Text Field</label>
+                          <input type="text" placeholder="Search" class="form-control search-field invalid" id="invalid-text-field" />
+                          <span class="invalid-field-text">Error</span>
+                        </div>
+                        <div class="form-group">
+                          <div class="input-group">
+                            <input type="text" placeholder="Search" class="form-control search-field" />
+                            <div class="input-group-btn">
+                              <button type="submit" class="btn btn-default form-control">
+                                <span class="sr-only">Search</span>
+                                <span class="glyphicon glyphicon-search"></span>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </fieldset>
+                      <fieldset>
+                        <div class="form-group">
+                          <label class="sr-only" for="simple-field-name-box">Name</label>
+                          <input type="text" placeholder="Name" class="form-control" id="simple-field-name-box" />
+                        </div>
+                        <div class="form-group">
+                          <label class="sr-only" for="invalid-text-field">Invalid Text Field</label>
+                          <input type="text" placeholder="Search" class="form-control search-field invalid" id="invalid-text-field" />
+                          <span class="invalid-field-text">Error</span>
+                        </div>
+                      </fieldset>
+                    </form>
+                  </div>
+
+                </div>
+                <h3>Links</h3>
+                <div class="  example Links">
+                  <a class="cc-link" href="#">Normal Link</a>
+                  <a class="cc-link hovered-link" href="#">Link on hover</a>
+                  <a class="cc-link visted-link" href="#">Link on visited</a>
+
+                  <!--State               | Class      | Element-->
+                  <!-- -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; | &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; | &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+                  <!--Link normal         | `cc-link`  | <a class="cc-link" href="#">Normal Link</a>-->
+                  <!--Link on hover       | `cc-link`  | <a class="cc-link hovered-link" href="#">Link on hover</a>-->
+                  <!--Link on visted      | `cc-link`  | <a class="cc-link visted-link" href="#">Link on visited</a>-->
+                </div>
+
+                <h3>Lists</h3>
+                <div class="  example Lists">NOP</div>
+                <h3>Modals</h3>
+                <div class="  example Modals">
+                  <div class="modal fade" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close hidden-xs" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <button type="button" class="close visible-xs" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">FECHAR</span></button>
+                          <h4 class="modal-title">Modal title</h4>
+                        </div>
+                        <div class="modal-body">
+                          <h5 class="modal-content-title">Content Title Example</h5>
+
+                          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                            when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                            and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+
+                          <h6 class="modal-content-subtitle">Content Subtitle Example</h6>
+
+                          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="cc-button-primary">Save changes <i class="glyphicon glyphicon-chevron-right"></i></button>
+                        </div>
+                      </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                  </div><!-- /.modal -->
+                  ### Modal with form
+                  <div class="modal fade" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close hidden-xs" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <button type="button" class="close visible-xs" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">FECHAR</span></button>
+                          <h4 class="modal-title">Modal title</h4>
+                        </div>
+                        <div class="modal-body">
+                          <form class="form-horizontal">
+                            <legend>All fields are required</legend>
+                            <div class="centered-fields">
+                              <div class="form-group">
+                                <label for="modalInputFirstName" class="col-sm-3 control-label">First Name</label>
+                                <div class="col-sm-9">
+                                  <input type="text" class="form-control" id="modalInputFirstName">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label for="modalInputLastName" class="col-sm-3 control-label">Last Name</label>
+                                <div class="col-sm-9">
+                                  <input type="text" class="form-control" id="modalInputLastName">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label for="modalInputCPF" class="col-sm-3 control-label">CPF</label>
+                                <div class="col-sm-3">
+                                  <input type="text" class="form-control" id="modalInputCPF">
+                                </div>
+                                <label for="modalInputTelephone" class="col-sm-2 control-label">Telephone</label>
+                                <div class="col-sm-4">
+                                  <input type="text" class="form-control" id="modalInputTelephone">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label for="modalInputEmail" class="col-sm-3 control-label">Email</label>
+                                <div class="col-sm-9">
+                                  <input type="email" class="form-control" id="modalInputEmail">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label for="modalInputPostalCode" class="col-sm-3 control-label">Postal Code</label>
+                                <div class="col-sm-3">
+                                  <input type="text" class="form-control" id="modalInputPostalCode">
+                                </div>
+                                <div class="col-sm-6">
+                                  <div class="form-hint">
+                                    <div class="hint-content">
+                                      <a href="#postal-code-helper">I don't know my Postal Code</a>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label for="modalInputLastName" class="col-sm-3 control-label">Last Name</label>
+                                <div class="col-sm-9">
+                                  <input type="text" class="form-control" id="modalInputLastName">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <div class="col-sm-12">
+                                  <button type="button" class="cc-button-primary pull-right">Send <i class="glyphicon glyphicon-chevron-right"></i></button>
+                                </div>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                      </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                  </div><!-- /.modal -->
+                  ```
+
+                  ### Modal with centered content
+
+                  ```html_example
+                  <div class="modal fade modal-centered-content" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close hidden-xs" data-dismiss="modal" aria-label="Close"><span class='glyphicon-d2c-close'></span></button>
+                          <button type="button" class="close visible-xs" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">FECHAR</span></button>
+                          <h4 class="modal-title">Modal title</h4>
+                        </div>
+                        <div class="modal-body">
+                          <div class="centered-content">
+                            <h5 class="modal-content-title">Content Title Example</h5>
+                            <h6 class="modal-content-subtitle">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's...</h6>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="cc-button-primary">Save changes</button>
+                        </div>
+                      </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                  </div><!-- /.modal -->
+                </div>
+                <h3>Pagination</h3>
+                <div class="  example Pagination">
+                  <div class="row cc-paginated-controls-bottom">
+                    <button class="btn btn-info disabled">First</button>
+                    <button class="btn btn-info cc-prev-button" >Prev</button>
+                    <div class="page-items">
+                      <label class="sr-only" for="select-example">Select Example</label>
+                      <div class="control picker">
+                        <select class="form-control" id="select-example">
+                          <option>Page 1</option>
+                          <option>Page 2</option>
+                          <option>Page 3</option>
+                        </select>
+                      </div>
+                    </div>
+                    <button class="btn btn-info cc-next-button" >Next</button>
+                    <button class="btn btn-info" >Last</button>
+                  </div>
+                </div>
+                <h3>Product-card</h3>
+                <div class="  example Product-card">
+
+                </div>
+                <h3>Product-card</h3>
+                <div class="  example modals">
+                  <div class="row cc-products-cards">
+
+                    <div class="cc-product-card col-xs-12 col-sm-6 col-lg-4 col-md-4">
+                      <div class="cc-product-card-content-container">
+
+                        <!-- Product Image -->
+                        <figure class="cc-product-image-container">
+                          <img class="cc-product-card-image img-responsive center-block" src="http://placehold.it/249x249">
+
+                          <div class="cc-product-image-info-wrapper">
+                            <figcaption class="cc-product-card-image-caption">Lorem Ipsum</figcaption>
+                            <span class="cc-product-new-flag">New</span>
+                          </div>
+                        </figure>
+                        <!-- /Product Image -->
+
+                        <!-- Product details container -->
+                        <div class="cc-product-card-content">
+
+                          <!-- Product Title -->
+                          <h3 class="cc-product-card-title">
+                            TRACER SX5 QUICK SHIP
+                          </h3>
+                          <!-- /Product Title -->
+
+                          <div class="cc-product-card-details">
+                            <div class="cc-product-details-content-wrap">
+                              <!-- Prices -->
+                              <div class="cc-product-prices">
+                                <span class="cc-product-before-price">$695</span>
+                                <span class="cc-product-price">$289</span>
+                              </div>
+                              <!-- /Prices -->
+
+                              <!-- Reviews -->
+                              <div class="cc-stars-component">
+                                <div class="cc-stars-container cc-card-section">
+                                  <ul class="cc-stars">
+                                    <li class="cc-star"><span class="sr-only">1 Star</span></li>
+                                    <li class="cc-star"><span class="sr-only">2 Stars</span></li>
+                                    <li class="cc-star"><span class="sr-only">3 Stars</span></li>
+                                    <li class="cc-star"><span class="sr-only">4 Stars</span></li>
+                                    <li class="cc-star"><span class="sr-only">5 Stars</span></li>
+                                  </ul>
+                                  <div class="cc-stars-active-container" style="width: 70%;">
+                                    <div class="cc-stars-active">
+                                      <span class="cc-star"></span>
+                                      <span class="cc-star"></span>
+                                      <span class="cc-star"></span>
+                                      <span class="cc-star"></span>
+                                      <span class="cc-star"></span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <strong class="cc-stars-label">(322 Reviews)</strong>
+                              </div>
+                              <!-- /Reviews -->
+
+                              <!-- Learn More -->
+                              <div class="cc-learn-more-section cc-card-section">
+                                <a href="#" class="cc-learn-more-link">Learn More</a>
+                              </div>
+                              <!-- /Learn More -->
+                            </div>
+
+                            <!-- Product Card Buttons -->
+                            <div class="cc-product-card-buttons cc-card-section">
+                              <a href="#" class="cc-button-primary">Add to Cart</a>
+                            </div>
+                            <!-- /Product Card Buttons -->
+                          </div>
+                        </div>
+                        <!-- /Product details container -->
+                      </div>
+                    </div>
+
+                    <div class="cc-product-card col-xs-12 col-sm-6 col-lg-4 col-md-4">
+                      <div class="cc-product-card-content-container">
+
+                        <!-- Product Image -->
+                        <figure class="cc-product-image-container">
+                          <img class="cc-product-card-image img-responsive center-block" src="http://placehold.it/249x300">
+
+                          <div class="cc-product-image-info-wrapper">
+                            <figcaption class="cc-product-card-image-caption">Lorem Ipsum</figcaption>
+                            <span class="cc-product-new-flag">New</span>
+                          </div>
+                        </figure>
+                        <!-- /Product Image -->
+
+                        <!-- Product details container -->
+                        <div class="cc-product-card-content">
+
+                          <!-- Product Title -->
+                          <h3 class="cc-product-card-title">
+                            TRACER SX5 QUICK SHIP
+                          </h3>
+                          <!-- /Product Title -->
+
+                          <div class="cc-product-card-details">
+                            <div class="cc-product-details-content-wrap">
+                              <!-- Prices -->
+                              <div class="cc-product-prices">
+                                <span class="cc-product-before-price">$695</span>
+                                <span class="cc-product-price">$289</span>
+                              </div>
+                              <!-- /Prices -->
+
+                              <!-- Reviews -->
+                              <div class="cc-stars-component">
+                                <div class="cc-stars-container cc-card-section">
+                                  <ul class="cc-stars">
+                                    <li class="cc-star"><span class="sr-only">1 Star</span></li>
+                                    <li class="cc-star"><span class="sr-only">2 Stars</span></li>
+                                    <li class="cc-star"><span class="sr-only">3 Stars</span></li>
+                                    <li class="cc-star"><span class="sr-only">4 Stars</span></li>
+                                    <li class="cc-star"><span class="sr-only">5 Stars</span></li>
+                                  </ul>
+                                  <div class="cc-stars-active-container" style="width: 70%;">
+                                    <div class="cc-stars-active">
+                                      <span class="cc-star"></span>
+                                      <span class="cc-star"></span>
+                                      <span class="cc-star"></span>
+                                      <span class="cc-star"></span>
+                                      <span class="cc-star"></span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <strong class="cc-stars-label">(322 Reviews)</strong>
+                              </div>
+                              <!-- /Reviews -->
+
+                              <!-- Learn More -->
+                              <div class="cc-learn-more-section cc-card-section">
+                                <a href="#" class="cc-learn-more-link">Learn More</a>
+                              </div>
+                              <!-- /Learn More -->
+                            </div>
+                            <!-- Product Card Buttons -->
+                            <div class="cc-product-card-buttons cc-card-section">
+                              <a href="#" class="cc-button-primary">Add to Cart</a>
+                            </div>
+                            <!-- /Product Card Buttons -->
+                          </div>
+                        </div>
+                        <!-- /Product details container -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <h3>Product-card-list</h3>
+                <div class="  example modals">
+                  ###Default Product Card List
+
+                  ####Attention: Don't use the class __doc-solid-background darken__ on your element, it's only for the styleguide
+
+                  ```html_example
+                  <div class="carousel slide cc-carousel-secondary cc-product-card-list">
+                    <div class="carousel-inner">
+                      <div class="row cc-products-cards">
+
+                        <div class="cc-product-card col-xs-12 col-sm-6 col-lg-4 col-md-4">
+                          <div class="cc-product-card-content-container">
+
+                            <!-- Product Image -->
+                            <figure class="cc-product-image-container">
+                              <img class="cc-product-card-image img-responsive center-block" src="http://placehold.it/249x249">
+
+                              <div class="cc-product-image-info-wrapper">
+                                <figcaption class="cc-product-card-image-caption">Lorem Ipsum</figcaption>
+                                <span class="cc-product-new-flag">New</span>
+                              </div>
+                            </figure>
+                            <!-- /Product Image -->
+
+                            <!-- Product details container -->
+                            <div class="cc-product-card-content">
+
+                              <!-- Product Title -->
+                              <h3 class="cc-product-card-title">
+                                TRACER SX5 QUICK SHIP
+                              </h3>
+                              <!-- /Product Title -->
+
+                              <div class="cc-product-card-details">
+                                <div class="cc-product-details-content-wrap">
+                                  <!-- Prices -->
+                                  <div class="cc-product-prices">
+                                    <span class="cc-product-before-price">$695</span>
+                                    <span class="cc-product-price">$289</span>
+                                  </div>
+                                  <!-- /Prices -->
+
+                                  <!-- Reviews -->
+                                  <div class="cc-stars-component">
+                                    <div class="cc-stars-container cc-card-section">
+                                      <ul class="cc-stars">
+                                        <li class="cc-star"><span class="sr-only">1 Star</span></li>
+                                        <li class="cc-star"><span class="sr-only">2 Stars</span></li>
+                                        <li class="cc-star"><span class="sr-only">3 Stars</span></li>
+                                        <li class="cc-star"><span class="sr-only">4 Stars</span></li>
+                                        <li class="cc-star"><span class="sr-only">5 Stars</span></li>
+                                      </ul>
+                                      <div class="cc-stars-active-container" style="width: 70%;">
+                                        <div class="cc-stars-active">
+                                          <span class="cc-star"></span>
+                                          <span class="cc-star"></span>
+                                          <span class="cc-star"></span>
+                                          <span class="cc-star"></span>
+                                          <span class="cc-star"></span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <strong class="cc-stars-label">(322 Reviews)</strong>
+                                  </div>
+                                  <!-- /Reviews -->
+
+                                  <!-- Learn More -->
+                                  <div class="cc-learn-more-section cc-card-section">
+                                    <a href="#" class="cc-learn-more-link">Learn More</a>
+                                  </div>
+                                  <!-- /Learn More -->
+                                </div>
+
+                                <!-- Product Card Buttons -->
+                                <div class="cc-product-card-buttons cc-card-section">
+                                  <a href="#" class="cc-button-primary">Add to Cart</a>
+                                </div>
+                                <!-- /Product Card Buttons -->
+                              </div>
+                            </div>
+                            <!-- /Product details container -->
+                          </div>
+                        </div>
+
+                        <div class="cc-product-card col-xs-12 col-sm-6 col-lg-4 col-md-4">
+                          <div class="cc-product-card-content-container">
+
+                            <!-- Product Image -->
+                            <figure class="cc-product-image-container">
+                              <img class="cc-product-card-image img-responsive center-block" src="http://placehold.it/249x300">
+
+                              <div class="cc-product-image-info-wrapper">
+                                <figcaption class="cc-product-card-image-caption">Lorem Ipsum</figcaption>
+                                <span class="cc-product-new-flag">New</span>
+                              </div>
+                            </figure>
+                            <!-- /Product Image -->
+
+                            <!-- Product details container -->
+                            <div class="cc-product-card-content">
+
+                              <!-- Product Title -->
+                              <h3 class="cc-product-card-title">
+                                TRACER SX5 QUICK SHIP
+                              </h3>
+                              <!-- /Product Title -->
+
+                              <div class="cc-product-card-details">
+                                <div class="cc-product-details-content-wrap">
+                                  <!-- Prices -->
+                                  <div class="cc-product-prices">
+                                    <span class="cc-product-before-price">$695</span>
+                                    <span class="cc-product-price">$289</span>
+                                  </div>
+                                  <!-- /Prices -->
+
+                                  <!-- Reviews -->
+                                  <div class="cc-stars-component">
+                                    <div class="cc-stars-container cc-card-section">
+                                      <ul class="cc-stars">
+                                        <li class="cc-star"><span class="sr-only">1 Star</span></li>
+                                        <li class="cc-star"><span class="sr-only">2 Stars</span></li>
+                                        <li class="cc-star"><span class="sr-only">3 Stars</span></li>
+                                        <li class="cc-star"><span class="sr-only">4 Stars</span></li>
+                                        <li class="cc-star"><span class="sr-only">5 Stars</span></li>
+                                      </ul>
+                                      <div class="cc-stars-active-container" style="width: 70%;">
+                                        <div class="cc-stars-active">
+                                          <span class="cc-star"></span>
+                                          <span class="cc-star"></span>
+                                          <span class="cc-star"></span>
+                                          <span class="cc-star"></span>
+                                          <span class="cc-star"></span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <strong class="cc-stars-label">(322 Reviews)</strong>
+                                  </div>
+                                  <!-- /Reviews -->
+
+                                  <!-- Learn More -->
+                                  <div class="cc-learn-more-section cc-card-section">
+                                    <a href="#" class="cc-learn-more-link">Learn More</a>
+                                  </div>
+                                  <!-- /Learn More -->
+                                </div>
+                                <!-- Product Card Buttons -->
+                                <div class="cc-product-card-buttons cc-card-section">
+                                  <a href="#" class="cc-button-primary">Add to Cart</a>
+                                </div>
+                                <!-- /Product Card Buttons -->
+                              </div>
+                            </div>
+                            <!-- /Product details container -->
+                          </div>
+                        </div>
+
+                        <div class="cc-product-card col-xs-12 col-sm-6 col-lg-4 col-md-4">
+                          <div class="cc-product-card-content-container">
+
+                            <!-- Product Image -->
+                            <figure class="cc-product-image-container">
+                              <img class="cc-product-card-image img-responsive center-block" src="http://placehold.it/249x300">
+
+                              <div class="cc-product-image-info-wrapper">
+                                <figcaption class="cc-product-card-image-caption">Lorem Ipsum</figcaption>
+                                <span class="cc-product-new-flag">New</span>
+                              </div>
+                            </figure>
+                            <!-- /Product Image -->
+
+                            <!-- Product details container -->
+                            <div class="cc-product-card-content">
+
+                              <!-- Product Title -->
+                              <h3 class="cc-product-card-title">
+                                TRACER SX5 QUICK SHIP
+                              </h3>
+                              <!-- /Product Title -->
+
+                              <div class="cc-product-card-details">
+                                <div class="cc-product-details-content-wrap">
+                                  <!-- Prices -->
+                                  <div class="cc-product-prices">
+                                    <span class="cc-product-before-price">$695</span>
+                                    <span class="cc-product-price">$289</span>
+                                  </div>
+                                  <!-- /Prices -->
+
+                                  <!-- Reviews -->
+                                  <div class="cc-stars-component">
+                                    <div class="cc-stars-container cc-card-section">
+                                      <ul class="cc-stars">
+                                        <li class="cc-star"><span class="sr-only">1 Star</span></li>
+                                        <li class="cc-star"><span class="sr-only">2 Stars</span></li>
+                                        <li class="cc-star"><span class="sr-only">3 Stars</span></li>
+                                        <li class="cc-star"><span class="sr-only">4 Stars</span></li>
+                                        <li class="cc-star"><span class="sr-only">5 Stars</span></li>
+                                      </ul>
+                                      <div class="cc-stars-active-container" style="width: 70%;">
+                                        <div class="cc-stars-active">
+                                          <span class="cc-star"></span>
+                                          <span class="cc-star"></span>
+                                          <span class="cc-star"></span>
+                                          <span class="cc-star"></span>
+                                          <span class="cc-star"></span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <strong class="cc-stars-label">(322 Reviews)</strong>
+                                  </div>
+                                  <!-- /Reviews -->
+
+                                  <!-- Learn More -->
+                                  <div class="cc-learn-more-section cc-card-section">
+                                    <a href="#" class="cc-learn-more-link">Learn More</a>
+                                  </div>
+                                  <!-- /Learn More -->
+                                </div>
+                                <!-- Product Card Buttons -->
+                                <div class="cc-product-card-buttons cc-card-section">
+                                  <a href="#" class="cc-button-primary">Add to Cart</a>
+                                </div>
+                                <!-- /Product Card Buttons -->
+                              </div>
+                            </div>
+                            <!-- /Product details container -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="left carousel-control hidden-xs hidden-sm">
+                      <a href="#">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <div class="sr-only">previous</div>
+                      </a>
+                    </div>
+                    <div class="right carousel-control hidden-xs hidden-sm">
+                      <a href="#">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <div class="sr-only">next</div>
+                      </a>
+                    </div>
+                    <ol class="carousel-indicators">
+                      <li class="active"></li>
+                      <li></li>
+                    </ol>
+                  </div>
+                </div>
+                <h3>Stars</h3>
+                <div class="  example modals">
+                  ### Default Stars
+
+                  The stars state is based on its size. So, if we need 4 stars, we should set a style attribute on `cc-stars-active-container` containing `width:80%`. The same for other
+                  stars and states.
+
+                  ```html_example_table
+                  <div class="cc-stars-component">
+                    <div class="cc-stars-container">
+                      <ul class="cc-stars">
+                        <li class="cc-star"><span class="sr-only">1 Star</span></li>
+                        <li class="cc-star"><span class="sr-only">2 Stars</span></li>
+                        <li class="cc-star"><span class="sr-only">3 Stars</span></li>
+                        <li class="cc-star"><span class="sr-only">4 Stars</span></li>
+                        <li class="cc-star"><span class="sr-only">5 Stars</span></li>
+                      </ul>
+                      <div class="cc-stars-active-container">
+                        <div class="cc-stars-active">
+                          <span class="cc-star"></span>
+                          <span class="cc-star"></span>
+                          <span class="cc-star"></span>
+                          <span class="cc-star"></span>
+                          <span class="cc-star"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <strong class="cc-stars-label">(322 Reviews)</strong>
+                  </div>
+                  ```
+
+                  ### Four Stars
+
+                  ```html_example_table
+                  <div class="cc-stars-component">
+                    <div class="cc-stars-container">
+                      <ul class="cc-stars">
+                        <li class="cc-star"><span class="sr-only">1 Star</span></li>
+                        <li class="cc-star"><span class="sr-only">2 Stars</span></li>
+                        <li class="cc-star"><span class="sr-only">3 Stars</span></li>
+                        <li class="cc-star"><span class="sr-only">4 Stars</span></li>
+                        <li class="cc-star"><span class="sr-only">5 Stars</span></li>
+                      </ul>
+                      <div class="cc-stars-active-container" style="width: 80%;">
+                        <div class="cc-stars-active">
+                          <span class="cc-star"></span>
+                          <span class="cc-star"></span>
+                          <span class="cc-star"></span>
+                          <span class="cc-star"></span>
+                          <span class="cc-star"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <strong class="cc-stars-label">(322 Reviews)</strong>
+                  </div>
+                </div>
+                <h3>Tables</h3>
+                <div class="  example modals">
+                  This is the default bootstrap table.
+
+                  Taking a look at the code of this table we can notice this data attribute `data-td-title`, this would be
+                  the "th" or the title of each column when in mobile version. Try to resize the window and see that this `data-td-title`
+                  will be shown on the left side. So, remember to create this attribute to each td copying the th content.
+
+                  This is based on that solution: [https://elvery.net/demo/responsive-tables/#no-more-tables](https://elvery.net/demo/responsive-tables/#no-more-tables)
+
+                  ```html_example
+                  <div class="doc-solid-background">
+                    <table class="cc-table table table-striped">
+                      <thead>
+                      <tr>
+                        <th>Column title A</th>
+                        <th>Column title B</th>
+                        <th>Column title C</th>
+                        <th>Column title D</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr>
+                        <td data-td-title="Column title A">Column content A</td>
+                        <td data-td-title="Column title B">Column content B</td>
+                        <td data-td-title="Column title C">Column content C</td>
+                        <td data-td-title="Column title D">Column content D</td>
+                      </tr>
+                      <tr>
+                        <td data-td-title="Column title A">Column content A</td>
+                        <td data-td-title="Column title B">Column content B</td>
+                        <td data-td-title="Column title C">Column content C</td>
+                        <td data-td-title="Column title D">Column content D</td>
+                      </tr>
+                      <tr>
+                        <td data-td-title="Column title A">Column content A</td>
+                        <td data-td-title="Column title B">Column content B</td>
+                        <td data-td-title="Column title C">Column content C</td>
+                        <td data-td-title="Column title D">Column content D</td>
+                      </tr>
+                      </tbody>
+                    </table>
+                    <div>
+                    </div>
+                    <h3>Tabs</h3>
+                    <div class="  example modals"></div>
+
+                  </div>
+                </div>
+                <h3>Tabs</h3>
+                <div class="  example Tabs">
+                  ###Default Tabs
+
+                  ```html_example
+                  <div>
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs nav-justified" role="tablist">
+                      <li role="presentation" class="active"><a href="#lorem" aria-controls="lorem" role="tab" data-toggle="tab">Lorem Ipsum</a></li>
+                      <li role="presentation"><a href="#dolor" aria-controls="dolor" role="tab" data-toggle="tab">Dolor Sit Amet</a></li>
+                      <li role="presentation"><a href="#consectetur" aria-controls="consectetur" role="tab" data-toggle="tab">Consectetur</a></li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                      <div role="tabpanel" class="tab-pane active" id="lorem">
+                        <strong class="tab-content-title">LOREM IPSUM DOLOR</strong>
+                        <div class="tab-content-container">
+                          Sit Amet, Consectetur Adipiscing Elit. Phasellus Fermentum Sit Amet Nisl Eu Auctor. Cras Ornare Soldales Augue Non Iaculis.
+                        </div>
+                      </div>
+                      <div role="tabpanel" class="tab-pane" id="dolor">...</div>
+                      <div role="tabpanel" class="tab-pane" id="consectetur">...</div>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+              <!-- /oc -->
             </div>
-    </div>
+          </div>
+        </div>
 
-    <div id="loadingModal" class="hide loadingIndicator"></div>
-    </main>
+        <div id="loadingModal" class="hide loadingIndicator"></div>
+  </main>
 
-    </div>
+</div>
 </body>
 
 </html>

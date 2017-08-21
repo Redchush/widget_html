@@ -6,7 +6,6 @@
     <title>Title</title>
     <script data-main="config.js" src="lib/require.js"></script>
 
-
     <link rel="stylesheet" href="lib/bootstrap-3.1.1-dist/css/bootstrap.css">
     <!-- Optional theme -->
     <link rel="stylesheet" href="lib/bootstrap-3.1.1-dist/css/bootstrap-theme.css">
@@ -27,11 +26,11 @@
 
 <body>
 
-    <style>
-        #widget-frame {
-            display: none;
-        }
-        /* @ColorBlack: #000000;@ColorMineShaft: #333333;@ColorDoveGray: #666666;
+<style>
+    #widget-frame {
+        display: none;
+    }
+    /* @ColorBlack: #000000;@ColorMineShaft: #333333;@ColorDoveGray: #666666;
 @ColorSilver: #cccccc;
 @ColorMercury: #e5e5e5;
 @ColorWhite: #ffffff;
@@ -48,182 +47,220 @@
 @ColorShadeRegular: #635e68;
 @ColorShadeBold: #303039;
 @FieldBorderWidth: 2px; */
-    </style>
+</style>
+
+<iframe id="widget-frame" src="display.html"></iframe>
+
+<div id="navbar_viewer">
+    <div id="ColorMineShaft"> </div>
+    <div id="ColorSilver"> </div>
+    <div id="ColorMercury"> </div>
+    <div id="ColorWhiteTransparent"> </div>
+    <div id="ColorRed"> </div>
+    <div id="ColorGreen"> </div>
+    <div id="ColorSpinBlueBold"> </div>
+    <div id="ColorSpinBlueRegular"> </div>
+    <div id="ColorSpinBlue"> </div>
+    <div id="ColorSpinBlueLight"> </div>
+
+    <div id="ColorShadeLight"> </div>
+    <div id="ColorShadeRegular"> </div>
+    <div id="ColorShadeBold"> </div>
+    <div id="FieldBorderWidth"> </div>
 
 
-    <iframe id="widget-frame" src="display.html"></iframe>
+</div>
 
-    <div id="navbar_viewer">
-        <div id="ColorMineShaft"> </div>
-        <div id="ColorSilver"> </div>
-        <div id="ColorMercury"> </div>
-        <div id="ColorWhiteTransparent"> </div>
-        <div id="ColorRed"> </div>
-        <div id="ColorGreen"> </div>
-        <div id="ColorSpinBlueBold"> </div>
-        <div id="ColorSpinBlueRegular"> </div>
-        <div id="ColorSpinBlue"> </div>
-        <div id="ColorSpinBlueLight"> </div>
+<div id="page" data-bind="css:{&#39;preview&#39;: isPreview, &#39;container&#39;: containPage}" class="container preview">
 
-        <div id="ColorShadeLight"> </div>
-        <div id="ColorShadeRegular"> </div>
-        <div id="ColorShadeBold"> </div>
-        <div id="FieldBorderWidth"> </div>
+    <main class="page-row page-row-expanded">
+        <div id="main" data-bind="css:{&#39;container&#39;: containMain}">
+
+            <div class="row">
+                <div class="redBox" id="widget-container">
+
+                    <div class="templateRegion" id="oeHomeSection" data-oc-id="oeHomeSection">
+                        <div class="oeHomeSection-background">
+
+                            <!-- oc layout: panels -->
+                            <div class="row block-container">
+
+                                <div class="center-box">
+                                    <div class="oc-panel sectionBlock block-small" data-oc-id="panel-2">
+                                        <!-- oc section: oeHomeSection-box-content-dark -->
+                                        <div class=" sectionBlock-content">
+                                            <h3>Lorem ipsum lska lkjskldjal jlsjfl</h3>
+                                            <span data-bind="element: 'rich-text',id: '300001'"></span>
+                                        </div>
+                                        <!--/oc -->
+                                    </div>
+                                    <div class="oc-panel sectionBlock block-large" data-oc-id="panel-1">
+                                        <div class=" sectionBlock-content">
+                                            <h3 data-bind="element: 'rich-text',id: '300001'">
+                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
+                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
+                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
+                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
+                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
+                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
+                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
+                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
+                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
+                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
+                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
+                                            </h3>
+                                            <div class="bottom-box">
+                                                <a class="cc-link" href="#">Normal Link</a>
+                                                <span class="glyphicon-chevron-right"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="oc-panel sectionBlock block-small" data-oc-id="panel-2s">
+                                        <!-- oc section: oeHomeSection-box-content-dark -->
+                                        <div class=" sectionBlock-content">
+                                            <h3>Lorem ipsum lska lkjskldjal jlsjfl</h3>
+                                            <div class="bottom-box">
+                                                <a class="cc-button-primary" href="#">Lorem Ipsum</a>
+                                            </div>
+                                        </div>
+                                        <!--/oc -->
+                                    </div>
+                                    <div class="oc-panel sectionBlock block-small" data-oc-id="panel-2d">
+                                        <!-- oc section: oeHomeSection-box-content-dark -->
+                                        <div class=" sectionBlock-content">
+                                            <h3>Lorem ipsum lska lkjskldjal jlsjfl</h3>
+                                            <div class="bottom-box">
+                                                <a class="cc-button-primary" href="#">Lorem Ipsum</a>
+                                            </div>
+                                        </div>
+                                        <!--/oc -->
+                                    </div>
+
+                                    <div class="oc-panel sectionBlock block-small" data-oc-id="panel-3">
+                                        <div class=" sectionBlock-content">
+                                            <h3 data-bind="element: 'rich-text',id: '300001'">
+                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
+                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
+                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
+                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
+                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
+                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
+                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
+                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
+                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
+                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
+                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
+                                            </h3>
+                                            <div class="bottom-box">
+                                                <a class="cc-link" href="#">Normal Link</a>
+                                                <span class="glyphicon-chevron-right"></span>
+                                            </div>
+                                         </div>
+                                    </div>
+                                </div>
+                                <div class="center-box">
+                                    <div class="oc-panel sectionBlock block-large" data-oc-id="panel-1">
+                                        <div class=" sectionBlock-content">
+                                            <div class="doc-solid-background darken"><!-- DON'T USE this element on you application, this is only for the styleguide -->
+                                                <div class="carousel slide">
+                                                    <div class="carousel-inner">
+                                                        <div class="item active">
+                                                            <a href="#">
+                                                                <img alt="Hero Image 1" class="img-responsive center-block" src="https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=350%C3%97150&amp;w=500&amp;h=300">
+                                                            </a>
+                                                        </div>
+
+                                                        <div class="item ">
+                                                            <a href="#">
+                                                                <img alt="Hero Image 1" class="img-responsive center-block" src="https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=350%C3%97150&amp;w=500&amp;h=300">
+                                                            </a>
+                                                        </div>
+                                                        <div class="item ">
+                                                            <a href="#">
+                                                                <img alt="Hero Image 1" class="img-responsive center-block" src="https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=350%C3%97150&amp;w=500&amp;h=300">
+                                                            </a>
+                                                        </div>
+
+                                                        <div class="left carousel-control hidden-xs hidden-sm">
+                                                            <a href="#">
+                                                                <span class="glyphicon-chevron-left"></span>
+                                                             </a>
+                                                        </div>
+
+                                                        <div class="right carousel-control hidden-xs hidden-sm">
+                                                            <a href="#">
+                                                                <span class="glyphicon-chevron-right"></span>
+                                                            </a>
+                                                        </div>
+
+                                                    </div>
 
 
-    </div>
-
-    <div id="page" data-bind="css:{&#39;preview&#39;: isPreview, &#39;container&#39;: containPage}" class="container preview">
-
-        <main class="page-row page-row-expanded">
-            <div id="main" data-bind="css:{&#39;container&#39;: containMain}">
-
-                <div class="row">
-                    <div class="redBox" id="widget-container">
-
-
-                        <div class="templateRegion" id="oeHomeSection" data-oc-id="oeHomeSection">
-                            <div class="oeHomeSection-background">
-
-                                <!-- oc layout: panels -->
-                                <div class="row block-container">
-
-                                    <div class="center-box">
-                                        <div class="oc-panel sectionBlock block-large" data-oc-id="panel-2">
-                                            <div class="sectionBlock-content_light">
-                                                <span data-bind="element: 'rich-text',id: '300001'"></span>
+                                                    <ol class="carousel-indicators">
+                                                        <li class="active"></li>
+                                                        <li></li>
+                                                    </ol>
+                                                </div>
                                             </div>
 
                                         </div>
+                                    </div>
 
-
-                                        <div class="oc-panel sectionBlock block-small" data-oc-id="panel-1">
-                                            <!-- oc section: oeHomeSection-box-content-dark -->
-                                            <div class="sectionBlock-content_light">
-                                                <span data-bind="element: 'rich-text',id: '300001'"></span>
-                                            </div>
-                                            <!--/oc -->
-                                        </div>
-                                        <div class="oc-panel sectionBlock block-small" data-oc-id="panel-2">
-                                            <div class="sectionBlock-content_middle">
-                                                <span data-bind="element: 'rich-text',id: '300001'"></span>
+                                    <div class="oc-panel sectionBlock block-small" data-oc-id="panel-2">
+                                        <!-- oc section: oeHomeSection-box-content-dark -->
+                                        <div class=" sectionBlock-content">
+                                            <h3>Lorem ipsum lska lkjskldjal jlsjfl</h3>
+                                            <div class="bottom-box">
+                                                <a class="cc-button-primary" href="#">Lorem Ipsum</a>
                                             </div>
                                         </div>
-                                        <div class="oc-panel sectionBlock block-small" data-oc-id="panel-2">
-                                            <div class="sectionBlock-content_dark">
-                                                <span data-bind="element: 'rich-text',id: '300001'"></span>
-                                            </div>
+                                        <!--/oc -->
+                                    </div>
 
-                                        </div>
+                                    <div class="oc-panel sectionBlock block-small" data-oc-id="panel-2">
+                                    <!-- oc section: oeHomeSection-box-content-dark -->
+                                    <div class=" sectionBlock-content">
+                                    <h3>Lorem ipsum lska lkjskldjal jlsjfl</h3>
+                                    <span data-bind="element: 'rich-text',id: '300001'"></span>
+                                    </div>
+                                    <!--/oc -->
+                                    </div>
 
-                                        <div class="oc-panel sectionBlock block-small" data-oc-id="panel-2">
-                                            <div class="element-container dark-box">
-                                                <span data-bind="element: 'rich-text',id: '300001'"></span>
-                                            </div>
+                                    <div class="oc-panel sectionBlock block-small" data-oc-id="panel-3">
+                                    <div class=" sectionBlock-content">
+                                    <h3>Lorem ipsum lska lkjskldjal jlsjfl</h3>
+                                    <span data-bind="element: 'rich-text',id: '300001'"></span>
+                                    </div>
+                                    </div>
 
-                                        </div>
+                                    <div class="oc-panel sectionBlock block-small" data-oc-id="panel-4">
+                                    <div class=" sectionBlock-content">
+                                    <h3>Lorem ipsum lska lkjskldjal jlsjfl</h3>
+                                    <span data-bind="element: 'rich-text',id: '300001'"></span>
+                                    </div>
+                                    </div>
 
-                                        <div class="oc-panel sectionBlock block-small" data-oc-id="panel-2">
-                                            <div class="element-container dark-box">
-                                                <span data-bind="element: 'rich-text',id: '300001'"></span>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="oc-panel sectionBlock block-small" data-oc-id="panel-2">
-                                            <div class="element-container small-box dark-box">
-                                                <span data-bind="element: 'rich-text',id: '300001'"></span>
-                                            </div>
-
-                                        </div>
+                                    <div class="oc-panel sectionBlock block-small" data-oc-id="panel-5">
+                                    <div class=" sectionBlock-content">
+                                    <h3>Lorem ipsum lska lkjskldjal jlsjfl</h3>
+                                    <span data-bind="element: 'rich-text',id: '300001'"></span>
+                                    </div>
 
                                     </div>
 
-                                    Examples : Card
-
-                                    <div class="center-box">
-                                        <div class="cc-card cc-rectangle">
-                                            <h3 class="cc-card-title">Title</h3>
-                                            <h4 class="cc-card-subtitle">Subtitle</h4>
-                                        </div>
-
-                                        <div class="cc-card cc-rectangle cc-light">
-                                            <h3 class="cc-card-title">Title</h3>
-                                            <h4 class="cc-card-subtitle">Subtitle</h4>
-                                        </div>
-
-                                        ### Rectangular card ```html_example_table
-                                        <div class="cc-card cc-rectangle">
-                                            <h3 class="cc-card-title">Title Lorem</h3>
-                                            <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
-                                        </div>
-
-                                        <div class="cc-card cc-rectangle cc-large">
-                                            <h3 class="cc-card-title">Title Lorem</h3>
-                                            <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
-                                        </div>
-                                        ``` ### Card with arrow ```html_example_table
-                                        <div class="cc-card cc-rectangle cc-arrow">
-                                            <h3 class="cc-card-title">Title Lorem</h3>
-                                            <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
-                                        </div>
-
-                                        <div class="cc-card cc-rectangle cc-arrow cc-arrow-left">
-                                            <h3 class="cc-card-title">Title Lorem</h3>
-                                            <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
-                                        </div>
-
-                                        <div class="cc-card cc-rectangle cc-arrow cc-arrow-top">
-                                            <h3 class="cc-card-title">Title Lorem</h3>
-                                            <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
-                                        </div>
-
-                                        <div class="cc-card cc-rectangle cc-arrow cc-arrow-bottom">
-                                            <h3 class="cc-card-title">Title Lorem</h3>
-                                            <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
-                                        </div>
-
-                                        <div class="cc-card cc-rectangle cc-arrow cc-large">
-                                            <h3 class="cc-card-title">Title Lorem</h3>
-                                            <h4 class="cc-card-subtitle">Subtitle Lorem</h4>
-                                        </div>
+                                    <div class="oc-panel sectionBlock block-large" data-oc-id="panel-1">
+                                    <div class=" sectionBlock-content">
+                                    <h2>Lorem ipsum lska lkjskldjal jlsjfl</h2>
+                                    <span data-bind="element: 'rich-text',id: '300001'"></span>
+                                    </div>
                                     </div>
 
-                                    Examples:Buttons ```html_example
-                                    <a class="cc-button-primary" href="#">
-                  Lorem Ipsum
-                </a>
-                                    <button class="cc-button-primary">
-                  Lorem Ipsum
-                </button> ``` ### Sizes ```html_example_table
-                                    <a class="cc-button-large cc-button-primary" href="#">Lorem Ipsum</a>
+                                    <div class="oc-panel sectionBlock block-small" data-oc-id="panel-6">
+                                    <div class=" sectionBlock-content">
+                                    <span data-bind="element: 'rich-text',id: '300001'"></span>
+                                    </div>
 
-                                    <a class="cc-button-full cc-button-primary" href="#">Lorem Ipsum</a> ``` ```html_example_table
-                                    <a class="cc-button-primary" href="#">Lorem Ipsum</a>
-
-                                    <a class="cc-button-primary hovered-button" href="#">Lorem Ipsum</a>
-
-                                    <a class="cc-button-primary disabled" href="#">Lorem Ipsum</a>
-
-                                    <a class="cc-button-primary cc-button-transparent" href="#">Lorem Ipsum</a>
-
-                                    <a class="cc-button-secondary" href="#">Lorem Ipsum</a>
-
-                                    <a class="cc-button-secondary hovered-button" href="#">Lorem Ipsum</a>
-
-                                    <a class="cc-button-secondary disabled" href="#">Lorem Ipsum</a>
-
-                                    <a class="cc-button-secondary cc-button-transparent" href="#">Lorem Ipsum</a>
-
-                                    <a class="cc-button-text" href="#">Lorem Ipsum </a>
-
-                                    <a class="cc-button-text hovered-button" href="#">Lorem Ipsum </a>
-
-                                    <a class="cc-button-text" href="#">Lorem Ipsum <i class="glyphicon glyphicon-chevron-right"></i></a> ``` ----------- > The button `transparent` is class which you can add to any other buttons types. It's a special type
-                                    and will invert the default button style and set a transparent background. ### Buttons with Icons If you want to use a large button with an icon, you will have to add a container to your text with a classe `cc-icon-text`.
-                                    See some examples right below. ```html_example_table
-                                    <a class="cc-button-primary" href="#">Lorem Ipsum <i class="glyphicon glyphicon-chevron-right"></i></a>
-
+                                    </div>
 
                                 </div>
 
@@ -247,14 +284,15 @@
 
 
             </div>
-    </div>
+        </div>
 
 
 
-    <div id="loadingModal" class="hide loadingIndicator"></div>
+
+        <div id="loadingModal" class="hide loadingIndicator"></div>
     </main>
 
-    </div>
+</div>
 </body>
 
 </html>

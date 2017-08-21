@@ -1,29 +1,170 @@
 @import "../themes/SpinMaster Theme_100001/styles.less";
-
+@import "../../lib/bootstrap-3.1.1/less/bootstrap.less";
 // @Section_BigBlockHeight_large : 676px;
 // @Section_SmallBlockHeight_large: (@Section_BigBlockHeight_large - 40px)/2;
+//@screen-xs:                  480px;
+//@screen-xs-min:              @screen-xs;
+//@screen-phone:               @screen-xs-min;
+//
+//// Small screen / tablet
+//// Note: Deprecated @screen-sm and @screen-tablet as of v3.0.1
+//@screen-sm:                  768px;
+//@screen-sm-min:              @screen-sm;
+//@screen-tablet:              @screen-sm-min;
+//
+//// Medium screen / desktop
+//// Note: Deprecated @screen-md and @screen-desktop as of v3.0.1
+//@screen-md:                  992px;
+//@screen-md-min:              @screen-md;
+//@screen-desktop:             @screen-md-min;
+//
+//// Large screen / wide desktop
+//// Note: Deprecated @screen-lg and @screen-lg-desktop as of v3.0.1
+//@screen-lg:                  1200px;
+//@screen-lg-min:              @screen-lg;
+//@screen-lg-desktop:          @screen-lg-min;
+//
+//// So media queries don't overlap when required, provide a maximum
+//@screen-xs-max:              (@screen-sm-min - 1);
+//@screen-sm-max:              (@screen-md-min - 1);
+//@screen-md-max:              (@screen-lg-min - 1);
+
 
 @sectionBlockContainerPadding : 20px;
 @Section_BigBlockHeight_large : 676px+@sectionBlockContainerPadding*2;
 @Section_SmallBlockHeight_large: @Section_BigBlockHeight_large/2;
 @SectionBlockContentLight : @ColorWhite;
 @SectionBlockContentMiddle : @ColorSpinBlueRegular;
-@SectionBlockContentDark : @ColorSpinBlueLight;
+@SectionBlockContentDark : @ColorSpinBlue;
+
+@SectionBlockBorderWidth:3px;
+@SectionBlockBorderColor:@ColorShadeLight;
+
+@SectionBlockBorderRadius:10px;
+@SectionBlockContentPadding:45px;
+
+@SectionBlockContentPadding_sm:20px;
+
+@LightBlockTextColor : @ColorMineShaft;
+@DarkBlockTextColor : @ColorWhite;
+@RegularBlockTextColor : @ColorWhite;
 
 
 
+.shadowed-box (@Color : @ProductCardProductTitleBorderColor) {
+    -webkit-box-shadow:0 0 20px 5px @Color ;
+    -moz-box-shadow:0 0 30px 10px @Color ;
+    //box-shadow:0 0 30px 10px @Color ;
+}
+.colored-container(@backgroundColor : @SectionBlockContentLight, @textColor : @TextColor) {
+    .shadowed-box();
+    position: relative;
+    background-color:  @backgroundColor;
+    height: 100%;
+    border-radius: @SectionBlockBorderRadius ;
 
+    padding: @SectionBlockContentPadding @SectionBlockContentPadding @SectionBlockContentPadding*2 + 20px @SectionBlockContentPadding;
+    @media (max-width: @screen-sm) {
+        padding: @SectionBlockContentPadding_sm @SectionBlockContentPadding_sm @SectionBlockContentPadding_sm*2 + 20px @SectionBlockContentPadding_sm;
+    }
+    h1, h2, h3, h4, h5, h6, p,a.cc-link, span{
+        .colored-container-text();
+    }
+
+
+}
+.colored-container-text(@Color: @H3TextColor){
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    color: @Color;
+    position: relative;
+    text-align: left;
+    overflow: hidden;
+    max-height: 100%;
+}
+
+.sectionBlock {
+    .carousel.slide {
+        .carousel-inner {
+            padding: 0 30px 20px;
+            @media(max-width: @screen-sm){
+                padding: 0 0 20px;
+            }
+        }
+        .sectionBlock .carousel.slide .carousel-inner {
+            padding: 0 0px 20px;
+        }
+        .carousel-control {
+            background: none;
+            text-shadow: none;
+            a{
+                position: absolute;
+                top: 50%;
+            }
+
+            &.left, &.right {
+                display: block;
+                background-color: transparent;
+                position: absolute;
+                height: 100%;
+                width: 45px;
+                top: 0;
+                bottom: 0;
+                margin: auto auto 20px;
+                &:hover {
+                    height: 100%;
+                    width: 45px;
+                }
+
+                .glyphicon {
+                    font-family: 'custom-icons';
+                    font-size: 6rem;
+                    width: @CarouselArrowsWidth;
+                    height: auto;
+                    margin: 0;
+                    top: auto;
+                    color: @CarouselArrowsColor;
+                }
+                .glyphicon-chevron-right{
+                    left:10px;
+                    &:before{
+                        font-size: 15px;
+                    }
+                }
+
+                .glyphicon-chevron-left{
+                    right:10px;
+                    &:before{
+                        font-size: 15px;
+                    }
+                }
+            }
+            &.left {
+                left: 0;
+            }
+            &.right {
+                right: 0;
+            }
+        }
+        .carousel-indicators > li{
+            background-color: @ColorShadeRegular;
+            width: 7px;
+            height: 7px;
+            border-radius: 10px;
+            border: 1px solid #635e68;
+        }
+
+        .carousel-indicators > li.active{
+            margin-bottom: 1px;
+        }
+    }
+}
 
 .block-container {
     text-align: center;
-    .colored-container(@backgroundColor : @SectionBlockContentLigh) {
-        height: 100%; 
-        background-color:  @backgroundColor;  
-        border:        
-    }
     .center-box {
         margin: auto;
-        font-size: 0px;
+        font-size: 0;
     }
     .sectionBlock {
         font-size: 20px;
@@ -32,38 +173,77 @@
         position: relative;
         display: inline-block;
         max-width: 40%;
-        padding-bottom: 20px;
-        padding-top: 20px;
+        padding: 20px;
+        //padding-top: 20px;
         height: @Section_SmallBlockHeight_large;
-        &:first-child {
-            float: left;
+
+        @media (max-width: @screen-xs){
+            max-width: 100%;
         }
-        &:not(:first-child) {
-            padding-left: 20px;
+        .bottom-box{
+            position: absolute;
+            text-align: right;
+            bottom: @SectionBlockContentPadding;
+            @media (max-width: @screen-sm) {
+                bottom: @SectionBlockContentPadding_sm;
+            }
+            left: @SectionBlockContentPadding;
+            right: @SectionBlockContentPadding;
+        }
+
+
+        .sectionBlock-content {
+            .colored-container(@SectionBlockContentLight);
         }
     }
-    .sectionBlock.block-small {
-        padding-right: 20px; 
+
+    .sectionBlock.block-small+.sectionBlock.block-large{
+        float: right;
     }
-    .sectionBlock.block-large+.sectionBlock.block-small,
-    .sectionBlock.block-large+.sectionBlock.block-small+.sectionBlock.block-small {
-        padding-right: 0px;
-    }
+
     .sectionBlock.block-large {
         max-width: 60%;
-        padding-right: 20px;
         height: @Section_BigBlockHeight_large;
+        float: left;
+        @media(max-width: @screen-xs){
+            max-width: 100%;
+        }
     }
-    .sectionBlock-content_light {
-        .colored-container(@SectionBlockContentLight);
+
+    .block-small{
+        &:nth-of-type(2){
+            .sectionBlock-content{
+                .colored-container(@SectionBlockContentDark, @RegularBlockTextColor);
+            }
+        }
     }
-    .sectionBlock-content_middle{
-        .colored-container(@SectionBlockContentMiddle);
+
+    .sectionBlock.block-small{
+        &:nth-of-type(2){
+            .sectionBlock-content{
+                .colored-container(@SectionBlockContentMiddle, @RegularBlockTextColor);
+            }
+        }
     }
-    .sectionBlock-content_dark{
-        .colored-container(@SectionBlockContentDark);
-    }
+
+
+
+
+    //.sectionBlock-content_regular{
+    //
+    //    h1, h2, h3, h4, h5, h6, p, a.cc-link, span {
+    //        .colored-container-text(@RegularBlockTextColor);
+    //    }
+    //}
+    //.sectionBlock-content_dark{
+    //    .colored-container(@SectionBlockContentDark);
+    //    h1, h2, h3, h4, h5, h6, p,a.cc-link, span{
+    //        .colored-container-text(@RegularBlockTextColor);
+    //    }
+    //}
+
 }
+
 
 @Section_GapHorizontal : 40px;
 @Section_GapVertical: 40px;
@@ -109,3 +289,81 @@
 //@ProductCardPriceRangeTextColor: @ColorMineShaft;
 //@ProductCardPriceRangeFontWeight: @FontWeightLight;
 //@ProductCardProductLearnMoreTextColor: @ColorMineShaft;
+
+
+//.shadowed-box (@Color : @ProductCardProductTitleBorderColor) {
+//    -webkit-box-shadow:0 0 20px 5px @Color ;
+//    -moz-box-shadow:0 0 30px 10px @Color ;
+//    //box-shadow:0 0 30px 10px @Color ;
+//}
+//.colored-container(@backgroundColor : @SectionBlockContentLight) {
+//    background-color:  @backgroundColor;
+//    height: 100%;
+//    padding: @SectionBlockContentPadding;
+//    .shadowed-box();
+//}
+//
+//.block-container {
+//    text-align: center;
+//    .center-box {
+//        margin: auto;
+//        font-size: 0;
+//    }
+//    .sectionBlock {
+//        font-size: 20px;
+//        text-align: center;
+//        width: 100%;
+//        position: relative;
+//        display: inline-block;
+//        max-width: 40%;
+//        padding: 20px;
+//        //padding-top: 20px;
+//        height: @Section_SmallBlockHeight_large;
+//        &:first-child {
+//            float: left;
+//        }
+//        &:not(:first-child) {
+//            padding-left: 20px;
+//        }
+//        @media (max-width: @screen-xs){
+//            max-width: 100%;
+//        }
+//    }
+//
+//
+//    .sectionBlock.block-small {
+//        padding-right: 20px;
+//    }
+//    .sectionBlock.block-large+.sectionBlock.block-small,
+//    .sectionBlock.block-large+.sectionBlock.block-small+.sectionBlock.block-small {
+//        padding-right: 0;
+//    }
+//    .sectionBlock.block-small+.sectionBlock.block-small+.sectionBlock.block-large{
+//        float: right;
+//    }
+//    .sectionBlock.block-large {
+//        max-width: 60%;
+//        padding-right: 20px;
+//        height: @Section_BigBlockHeight_large;
+//
+//        @media(max-width: @screen-xs){
+//            max-width: 100%;
+//        }
+//    }
+//    .sectionBlock-content_light {
+//        .colored-container(@SectionBlockContentLight);
+//    }
+//    .sectionBlock-content_regular{
+//        .colored-container(@SectionBlockContentMiddle);
+//        h1, h2, h3, h4, h5, h6, p{
+//            color: @RegularBlockTextColor;
+//        }
+//    }
+//    .sectionBlock-content_dark{
+//        .colored-container(@SectionBlockContentDark);
+//        h1, h2, h3, h4, h5, h6, p{
+//            color: @DarkBlockTextColor;
+//
+//        }
+//    }
+//}
