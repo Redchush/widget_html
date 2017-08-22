@@ -1,5 +1,5 @@
 define(
-    [widgetJS, 'jquery','knockout', 'mapping',"loadConfig"],
+    [widgetJS, 'jquery','knockout', 'mapping', "loadConfig"],
 
     function (widget, $, ko, mapping, loadConfig) {
         console.log("Widget loaded");
@@ -8,9 +8,26 @@ define(
         function addLess() {
             console.log(LoadConfig.lessPaths);
             if(LoadConfig.lessPaths){
+                var $head = $('head');
+
+                $head.prepend($('' +
+                    '<script>' +
+                    ' less = {env: "development",logLevel: 2,async: false,fileAsync: false,poll: 1000,'+
+                    'dumpLineNumbers: "comments", relativeUrls: true, ' +
+                    'globalVars: {' +
+                    'back_test:' +
+                    ' "' +
+                    'black' +
+                    '",' +
+                    'widgetLessPath:"' + LoadConfig.lessPath
+                     +
+                    '"' +
+                    '}};' +
+                    '</script>'));
+
 
                 for (var i = 0; i < LoadConfig.lessPaths.length; i++) {
-                    $('head').append($('<link rel="stylesheet/less" type="text/css"/>')
+                    $head.append($('<link rel="stylesheet/less" type="text/css"/>')
                         .attr('href',LoadConfig.lessPaths[i] ));
                     console.log("added " + LoadConfig.lessPaths[i] )
                 }

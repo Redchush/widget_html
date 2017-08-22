@@ -11,7 +11,7 @@ requirejs.config({
         'less' : 'lib/less.js-master/dist/less',
         'loadConfig' : 'js/LoadConfig',
         'widgetLoader' : 'js/WidgetLoader',
-        'bootstrap' :  "lib/bootstrap-3.1.1/dist/js/bootstrap.js"
+        'bootstrap' :  "lib/bootstrap-3.1.1/dist/js/bootstrap"
     },
 
 
