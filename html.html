@@ -2,35 +2,40 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <script data-main="config.js" src="lib/require.js"></script>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script data-main="config.js" src="lib/require.js"></script>
 
-    <link rel="stylesheet" href="lib/bootstrap-3.1.1-dist/css/bootstrap.css">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="lib/bootstrap-3.1.1-dist/css/bootstrap-theme.css">
+  <link rel="stylesheet" href="lib/bootstrap-3.1.1-dist/css/bootstrap.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="lib/bootstrap-3.1.1-dist/css/bootstrap-theme.css">
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="lib/bootstrap-3.1.1-dist/css/bootstrap.css.map">
-    <link rel="stylesheet" href="lib/bootstrap-3.1.1-dist/css/bootstrap-theme.css.map">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="lib/bootstrap-3.1.1-dist/css/bootstrap.css.map">
+  <link rel="stylesheet" href="lib/bootstrap-3.1.1-dist/css/bootstrap-theme.css.map">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <!--<script src="lib/bootstrap-3.1.1-dist/js/bootstrap.js"></script>-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <!--<script src="lib/bootstrap-3.1.1-dist/js/bootstrap.js"></script>-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <script src="lib/bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <script src="lib/bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Title</title>
 
 </head>
 
 <body>
 
 <style>
-    #widget-frame {
-        display: none;
-    }
-    /* @ColorBlack: #000000;@ColorMineShaft: #333333;@ColorDoveGray: #666666;
+  #widget-frame {
+    display: none;
+  }
+  /*.center-box .block-sm:nth-of-type(1) .sectionBlock-content{*/
+  /*background: yellow !important;*/
+  /*}*/
+
+
+  /* @ColorBlack: #000000;@ColorMineShaft: #333333;@ColorDoveGray: #666666;
 @ColorSilver: #cccccc;
 @ColorMercury: #e5e5e5;
 @ColorWhite: #ffffff;
@@ -52,245 +57,555 @@
 <iframe id="widget-frame" src="display.html"></iframe>
 
 <div id="navbar_viewer">
-    <div id="ColorMineShaft"> </div>
-    <div id="ColorSilver"> </div>
-    <div id="ColorMercury"> </div>
-    <div id="ColorWhiteTransparent"> </div>
-    <div id="ColorRed"> </div>
-    <div id="ColorGreen"> </div>
-    <div id="ColorSpinBlueBold"> </div>
-    <div id="ColorSpinBlueRegular"> </div>
-    <div id="ColorSpinBlue"> </div>
-    <div id="ColorSpinBlueLight"> </div>
+  <div id="ColorMineShaft"> </div>
+  <div id="ColorSilver"> </div>
+  <div id="ColorMercury"> </div>
+  <div id="ColorWhiteTransparent"> </div>
+  <div id="ColorRed"> </div>
+  <div id="ColorGreen"> </div>
+  <div id="ColorSpinBlueBold"> </div>
+  <div id="ColorSpinBlueRegular"> </div>
+  <div id="ColorSpinBlue"> </div>
+  <div id="ColorSpinBlueLight"> </div>
 
-    <div id="ColorShadeLight"> </div>
-    <div id="ColorShadeRegular"> </div>
-    <div id="ColorShadeBold"> </div>
-    <div id="FieldBorderWidth"> </div>
+  <div id="ColorShadeLight"> </div>
+  <div id="ColorShadeRegular"> </div>
+  <div id="ColorShadeBold"> </div>
+  <div id="FieldBorderWidth"> </div>
 
 
 </div>
 
 <div id="page" data-bind="css:{&#39;preview&#39;: isPreview, &#39;container&#39;: containPage}" class="container preview">
 
-    <main class="page-row page-row-expanded">
-        <div id="main" data-bind="css:{&#39;container&#39;: containMain}">
+  <main class="page-row page-row-expanded">
+    <div id="main" data-bind="css:{&#39;container&#39;: containMain}">
 
+      <div class="row">
+        <div class="redBox" id="widget-container">
+
+          <div class="templateRegion" id="oeHomeSection" data-oc-id="oeHomeSection">
+
+            <!-- ko if: titleText -->
             <div class="row">
-                <div class="redBox" id="widget-container">
+              <div class="col-xs-12">
+                <h2 id="cc-section-title" data-bind="text: titleText">Title</h2>
+              </div>
+            </div>
+            <!-- /ko -->
 
-                    <div class="templateRegion" id="oeHomeSection" data-oc-id="oeHomeSection">
-                        <div class="oeHomeSection-background">
+            <div class="oeHomeSection-background">
+              <!-- oc layout: panels -->
+              <div class="row block-container">
 
-                            <!-- oc layout: panels -->
-                            <div class="row block-container">
-
-                                <div class="center-box">
-                                    <div class="oc-panel sectionBlock block-small" data-oc-id="panel-2">
-                                        <!-- oc section: oeHomeSection-box-content-dark -->
-                                        <div class=" sectionBlock-content">
-                                            <h3>Lorem ipsum lska lkjskldjal jlsjfl</h3>
-                                            <span data-bind="element: 'rich-text',id: '300001'"></span>
-                                        </div>
-                                        <!--/oc -->
-                                    </div>
-                                    <div class="oc-panel sectionBlock block-large" data-oc-id="panel-1">
-                                        <div class=" sectionBlock-content">
-                                            <h3 data-bind="element: 'rich-text',id: '300001'">
-                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
-                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
-                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
-                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
-                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
-                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
-                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
-                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
-                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
-                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
-                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
-                                            </h3>
-                                            <div class="bottom-box">
-                                                <a class="cc-link" href="#">Normal Link</a>
-                                                <span class="glyphicon-chevron-right"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="oc-panel sectionBlock block-small" data-oc-id="panel-2s">
-                                        <!-- oc section: oeHomeSection-box-content-dark -->
-                                        <div class=" sectionBlock-content">
-                                            <h3>Lorem ipsum lska lkjskldjal jlsjfl</h3>
-                                            <div class="bottom-box">
-                                                <a class="cc-button-primary" href="#">Lorem Ipsum</a>
-                                            </div>
-                                        </div>
-                                        <!--/oc -->
-                                    </div>
-                                    <div class="oc-panel sectionBlock block-small" data-oc-id="panel-2d">
-                                        <!-- oc section: oeHomeSection-box-content-dark -->
-                                        <div class=" sectionBlock-content">
-                                            <h3>Lorem ipsum lska lkjskldjal jlsjfl</h3>
-                                            <div class="bottom-box">
-                                                <a class="cc-button-primary" href="#">Lorem Ipsum</a>
-                                            </div>
-                                        </div>
-                                        <!--/oc -->
-                                    </div>
-
-                                    <div class="oc-panel sectionBlock block-small" data-oc-id="panel-3">
-                                        <div class=" sectionBlock-content">
-                                            <h3 data-bind="element: 'rich-text',id: '300001'">
-                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
-                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
-                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
-                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
-                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
-                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
-                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
-                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
-                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
-                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
-                                                Lorem ipsum lska lkjskldjal jlsjfl long long long
-                                            </h3>
-                                            <div class="bottom-box">
-                                                <a class="cc-link" href="#">Normal Link</a>
-                                                <span class="glyphicon-chevron-right"></span>
-                                            </div>
-                                         </div>
-                                    </div>
-                                </div>
-                                <div class="center-box">
-                                    <div class="oc-panel sectionBlock block-large" data-oc-id="panel-1">
-                                        <div class=" sectionBlock-content">
-                                            <div class="doc-solid-background darken"><!-- DON'T USE this element on you application, this is only for the styleguide -->
-                                                <div class="carousel slide">
-                                                    <div class="carousel-inner">
-                                                        <div class="item active">
-                                                            <a href="#">
-                                                                <img alt="Hero Image 1" class="img-responsive center-block" src="https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=350%C3%97150&amp;w=500&amp;h=300">
-                                                            </a>
-                                                        </div>
-
-                                                        <div class="item ">
-                                                            <a href="#">
-                                                                <img alt="Hero Image 1" class="img-responsive center-block" src="https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=350%C3%97150&amp;w=500&amp;h=300">
-                                                            </a>
-                                                        </div>
-                                                        <div class="item ">
-                                                            <a href="#">
-                                                                <img alt="Hero Image 1" class="img-responsive center-block" src="https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=350%C3%97150&amp;w=500&amp;h=300">
-                                                            </a>
-                                                        </div>
-
-                                                        <div class="left carousel-control hidden-xs hidden-sm">
-                                                            <a href="#">
-                                                                <span class="glyphicon-chevron-left"></span>
-                                                             </a>
-                                                        </div>
-
-                                                        <div class="right carousel-control hidden-xs hidden-sm">
-                                                            <a href="#">
-                                                                <span class="glyphicon-chevron-right"></span>
-                                                            </a>
-                                                        </div>
-
-                                                    </div>
-
-
-                                                    <ol class="carousel-indicators">
-                                                        <li class="active"></li>
-                                                        <li></li>
-                                                    </ol>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="oc-panel sectionBlock block-small" data-oc-id="panel-2">
-                                        <!-- oc section: oeHomeSection-box-content-dark -->
-                                        <div class=" sectionBlock-content">
-                                            <h3>Lorem ipsum lska lkjskldjal jlsjfl</h3>
-                                            <div class="bottom-box">
-                                                <a class="cc-button-primary" href="#">Lorem Ipsum</a>
-                                            </div>
-                                        </div>
-                                        <!--/oc -->
-                                    </div>
-
-                                    <div class="oc-panel sectionBlock block-small" data-oc-id="panel-2">
-                                    <!-- oc section: oeHomeSection-box-content-dark -->
-                                    <div class=" sectionBlock-content">
-                                    <h3>Lorem ipsum lska lkjskldjal jlsjfl</h3>
-                                    <span data-bind="element: 'rich-text',id: '300001'"></span>
-                                    </div>
-                                    <!--/oc -->
-                                    </div>
-
-                                    <div class="oc-panel sectionBlock block-small" data-oc-id="panel-3">
-                                    <div class=" sectionBlock-content">
-                                    <h3>Lorem ipsum lska lkjskldjal jlsjfl</h3>
-                                    <span data-bind="element: 'rich-text',id: '300001'"></span>
-                                    </div>
-                                    </div>
-
-                                    <div class="oc-panel sectionBlock block-small" data-oc-id="panel-4">
-                                    <div class=" sectionBlock-content">
-                                    <h3>Lorem ipsum lska lkjskldjal jlsjfl</h3>
-                                    <span data-bind="element: 'rich-text',id: '300001'"></span>
-                                    </div>
-                                    </div>
-
-                                    <div class="oc-panel sectionBlock block-small" data-oc-id="panel-5">
-                                    <div class=" sectionBlock-content">
-                                    <h3>Lorem ipsum lska lkjskldjal jlsjfl</h3>
-                                    <span data-bind="element: 'rich-text',id: '300001'"></span>
-                                    </div>
-
-                                    </div>
-
-                                    <div class="oc-panel sectionBlock block-large" data-oc-id="panel-1">
-                                    <div class=" sectionBlock-content">
-                                    <h2>Lorem ipsum lska lkjskldjal jlsjfl</h2>
-                                    <span data-bind="element: 'rich-text',id: '300001'"></span>
-                                    </div>
-                                    </div>
-
-                                    <div class="oc-panel sectionBlock block-small" data-oc-id="panel-6">
-                                    <div class=" sectionBlock-content">
-                                    <span data-bind="element: 'rich-text',id: '300001'"></span>
-                                    </div>
-
-                                    </div>
-
-                                </div>
-
-
-                                <!--<div data-bind="element: 'oeHomeSection-box-content-light'"></div>-->
-                                <!-- /oc -->
-                            </div>
-
-
-
+                <div class="center-box">
+                  <style>
+                    .container_{
+                      display: inline-block;
+                    }
+                  </style>
+                  <div class="container_">
+                    <figure class="sectionBlock block-lg" data-oc-id="panel-3">
+                      <div class=" sectionBlock-content">
+                        <div class="image-content">
+                          <img src="">
                         </div>
-                        <!-- /oc -->
+                        <h3 >
+                        <span data-bind="element: 'rich-text',id: '300001'">
+                          Lorem ipsum lska lkjskldjal jlsjfl long long long
+                          Lorem ipsum lska lkjskldjal jlsjfl long long long
+                          Lorem ipsum lska lkjskldjal jlsjfl long long long
+                          Lorem ipsum lska lkjskldjal jlsjfl long long long
+                          Lorem ipsum lska lkjskldjal jlsjfl long long long
+                          Lorem ipsum lska lkjskldjal jlsjfl long long long
+                          Lorem ipsum lska lkjskldjal jlsjfl long long long
+                          Lorem ipsum lska lkjskldjal jlsjfl long long long
+                          Lorem ipsum lska lkjskldjal jlsjfl long long long
+                          Lorem ipsum lska lkjskldjal jlsjfl long long long
+                          Lorem ipsum lska lkjskldjal jlsjfl long long long
+                        </span>
+
+                        </h3>
+                        <div class="bottom-box">
+                          <a class="cc-link" href="#">Normal Link <span class="glyphicon-chevron-right"></span></a>
+                        </div>
+                      </div>
+                    </figure>
+                  </div>
+                  <div class="container_">
+                    <figure class="sectionBlock block-xs" data-oc-id="panel-3">
+                      <div class=" sectionBlock-content">
+                        <h3 data-bind="element: 'rich-text',id: '300001'">
+                          Lorem ipsum lska lkjskldjal jlsjfl long long long
+                          Lorem ipsum lska lkjskldjal jlsjfl long long long
+                        </h3>
+                        <div class="bottom-box">
+                          <a class="cc-link" href="#">Normal Link <span class="glyphicon-chevron-right"></span></a>
+                        </div>
+                      </div>
+
+                    </figure>
+                  </div>
+
+
+
+
+                  <figure class="sectionBlock block-xs" data-oc-id="panel-3">
+                    <div class=" sectionBlock-content">
+                      <h3 data-bind="element: 'rich-text',id: '300001'">
+                        Lorem ipsum lska lkjskldjal jlsjfl long long long
+                        Lorem ipsum lska lkjskldjal jlsjfl long long long
+                        Lorem ipsum lska lkjskldjal jlsjfl long long long
+                        Lorem ipsum lska lkjskldjal jlsjfl long long long
+                        Lorem ipsum lska lkjskldjal jlsjfl long long long
+                        Lorem ipsum lska lkjskldjal jlsjfl long long long
+                        Lorem ipsum lska lkjskldjal jlsjfl long long long
+                        Lorem ipsum lska lkjskldjal jlsjfl long long long
+                        Lorem ipsum lska lkjskldjal jlsjfl long long long
+                        Lorem ipsum lska lkjskldjal jlsjfl long long long
+                        Lorem ipsum lska lkjskldjal jlsjfl long long long
+                      </h3>
+                      <div class="bottom-box">
+                        <a class="cc-link" href="#">Normal Link<span class="glyphicon-chevron-right"></span> </a>
+
+                      </div>
+                    </div>
+                  </figure>
+
+                  <figure class="sectionBlock block-lg" data-oc-id="panel-3">
+                    <div class=" sectionBlock-content"
+                         data-show-image="true" data-show-descr="false">
+                      <div class="image-content" >
+                        <img src="https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=350%C3%97150&amp;w=500&amp;h=30">
+                      </div>
+                      <h3 data-bind="element: 'rich-text',id: '300001'">
+                        Lorem ipsum lska lkjskldjal jlsjfl long long long
+                        Lorem ipsum lska lkjskldjal jlsjfl long long long
+                      </h3>
+                      <div class="bottom-box">
+                        <a class="cc-link" href="#">Normal Link <span class="glyphicon-chevron-right"></span></a>
+
+                      </div>
+                    </div>
+                  </figure>
+
+
+                  <div class=" sectionBlock block-md" data-oc-id="panel-1">
+                    <div class=" sectionBlock-content">
+                      <h3 data-bind="element: 'rich-text',id: '300001'">
+                        Lorem ipsum lska lkjskldjal jlsjfl long long long
+                        Lorem ipsum lska lkjskldjal jlsjfl long long long
+                        Lorem ipsum lska lkjskldjal jlsjfl long long long
+                        Lorem ipsum lska lkjskldjal jlsjfl long long long
+                        Lorem ipsum lska lkjskldjal jlsjfl long long long
+                        Lorem ipsum lska lkjskldjal jlsjfl long long long
+                        Lorem ipsum lska lkjskldjal jlsjfl long long long
+                        Lorem ipsum lska lkjskldjal jlsjfl long long long
+                        Lorem ipsum lska lkjskldjal jlsjfl long long long
+                        Lorem ipsum lska lkjskldjal jlsjfl long long long
+                        Lorem ipsum lska lkjskldjal jlsjfl long long long
+                      </h3>
+                      <div class="bottom-box">
+                        <a class="cc-link" href="#">Normal Link</a>
+                        <span class="glyphicon-chevron-right"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <figure class=" sectionBlock block-sm" data-oc-id="panel-2">
+                    <div class="sectionBlock-content">
+                      <h3>Lorem ipsum lska lkjskldjal jlsjfl</h3>
+                      <span data-bind="element: 'rich-text',id: '300001'"></span>
+                      <div class="bottom-box">
+                        <a class="cc-link" href="#">Normal Link <span class="glyphicon-chevron-right"></span></a>
+                      </div>
+                    </div>
+                  </figure>
+
+                  <figure class=" sectionBlock block-sm" data-oc-id="panel-2">
+                    <div class="sectionBlock-content">
+                      <h3>Lorem ipsum lska lkjskldjal jlsjfl</h3>
+                      <span data-bind="element: 'rich-text',id: '300001'"></span>
+                      <div class="bottom-box">
+                        <a class="cc-link" href="#">Normal Link <span class="glyphicon-chevron-right"></span></a>
+                      </div>
+                    </div>
+                  </figure>
+
+
+                  <figure class=" sectionBlock block-sm" data-oc-id="panel-2s">
+                    <!-- oc section: oeHomeSection-box-content-dark -->
+                    <div class="sectionBlock-content">
+                      <h3>Lorem ipsum lska lkjskldjal jlsjfl</h3>
+                      <div class="bottom-box">
+                        <a class="cc-button-primary cc-button-transparent" href="#">Lorem Ipsum</a>
+                      </div>
+                    </div>
+                    <!--/oc -->
+                  </figure>
+                  <figure class=" sectionBlock block-sm" data-oc-id="panel-2d">
+                    <div class=" sectionBlock-content">
+                      <h3>Lorem ipsum lska lkjskldjal jlsjfl</h3>
+                      <div class="bottom-box">
+                        <a class="cc-button-primary" href="#">Lorem Ipsum</a>
+                      </div>
+                    </div>
+                    <div class="bottom-box">
+                      <a class="cc-link" href="#">
+                        <!--data-bind="element: 'rich-text'"-->
+                        Link Text
+                      </a>
+                      <span class="glyphicon-chevron-right"></span>
+                    </div>
+                    <!--/oc -->
+                  </figure>
+
+                  <figure class=" sectionBlock block-sm" data-oc-id="panel-3">
+                    <div class=" sectionBlock-content">
+                      <h3 data-bind="element: 'rich-text',id: '300001'">
+                        Lorem ipsum lska lkjskldjal jlsjfl long long long
+                        Lorem ipsum lska lkjskldjal jlsjfl long long long
+                        Lorem ipsum lska lkjskldjal jlsjfl long long long
+                        Lorem ipsum lska lkjskldjal jlsjfl long long long
+                        Lorem ipsum lska lkjskldjal jlsjfl long long long
+                        Lorem ipsum lska lkjskldjal jlsjfl long long long
+                        Lorem ipsum lska lkjskldjal jlsjfl long long long
+                        Lorem ipsum lska lkjskldjal jlsjfl long long long
+                        Lorem ipsum lska lkjskldjal jlsjfl long long long
+                        Lorem ipsum lska lkjskldjal jlsjfl long long long
+                        Lorem ipsum lska lkjskldjal jlsjfl long long long
+                      </h3>
+
+                      <div class="bottom-box">
+                        <a class="cc-link" href="#">
+                          <span data-bind="element: 'rich-text'">Link Text </span>
+                        </a>
+                        <span class="glyphicon-chevron-right"></span>
+                      </div>
 
                     </div>
+                  </figure>
+                  <!--</div>-->
+
+                  <!--<div class="center-box">-->
+                  <figure class=" sectionBlock block-md" data-oc-id="panel-1">
+                    <div class=" sectionBlock-content">
+
+                      <div class="carousel slide">
+                        <div class="carousel-inner">
+                          <div class="item active">
+
+                            <div class="item-image">
+                              <a href="#">
+                                <img alt="Hero Image 1" class="img-responsive center-block"
+                                     src="https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=350%C3%97150&amp;w=500&amp;h=300">
+                              </a>
+
+                            </div>
+
+                          </div>
+                          <div class="item ">
+                            <a href="#">
+                              <img alt="Hero Image 1" class="img-responsive center-block" src="https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=350%C3%97150&amp;w=500&amp;h=300">
+                            </a>
+                          </div>
+                          <div class="item ">
+                            <a href="#">
+                              <img alt="Hero Image 1" class="img-responsive center-block" src="https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=350%C3%97150&amp;w=500&amp;h=300">
+                            </a>
+                          </div>
+
+                          <div class="left carousel-control hidden-xs hidden-sm">
+                            <a href="#">
+                              <span class="glyphicon-chevron-left"></span>
+                            </a>
+                          </div>
+                          <div class="right carousel-control hidden-xs hidden-sm">
+                            <a href="#">
+                              <span class="glyphicon-chevron-right"></span>
+                            </a>
+                          </div>
+                          <ol class="carousel-indicators">
+                            <li class="active"></li>
+                            <li></li>
+                            <li></li>
+                          </ol>
+                        </div>
+
+                        <div class="carousel-product">
+                          <h4>
+                            <a class="h4 oe-product-name" data-bind="
+        attr : { id: 'CC-product-title-'+id()},
+        ccLink : $data.product,
+        click: $parents[1].updateFocus,
+        html : (($data.truename) ? $data.truename() : $data.displayName()) + '&nbsp;<span>' + $data.bottleVolume() + '</span>'"
+                            >oe-product-name
+                            </a>
+                          </h4>
+                        </div>
+                      </div>
+
+                      <div class="bottom-box justified">
+                        <div class="product-price-element">
+                            <span class="price-content h1">
+                            <!--ko if : $data.productSalePrice -->
+                            <span data-bind="text : 'de: '"></span>
+                            <span data-bind="currency: {price: $data.productListPrice,
+                                currencyObj: $parents[1].site().currency, nullReplace: '0.00', prependNull: true}"></span>
+                            <span data-bind="text : ' por:'"> $ </span>
+                              <!-- /ko -->
+                              <!--ko ifnot : $data.productSalePrice -->
+                            <span data-bind="text : 'por:'"></span>
+                              <!-- /ko -->
+                          </span>
+
+                          <span class="price-content h1">
+                            <!--ko if : $data.productSalePrice -->
+                            <span data-bind="currency: {price: $data.productSalePrice,
+                                 currencyObj: $parents[1].site().currency,
+                                 nullReplace: '0.00',
+                                 prependNull: true}"> 124
+                            </span>
+                            <!-- /ko -->
+                            <!--ko ifnot : $data.productSalePrice -->
+                            <span data-bind="currency: {price: $data.productListPrice,
+                                                      currencyObj: $parents[1].site().currency,
+                                                      nullReplace: '0.00',
+                                                      prependNull: true}">
+
+                            </span>
+                            <!-- /ko -->
+                          </span>
+
+                          <span class="price-content h1 ">
+                            <span class="oe-product-card-price-label"></span>
+                            <span class="special-list-price">
+                            <span data-bind="currency: {price: $data.listPrices.associado(),
+                             currencyObj: $parents[1].site().currency,
+                             nullReplace: '0.00',
+                             prependNull: true}">
+                            </span>
+                            </span>
+                          </span>
+                        </div>
+                        <style>
+
+                        </style>
+                        <a class="cc-button-primary" href="#">Add to cart</a>
+
+                      </div>
+                    </div>
+
+
+                  </figure>
+
+                  <figure class=" sectionBlock block-sm" data-oc-id="panel-2">
+                    <!-- oc section: oeHomeSection-box-content-dark -->
+                    <div class=" sectionBlock-content">
+                      <h3>
+                        Lorem ipsum lska lkjskldjal jlsjfl
+                        Lorem ipsum lska lkjskldjal jlsjfl
+                        Lorem ipsum lska lkjskldjal jlsjfl
+                        Lorem ipsum lska lkjskldjal jlsjfl
+                        Lorem ipsum lska lkjskldjal jlsjfl
+                        Lorem ipsum lska lkjskldjal jlsjfl
+                        Lorem ipsum lska lkjskldjal jlsjfl
+                        Lorem ipsum lska lkjskldjal jlsjfl
+                        Lorem ipsum lska lkjskldjal jlsjfl
+                        Lorem ipsum lska lkjskldjal jlsjfl
+                        Lorem ipsum lska lkjskldjal jlsjfl
+                        Lorem ipsum lska lkjskldjal jlsjfl
+                        Lorem ipsum lska lkjskldjal jlsjfl
+                        Lorem ipsum lska lkjskldjal jlsjfl
+
+                      </h3>
+
+                      <div class="bottom-box">
+                        <a class="cc-button-primary" href="#">Lorem Ipsum</a>
+                      </div>
+                    </div>
+                    <!--/oc -->
+                  </figure>
+
+                  <figure class=" sectionBlock block-sm" data-oc-id="panel-4">
+                    <div class=" sectionBlock-content">
+                      <h3>Lorem ipsum lska lkjskldjal jlsjfl</h3>
+                      <span data-bind="element: 'rich-text',id: '300001'"></span>
+                    </div>
+                  </figure>
+
+                  <figure class=" sectionBlock block-sm" data-oc-id="panel-5">
+                    <div class=" sectionBlock-content">
+                      <h3>Lorem ipsum lska lkjskldjal jlsjfl</h3>
+                      <span data-bind="element: 'rich-text',id: '300001'"></span>
+                    </div>
+                  </figure>
+
+
 
                 </div>
+                <!--</div>-->
 
 
-
+                <!--<div data-bind="element: 'oeHomeSection-box-content-light'"></div>-->
+                <!-- /oc -->
+              </div>
 
 
 
             </div>
+            <!-- /oc -->
+
+          </div>
+
         </div>
 
 
 
 
-        <div id="loadingModal" class="hide loadingIndicator"></div>
-    </main>
+
+
+      </div>
+    </div>
+
+    <div>
+      <div class="oe-product-collection row-full" data-oc-id="cc-collection">
+        <div id="cc-collection-panel" data-oc-id="cc-collection-panel" data-bind="visible: isCollectionVisible()">
+          <div class="container">
+            <!-- ko if: productGroups() && (productGroups().length > 0) -->
+            <div class="row">
+              <!-- Collection Title -->
+              <div class="col-xs-12 text-center">
+                <h2 class="text-center" data-bind="text: $data.titleText"></h2>
+                <a class="link-see-more" data-bind="ccLink: 'article', attr: { href: $data.categoryRoute }">Ver Todos</a>
+              </div>
+            </div>
+
+            <div data-bind="carouselSwipe, attr:{id: 'oe-product-collection-carousel-'+id()}" class="carousel slide" data-interval="false">
+              <div class="carousel-inner">
+                <!-- ko foreach: productGroups -->
+                <div class="row item" data-bind="css: {'active': $index() == 0}, foreach: { data: $data }">
+                  <div data-bind="css: $parents[1].spanClass()">
+                    <div class="oe-product-card" data-bind="template : 'oe-product-card-' + $parents[1].id()">
+                    </div>
+                  </div>
+                </div>
+                <!-- /ko -->
+              </div>
+            </div>
+
+            <a class="left carousel-control hidden-xs hidden-sm" data-slide="prev"
+               data-bind="attr: {href: '#oe-product-collection-carousel-' + $data.id()}">
+              <span class="fa fa-angle-left"></span>
+              <div class="sr-only" data-bind="widgetLocaleText: 'previousBannerText'"></div>
+            </a>
+
+            <a class="right carousel-control hidden-xs hidden-sm" data-slide="next" data-bind="attr: {href: '#oe-product-collection-carousel-' + $data.id()}">
+              <span class="fa fa-angle-right"></span>
+              <div class="sr-only" data-bind="widgetLocaleText: 'nextBannerText'"></div>
+            </a>
+            <!-- /ko -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card Example -->
+      <script type="text/html" data-bind="attr : {id : 'oe-product-card-' + $data.id()}">
+        <!-- ko if : $data.productSalePrice -->
+        <span class="oe-product-promotion">em promoção</span>
+        <!-- /ko -->
+        <div class="row">
+          <div class="col-xs-12">
+            <a data-bind="attr : { id: 'CC-product-detail-'+id(), title: ($data.truename) ? $data.truename : $data.displayName }, ccLink : $data.product, click: $parents[1].updateFocus">
+              <span data-bind="html: ($data.truename) ? $data.truename : $data.displayName" class="sr-only"></span>
+              <img class="img-responsive center-block" data-bind="productImageSource: {src: $data.product, imageType: 'small',
+          errorSrc: '/img/no-image.jpg',
+          errorAlt: 'Missing Product Image'
+          }, attr: {id: 'CC-product-image-'+id(), alt: ($data.truename) ? $data.truename : $data.displayName}">
+              <!--<img class="img-responsive center-block" data-bind="attr : {id: 'CC-product-image-'+id(), src : $data.primarySmallImageURL, alt: ($data.truename) ? $data.truename() : $data.displayName()}">-->
+            </a>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12" style="height: 45px;">
+            <a class="oe-product-name" data-bind="
+        attr : { id: 'CC-product-title-'+id()},
+        ccLink : $data.product,
+        click: $parents[1].updateFocus,
+        html : (($data.truename) ? $data.truename() : $data.displayName()) + '&nbsp;<span>' + $data.bottleVolume() + '</span>'"
+            >oe-product-name
+            </a>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="oe-product-card-separator">
+              <div class="row">
+                <div class="col-xs-6 oe-product-card-price-wrap">
+            <span class="oe-product-card-price-label">
+              <!--ko if : $data.productSalePrice -->
+                <span data-bind="text : 'de: '"></span>
+                <span data-bind="currency: {price: $data.productListPrice, currencyObj: $parents[1].site().currency, nullReplace: '0.00', prependNull: true}"></span>
+                <span data-bind="text : ' por:'"></span>
+              <!-- /ko -->
+
+              <!--ko ifnot : $data.productSalePrice -->
+                <span data-bind="text : 'por:'"></span>
+              <!-- /ko -->
+            </span>
+                  <span class="oe-product-card-price">
+              <!--ko if : $data.productSalePrice -->
+                <span data-bind="currency: {price: $data.productSalePrice, currencyObj: $parents[1].site().currency, nullReplace: '0.00', prependNull: true}"></span>
+                    <!-- /ko -->
+
+                    <!--ko ifnot : $data.productSalePrice -->
+                <span data-bind="currency: {price: $data.productListPrice, currencyObj: $parents[1].site().currency, nullReplace: '0.00', prependNull: true}"></span>
+                    <!-- /ko -->
+            </span>
+                </div>
+                <div class="col-xs-6 oe-product-card-price-wrap oe-product-card-price-side-border">
+                  <span class="oe-product-card-price-label">para associados:</span>
+                  <span class="oe-product-card-price oe-special-list-price">
+              <span data-bind="currency: {price: $data.listPrices.associado(), currencyObj: $parents[1].site().currency, nullReplace: '0.00', prependNull: true}"></span>
+            </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="oe-product-card-quantity-wrap">
+              <span class="oe-product-card-quantity-label">quantidade</span>
+              <div class="oe-quantity">
+                <button data-bind="click : function(data, event){ $parents[1].productQuantityControl(data, 'minus'); }, disabled : $data.quantity() < 2">
+                  <i class="fa fa-minus" aria-hidden="true"></i>
+                </button>
+                <input type="text" data-bind="value : ($data.quantity() < 10) ? '0' + $data.quantity() : $data.quantity()">
+                <button data-bind="click : function(data, event){ $parents[1].productQuantityControl(data, 'plus'); }">
+                  <i class="fa fa-plus" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <button class="btn-add-to-cart full-width" data-bind="click: function(data, event){ $parents[1].handleAddToCart($data, event.currentTarget); }">adicionar ao carrinho</button>
+          </div>
+        </div>
+      </script>
+
+    </div>
+
+
+
+
+    <div id="loadingModal" class="hide loadingIndicator"></div>
+  </main>
 
 </div>
 </body>
