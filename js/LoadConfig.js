@@ -1,7 +1,9 @@
 var widgetRoot = "../oeHomeSection/widget/oeHomeSection";
 var widgetName = "oeHomeSection";
-var widgetJS = widgetRoot + "/js/" + widgetName;
 
+// var widgetJS = widgetRoot + "/js/" + widgetName;
+var widgetJS = widgetRoot + "/js/widgetSpecific";
+// D:\project\spinMaster_proj\objectedge\oeHomeSection\widget\oeHomeSection\js\widgetSpecific.js
 var LoadConfig = (function() {
 
     var initialWidgetJSON = widgetRoot + "/widget.json";
